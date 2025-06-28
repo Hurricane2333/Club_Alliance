@@ -250,13 +250,13 @@ INSERT INTO `user` VALUES (6, '666', '六六六', '666', '666@666.com', NULL, 0,
 DROP TRIGGER IF EXISTS `after_participant_update`;
 delimiter ;;
 CREATE TRIGGER `after_participant_update` AFTER UPDATE ON `activity_participant` FOR EACH ROW BEGIN
-    IF NEW.status = 'approved' AND OLD.status != 'approved' THEN
+    IF NEW.status = 'APPROVED' AND OLD.status != 'APPROVED' THEN
         UPDATE club_activity
         SET current_participants = current_participants + 1
         WHERE activity_id = NEW.activity_id;
     END IF;
 
-    IF OLD.status = 'approved' AND NEW.status != 'approved' THEN
+    IF OLD.status = 'APPROVED' AND NEW.status != 'APPROVED' THEN
         UPDATE club_activity
         SET current_participants = current_participants - 1
         WHERE activity_id = NEW.activity_id;
@@ -271,7 +271,7 @@ delimiter ;
 DROP TRIGGER IF EXISTS `after_participant_delete`;
 delimiter ;;
 CREATE TRIGGER `after_participant_delete` AFTER DELETE ON `activity_participant` FOR EACH ROW BEGIN
-    IF OLD.status = 'approved' THEN
+    IF OLD.status = 'APPROVED' THEN
         UPDATE club_activity
         SET current_participants = current_participants - 1
         WHERE activity_id = OLD.activity_id;
@@ -286,13 +286,13 @@ delimiter ;
 DROP TRIGGER IF EXISTS `after_member_status_update`;
 delimiter ;;
 CREATE TRIGGER `after_member_status_update` AFTER UPDATE ON `club_member` FOR EACH ROW BEGIN
-    IF NEW.status = 'approved' AND OLD.status != 'approved' THEN
+    IF NEW.status = 'APPROVED' AND OLD.status != 'APPROVED' THEN
         UPDATE club
         SET current_members = current_members + 1
         WHERE club_id = NEW.club_id;
     END IF;
 
-    IF OLD.status = 'approved' AND NEW.status != 'approved' THEN
+    IF OLD.status = 'APPROVED' AND NEW.status != 'APPROVED' THEN
         UPDATE club
         SET current_members = current_members - 1
         WHERE club_id = NEW.club_id;
@@ -307,7 +307,7 @@ delimiter ;
 DROP TRIGGER IF EXISTS `after_member_delete`;
 delimiter ;;
 CREATE TRIGGER `after_member_delete` AFTER DELETE ON `club_member` FOR EACH ROW BEGIN
-    IF OLD.status = 'approved' THEN
+    IF OLD.status = 'APPROVED' THEN
         UPDATE club
         SET current_members = current_members - 1
         WHERE club_id = OLD.club_id;
