@@ -14,6 +14,9 @@
  Date: 26/06/2025 16:57:07
 */
 
+CREATE DATABASE IF NOT EXISTS `club_alliance` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+USE `club_alliance`;
+
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -25,7 +28,7 @@ CREATE TABLE `activity_participant`  (
   `participation_id` int NOT NULL AUTO_INCREMENT COMMENT '参与id',
   `activity_id` int NOT NULL COMMENT '活动id',
   `user_id` int NOT NULL COMMENT '参与人id',
-  `status` enum('PENDING','APPROVED','REJECTED') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'pending' COMMENT '参与状态',
+  `status` enum('PENDING','APPROVED','REJECTED') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'PENDING' COMMENT '参与状态',
   `apply_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '参与时间',
   `review_time` timestamp NULL DEFAULT NULL COMMENT '审核时间',
   PRIMARY KEY (`participation_id`) USING BTREE,
@@ -72,7 +75,7 @@ CREATE TABLE `club`  (
   `requirements` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '加入条件',
   `favorite_count` int NULL DEFAULT 0 COMMENT '收藏人数',
   `current_members` int NULL DEFAULT 0 COMMENT '现有人数',
-  `status` enum('PENDING','APPROVED','REJECTED') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'pending' COMMENT '审核状态',
+  `status` enum('PENDING','APPROVED','REJECTED') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'PENDING' COMMENT '审核状态',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '社团创建时间',
   PRIMARY KEY (`club_id`) USING BTREE,
   UNIQUE INDEX `club_name`(`club_name` ASC) USING BTREE,
@@ -83,8 +86,8 @@ CREATE TABLE `club`  (
 -- ----------------------------
 -- Records of club
 -- ----------------------------
-INSERT INTO `club` VALUES (1, '艺术社', '搞艺术的', 'ARTS', NULL, 1, '会搞艺术的', 0, 2, 'approved', '2025-06-26 16:36:02');
-INSERT INTO `club` VALUES (2, '学术社', '搞学术的', 'ACADEMIC', NULL, 3, '会搞学术的', 1, 1, 'approved', '2025-06-26 16:37:12');
+INSERT INTO `club` VALUES (1, '艺术社', '搞艺术的', 'ARTS', NULL, 1, '会搞艺术的', 0, 2, 'APPROVED', '2025-06-26 16:36:02');
+INSERT INTO `club` VALUES (2, '学术社', '搞学术的', 'ACADEMIC', NULL, 3, '会搞学术的', 1, 1, 'APPROVED', '2025-06-26 16:37:12');
 
 -- ----------------------------
 -- Table structure for club_activity
@@ -99,7 +102,7 @@ CREATE TABLE `club_activity`  (
   `start_time` datetime NOT NULL COMMENT '活动开始时间',
   `end_time` datetime NOT NULL COMMENT '活动结束时间',
   `location` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '活动地点',
-  `status` enum('PENDING','ACTIVE','CONCLUDED','CANCELLED') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'pending' COMMENT '活动状态',
+  `status` enum('PENDING','ACTIVE','CONCLUDED','CANCELLED') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'PENDING' COMMENT '活动状态',
   `current_participants` int NULL DEFAULT 0 COMMENT '活动参与人数',
   `max_participants` int NULL DEFAULT NULL COMMENT '活动人数上限',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '活动创建时间',
@@ -122,7 +125,7 @@ CREATE TABLE `club_member`  (
   `relation_id` int NOT NULL AUTO_INCREMENT COMMENT '关系id',
   `user_id` int NOT NULL COMMENT '用户id',
   `club_id` int NOT NULL COMMENT '社团id',
-  `status` enum('PENDING','APPROVED','REJECTED') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'pending' COMMENT '关系状态',
+  `status` enum('PENDING','APPROVED','REJECTED') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'PENDING' COMMENT '关系状态',
   `apply_reason` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '申请原因',
   `apply_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '申请时间',
   `review_time` timestamp NULL DEFAULT NULL COMMENT '审核时间',
@@ -137,9 +140,9 @@ CREATE TABLE `club_member`  (
 -- ----------------------------
 -- Records of club_member
 -- ----------------------------
-INSERT INTO `club_member` VALUES (1, 1, 1, 'approved', 'president', '2025-06-26 16:36:02', '2025-06-26 16:36:02', NULL);
-INSERT INTO `club_member` VALUES (2, 3, 2, 'approved', 'president', '2025-06-26 16:37:12', '2025-06-26 16:37:12', NULL);
-INSERT INTO `club_member` VALUES (3, 2, 1, 'approved', '2', '2025-06-26 16:49:19', '2025-06-26 16:49:19', NULL);
+INSERT INTO `club_member` VALUES (1, 1, 1, 'APPROVED', 'president', '2025-06-26 16:36:02', '2025-06-26 16:36:02', NULL);
+INSERT INTO `club_member` VALUES (2, 3, 2, 'APPROVED', 'president', '2025-06-26 16:37:12', '2025-06-26 16:37:12', NULL);
+INSERT INTO `club_member` VALUES (3, 2, 1, 'APPROVED', '2', '2025-06-26 16:49:19', '2025-06-26 16:49:19', NULL);
 
 -- ----------------------------
 -- Table structure for club_post
@@ -151,8 +154,8 @@ CREATE TABLE `club_post`  (
   `user_id` int NOT NULL COMMENT '发布人id',
   `title` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '帖子标题',
   `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '帖子内容',
-  `visibility` enum('PUBLIC','MEMBERS','PRESIDENT') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'members' COMMENT '帖子可见性',
-  `status` enum('ACTIVE','BLOCKED') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'active' COMMENT '帖子状态',
+  `visibility` enum('PUBLIC','MEMBERS','PRESIDENT') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'MEMBERS' COMMENT '帖子可见性',
+  `status` enum('ACTIVE','BLOCKED') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'ACTIVE' COMMENT '帖子状态',
   `comment_count` int NULL DEFAULT 0 COMMENT '评论数量',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '帖子创建时间',
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '帖子更新时间',
@@ -198,7 +201,7 @@ CREATE TABLE `post_comment`  (
   `user_id` int NOT NULL COMMENT '发布人id',
   `parent_id` int NULL DEFAULT NULL COMMENT '父评论id',
   `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '评论内容',
-  `status` enum('ACTIVE','BLOCKED') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'active' COMMENT '评论状态',
+  `status` enum('ACTIVE','BLOCKED') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'ACTIVE' COMMENT '评论状态',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '评论时间',
   PRIMARY KEY (`comment_id`) USING BTREE,
   INDEX `post_id`(`post_id` ASC) USING BTREE,
