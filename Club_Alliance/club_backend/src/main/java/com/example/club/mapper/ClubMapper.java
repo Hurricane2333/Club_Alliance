@@ -22,15 +22,10 @@ public interface ClubMapper {
         List<Club> selectRecommendedClubs(@Param("limit") int limit ,@Param("status") ClubStatus status);
 
         @Select("SELECT c.*, u.stu_name as president_name " +
-                "FROM club c JOIN user u ON c.president_id = u.user_id " +
-                "WHERE c.club_id = #{clubId}")
-        Club selectClubById(@Param("clubId") Integer clubId);
+            "FROM club c LEFT JOIN user u ON c.president_id = u.user_id " +
+            "WHERE c.status = #{status} " +
+            "ORDER BY c.created_at DESC")
+        List<Club> selectAllApprovedClubs(@Param("status") ClubStatus status);
 
-        @Update("UPDATE club SET favorite_count = favorite_count + 1 WHERE club_id = #{clubId}")
-        int increaseFavoriteCount(@Param("clubId") Integer clubId);
-
-        @Select("SELECT * FROM club WHERE status = 'approved' " +
-                "ORDER BY created_at DESC " +
-                "LIMIT #{limit}")
-        List<Club> selectNewClubs(@Param("limit") int limit);
+        
 }

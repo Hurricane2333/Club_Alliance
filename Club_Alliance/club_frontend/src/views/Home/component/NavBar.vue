@@ -16,10 +16,11 @@
     <div class="flex-grow"></div>
 
     <el-menu-item index="/">首页</el-menu-item>
-    <el-menu-item index="2">社团列表</el-menu-item>
-    <el-menu-item index="3">社团分类</el-menu-item>
-    <el-menu-item index="4">活动信息</el-menu-item>
-    <el-menu-item index="5">我的社团</el-menu-item>
+    <el-menu-item index="/clublists">社团列表</el-menu-item>
+    <el-menu-item index="/activitylists">活动信息</el-menu-item>
+    <el-menu-item index="5">个人信息</el-menu-item>
+
+
 
     <div class="flex items-center px-4">
       <el-input
@@ -27,11 +28,6 @@
         class="w-64"
         :prefix-icon="Search"
       />
-    <div class="nav-auth-btns">
-      <el-button type="primary" plain>登录</el-button>
-      <el-button type="primary" class="ml-2">注册</el-button>
-    </div>
-
     </div>
   </el-menu>
 </template>

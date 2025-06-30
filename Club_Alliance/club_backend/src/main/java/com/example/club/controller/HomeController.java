@@ -36,10 +36,10 @@ public class HomeController {
             return Result.error("获取首页推荐社团失败"+ e.getMessage());
         }
     }
-    @GetMapping("/activities")
-    public Result getRecentActivities(@RequestParam(defaultValue = "3") int limit) {
+   @GetMapping("/activities")
+    public Result getRecentActivities() {
         try {
-            List<ClubActivity> activities = clubActivityService.getRecentActivities(limit);
+            List<ClubActivity> activities = clubActivityService.getRecentActivities();
             return Result.success(activities != null ? activities : "NULL");
         } catch (Exception e) {
             return Result.error("获取最近活动失败" + e.getMessage());

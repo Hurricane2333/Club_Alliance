@@ -25,8 +25,8 @@ public class ClubService {
         return clubs;
     }
 
-    public Club getClubById(Integer clubId) {
-        return clubMapper.selectClubById(clubId);
+    public List<Club> getAllApprovedClubs(ClubStatus approved) {
+        return clubMapper.selectAllApprovedClubs(ClubStatus.APPROVED);
     }
 
     // 新增方法：增加社团收藏数
