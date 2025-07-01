@@ -1,0 +1,16 @@
+com\example\club\service\UserService.class
+com\example\club\mapper\UserMapper.class
+com\example\club\entity\User.class
+com\example\club\mapper\ClubMapper.class
+com\example\club\mapper\FavoriteClubMapper.class
+com\example\club\service\FavoriteClubService.class
+com\example\club\service\impl\UserServiceImpl.class
+com\example\club\ClubBackendApplication.class
+com\example\club\controller\FavoriteClubController.class
+com\example\club\service\ClubService.class
+com\example\club\config\WebConfig.class
+com\example\club\controller\UserController.class
+com\example\club\entity\FavoriteClub.class
+com\example\club\entity\Club.class
+com\example\club\common\Result.class
+com\example\club\config\JacksonConfig.class

@@ -1,0 +1,14 @@
+{
+  "name": "club-alliance-app",
+  "version": "1.0.0",
+  "description": "Run frontend and backend concurrently",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix club_frontend\" \"mvn spring-boot:run --f club_backend/pom.xml\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "path": "^0.12.7"
+  }
+}

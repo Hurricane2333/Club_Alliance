@@ -20,6 +20,9 @@
     <el-menu-item index="3">社团分类</el-menu-item>
     <el-menu-item index="4">活动信息</el-menu-item>
     <el-menu-item index="5">我的社团</el-menu-item>
+    <el-menu-item index="6" v-if="isLoggedIn">
+      <router-link :to="'/user/' + userId">个人主页</router-link>
+    </el-menu-item>
 
     <div class="flex items-center px-4">
       <el-input
@@ -27,9 +30,12 @@
         class="w-64"
         :prefix-icon="Search"
       />
-    <div class="nav-auth-btns">
-      <el-button type="primary" plain>登录</el-button>
+    <div class="nav-auth-btns" v-if="!isLoggedIn">
+      <el-button type="primary" plain @click="goToLogin">登录</el-button>
       <el-button type="primary" class="ml-2">注册</el-button>
+    </div>
+    <div class="nav-auth-btns" v-else>
+      <el-button type="danger" plain @click="logout">注销</el-button>
     </div>
 
     </div>
@@ -38,7 +44,27 @@
 
 <script setup>
 import { User, Search } from '@element-plus/icons-vue'
+import { RouterLink, useRouter } from 'vue-router';
+import { computed } from 'vue';
+import { useUserStore } from '@/stores/user';
+
+const router = useRouter();
+const userStore = useUserStore();
+
+const isLoggedIn = computed(() => !!userStore.token);
+const userId = computed(() => userStore.user?.id);
+
+const goToLogin = () => {
+  router.push('/login');
+};
+
+const logout = () => {
+  userStore.logout();
+  router.push('/login');
+}; 
 </script>
+
+
 
 
 <style scoped>
