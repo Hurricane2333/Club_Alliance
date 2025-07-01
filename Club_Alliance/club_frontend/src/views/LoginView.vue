@@ -22,12 +22,14 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
+import { useUserStore } from '@/stores/user';
 
 
 const stu_id = ref('');
 const password = ref('');
 const error = ref('');
 const router = useRouter();
+const userStore = useUserStore();
 
 
 const login = async () => {
@@ -42,11 +44,15 @@ const login = async () => {
     const result = response.data;
     console.log('Response data:', result);
     if (result.code === '200' && result.data && result.data.user && result.data.user.user_id) {
-      const userId = result.data.user.user_id;
-      console.log('Login successful, user ID:', userId);
-      localStorage.setItem('token', result.data.token);
-      localStorage.setItem('user', JSON.stringify(result.data.user));
-      router.push(`/user/${userId}`);
+      const user = result.data.user;
+      console.log('Login successful, user:', user);
+      userStore.setToken(result.data.token);
+      userStore.setUser(user);
+      if (user.is_admin === 1) {
+        router.push('/admin/dashboard');
+      } else {
+        router.push(`/user/${user.user_id}`);
+      }
     } else {
       console.error('Login failed with response:', result);
       error.value = result.msg || '学号或密码错误';

@@ -1,10 +1,6 @@
 <template>
   <div class="app-container">
-    <AppNavbar 
-      :userInfo="userInfo" 
-      :navbarShadow="navbarShadow" 
-      @toggle-mobile-menu="toggleMobileMenu" 
-    />
+    <NavBar />
     
     <div class="main-container">
       <UserBanner 
@@ -89,7 +85,7 @@ import { ref, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
 import { ArrowDown } from '@element-plus/icons-vue';
-import AppNavbar from './components/AppNavbar.vue';
+import NavBar from '../Home/component/NavBar.vue';
 import UserBanner from './components/UserBanner.vue';
 import UserProfile from './components/UserProfile.vue';
 import JoinedClubs from './components/JoinedClubs.vue';

@@ -1,10 +1,14 @@
 import { defineStore } from 'pinia';
 
 export const useUserStore = defineStore('user', {
-  state: () => ({
-    user: null,
-    token: localStorage.getItem('token') || '',
-  }),
+  state: () => {
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    const token = localStorage.getItem('token') || '';
+    return {
+      user,
+      token,
+    };
+  },
   actions: {
     setUser(userData) {
       this.user = userData;
@@ -36,3 +40,4 @@ export const useUserStore = defineStore('user', {
     }
   },
 });
+
