@@ -2,6 +2,7 @@ package com.admin.club.controller;
 
 import com.admin.club.entity.AdminClub;
 import com.admin.club.entity.AdminUser;
+import com.admin.club.entity.ClubResponse;
 import com.admin.club.mapper.AdminClubDao;
 import com.admin.club.service.AdminClubService;
 import com.admin.club.service.AdminUserService;
@@ -33,7 +34,7 @@ public class AdminController {
 
     @CrossOrigin(origins="*")
     @GetMapping("/allClub")
-    public List<AdminClub> allClub(){
+    public List<ClubResponse> allClub(){
         return adminClubService.allClub();
     }
 }

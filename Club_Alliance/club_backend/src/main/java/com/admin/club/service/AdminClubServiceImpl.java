@@ -16,6 +16,7 @@ import java.util.List;
 public class AdminClubServiceImpl implements AdminClubService {
     @Autowired
     private AdminClubDao adminClubDao;
+    @Autowired
     public AdminUserService adminUserService;
 
     public List<AdminClub> recentClub() {
@@ -32,8 +33,18 @@ public class AdminClubServiceImpl implements AdminClubService {
         criteria.andStatusEqualTo("APPROVED");
         List<ClubResponse> clubResponse=new ArrayList<>();
         for(var club:adminClubDao.selectByExample(example)){
-            clubResponse.add((ClubResponse) club);
-            AdminUser adminUser=adminUserService.findUserByID(club.getPresidentId());
+            ClubResponse response=new ClubResponse();
+            response.setClubId(club.getClubId());
+            response.setClubName(club.getClubName());
+            response.setCategory(club.getCategory());
+            response.setIcon(club.getIcon());
+            response.setCreatedAt(club.getCreatedAt());
+            response.setCurrentMembers(club.getCurrentMembers());
+            response.setFavoriteCount(club.getFavoriteCount());
+            response.setPresidentId(club.getPresidentId());
+            response.setStatus(club.getStatus());
+            response.president=adminUserService.findUserByID(club.getPresidentId()).getStuName();
+            clubResponse.add(response);
         }
         return clubResponse;
     }

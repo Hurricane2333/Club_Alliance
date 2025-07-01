@@ -119,10 +119,13 @@
           </el-button>
           <el-table :data="clubData">
             <el-table-column type="selection" width="55"></el-table-column>
-            <el-table-column property="clubId" label="ID" width="120"/>
-            <el-table-column property="clubName" label="社团名称" width="120"/>
-            <el-table-column property="category" label="分类" width="120"/>
-            <el-table-column property="currentMembers" label="成员数" width="120"/>
+            <el-table-column property="clubId" label="ID" width="120" header-align="center" align="center"/>
+            <el-table-column property="clubName" label="社团名称" width="120" header-align="center" align="center"/>
+            <el-table-column property="category" label="分类" width="120" header-align="center" align="center"/>
+            <el-table-column property="currentMembers" label="成员数" width="120" header-align="center" align="center"/>
+            <el-table-column property="presidentId" label="负责人ID" width="120" header-align="center" align="center"/>
+            <el-table-column property="president" label="负责人" width="120" header-align="center" align="center"/>
+            <el-table-column property="createdAt" label="创建时间" width="120" header-align="center" align="center" show-overflow-tooltip/>
           </el-table>
         </el-main>
       </el-container>
