@@ -30,4 +30,10 @@ public class AdminController {
     public List<AdminClub> recentClub(){
         return adminClubService.recentClub();
     }
+
+    @CrossOrigin(origins="*")
+    @GetMapping("/allClub")
+    public List<AdminClub> allClub(){
+        return adminClubService.allClub();
+    }
 }

@@ -105,14 +105,25 @@
           </el-button>
           <el-button type="danger" style="margin-top: 40px" plain>
             <el-icon size="18"><FolderDelete /></el-icon>
-            <el-text type="danger">新增</el-text>
+            <el-text type="danger">批量删除</el-text>
           </el-button>
           <el-input
             v-model="input"
             style="width: 240px;margin-top:40px;margin-left:30px"
-            placeholder="Please input"
+            placeholder="输入名称查询"
             clearable
           />
+          <el-button type="success" style="margin-top: 40px;margin-left: 10px" plain>
+            <el-icon size="18"><Search /></el-icon>
+            <el-text type="success">搜索</el-text>
+          </el-button>
+          <el-table :data="clubData">
+            <el-table-column type="selection" width="55"></el-table-column>
+            <el-table-column property="clubId" label="ID" width="120"/>
+            <el-table-column property="clubName" label="社团名称" width="120"/>
+            <el-table-column property="category" label="分类" width="120"/>
+            <el-table-column property="currentMembers" label="成员数" width="120"/>
+          </el-table>
         </el-main>
       </el-container>
     </el-container>
@@ -121,6 +132,7 @@
 
 <script lang="ts">
 import { ref } from 'vue'
+import { reactive } from "vue"
 import axios from 'axios'
 import {
   Document,
@@ -135,22 +147,18 @@ export default{
       userData:[],
       clubData:[],
       iniTable:[],
+      input:''
     }
   },
   methods:{
   },
   mounted(){
-    axios.get("http://localhost:8080/initial").then((res)=>{
-      console.log(res);
-      this.iniTable=res.data;
-    }),
-      axios.get("http://localhost:8080/recentClub").then((res)=>{
+      axios.get("http://localhost:8080/allClub").then((res)=>{
         console.log(res);
         this.clubData=res.data;
       })
   }
 }
-const input = ref('')
 </script>
 
 <style scoped>

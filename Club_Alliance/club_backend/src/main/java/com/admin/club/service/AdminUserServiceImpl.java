@@ -1,6 +1,7 @@
 package com.admin.club.service;
 
 import com.admin.club.entity.AdminClubExample;
+import com.admin.club.entity.AdminUser;
 import com.admin.club.entity.AdminUserExample;
 import com.admin.club.mapper.AdminClubDao;
 import com.admin.club.mapper.AdminUserDao;
@@ -24,5 +25,12 @@ public class AdminUserServiceImpl implements AdminUserService {
         AdminClubExample example1 = new AdminClubExample();
         res.add(adminClubDao.countByExample(example1));
         return res;
+    }
+
+    public AdminUser findUserByID(int id){
+        AdminUserExample example = new AdminUserExample();
+        AdminUserExample.Criteria criteria = example.createCriteria();
+        criteria.andUserIdEqualTo(id);
+        return adminUserDao.selectByExample(example).get(0);
     }
 }
