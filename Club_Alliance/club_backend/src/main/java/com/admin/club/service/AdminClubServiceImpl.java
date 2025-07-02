@@ -1,9 +1,6 @@
 package com.admin.club.service;
 
-import com.admin.club.entity.AdminClub;
-import com.admin.club.entity.AdminClubExample;
-import com.admin.club.entity.AdminUser;
-import com.admin.club.entity.ClubResponse;
+import com.admin.club.entity.*;
 import com.admin.club.mapper.AdminClubDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,9 +40,17 @@ public class AdminClubServiceImpl implements AdminClubService {
             response.setFavoriteCount(club.getFavoriteCount());
             response.setPresidentId(club.getPresidentId());
             response.setStatus(club.getStatus());
+            response.setDescription(club.getDescription());
+            response.setRequirements(club.getRequirements());
             response.president=adminUserService.findUserByID(club.getPresidentId()).getStuName();
             clubResponse.add(response);
         }
         return clubResponse;
+    }
+
+    public boolean deleteSingleClub(int id) {
+        if(adminClubDao.deleteByPrimaryKey(id)!=0)
+            return true;
+        return false;
     }
 }

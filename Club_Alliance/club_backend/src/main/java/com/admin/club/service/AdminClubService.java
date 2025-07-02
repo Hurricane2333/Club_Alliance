@@ -9,4 +9,5 @@ import java.util.List;
 public interface AdminClubService {
     List<AdminClub> recentClub();
     List<ClubResponse> allClub();
+    boolean deleteSingleClub(int id);
 }

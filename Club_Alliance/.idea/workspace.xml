@@ -4,12 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fead4fb8-60e2-48a2-bf7b-dc588f5bf3d3" name="更改" comment="add gitignore">
+    <list default="true" id="fead4fb8-60e2-48a2-bf7b-dc588f5bf3d3" name="更改" comment="Updated">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/entity/ClubResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/entity/ClubResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/entity/AdminClub.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/entity/AdminClubExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/entity/AdminClubWithBLOBs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/mapper/AdminClubDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubService.java" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/src/main/resources/mapper/AdminClubDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_frontend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/club_frontend/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/club_frontend/src/views/Admin/ClubInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/club_frontend/src/views/Admin/ClubInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_frontend/src/views/Admin/DashBoard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/club_frontend/src/views/Admin/DashBoard.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +92,7 @@
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;npm.run.executor&quot;: &quot;Run&quot;,
     &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
@@ -94,6 +103,9 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql_aurora&quot;
+    ],
     &quot;vue.recent.templates&quot;: [
       &quot;Vue Composition API Component&quot;
     ]
@@ -120,7 +132,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="run" type="js.build_tools.npm" nameIsGenerated="true">
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/club_frontend/package.json" />
       <command value="run" />
       <scripts>
@@ -131,7 +143,7 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.run" />
+      <item itemvalue="npm.dev" />
       <item itemvalue="Spring Boot.AdminApplication" />
     </list>
   </component>
@@ -169,7 +181,11 @@
       <workItem from="1751265237979" duration="552000" />
       <workItem from="1751265858146" duration="587000" />
       <workItem from="1751266462123" duration="7933000" />
-      <workItem from="1751331221932" duration="8909000" />
+      <workItem from="1751331221932" duration="10938000" />
+      <workItem from="1751350054177" duration="8203000" />
+      <workItem from="1751359992999" duration="176000" />
+      <workItem from="1751360188027" duration="1472000" />
+      <workItem from="1751417841870" duration="9721000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -195,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751336718551</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updated">
+      <option name="closed" value="true" />
+      <created>1751340548094</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1751340548094</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +252,8 @@
     <MESSAGE value="1" />
     <MESSAGE value="Upload AdminView" />
     <MESSAGE value="add gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="add gitignore" />
+    <MESSAGE value="Updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

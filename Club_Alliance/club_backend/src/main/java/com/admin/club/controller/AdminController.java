@@ -37,4 +37,16 @@ public class AdminController {
     public List<ClubResponse> allClub(){
         return adminClubService.allClub();
     }
+
+    @CrossOrigin(origins="*")
+    @DeleteMapping("/deleteClub/{id}")
+    public boolean deleteSingleClub(@PathVariable Integer id){
+        return adminClubService.deleteSingleClub(id);
+    }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/searchLeader/{id}")
+    public String searchLeader(@PathVariable Integer id){
+        return adminUserService.findUserByID(id).getStuName();
+    }
 }
