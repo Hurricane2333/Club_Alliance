@@ -13,6 +13,7 @@
     <div class="p-6">
       <!-- 标题 -->
       <div class="mb-3">
+        <h3 class="text-xl font-bold text-dark">{{ event.title }}</h3>
         <h3 class="text-xl font-bold text-dark">{{ event.clubName }}</h3>
       </div>
       <div class="text-gray-500 text-xs">发布于 {{event.createdAt.replace('T', ' ').slice(0, 16)}}</div>

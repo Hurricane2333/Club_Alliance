@@ -27,5 +27,5 @@ public interface ClubMapper {
             "ORDER BY c.created_at DESC")
         List<Club> selectAllApprovedClubs(@Param("status") ClubStatus status);
 
-        
+        Club selectById(int id);
 }

@@ -3,7 +3,7 @@
     <NavBar />
     <div class="main-content">
       <div class="club-lists-view">
-        <el-divider />
+
         <ClubList />
       </div>
     </div>

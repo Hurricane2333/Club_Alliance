@@ -1,5 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/Home/HomeView.vue'
+import DashBoard from '../views/Admin/DashBoard.vue'
+import ClubInfo from '../views/Admin/ClubInfo.vue'
+import LoginView from '../views/Login/LoginView.vue'
+import ProfileView from '../views/User/ProfileView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,6 +23,26 @@ const router = createRouter({
     {
       path: '/activitylists',
       component: () => import('../views/ActivityLists/ActivityListsView.vue'),
+    },
+    {
+      path: '/dashboard',
+      component: DashBoard,
+    },
+    {
+      path: '/manageClub/info',
+      component: ClubInfo,
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: LoginView,
+      meta: { title: "登录"}
+    },
+    {
+      path: '/user/:id',
+      name: 'UserProfile',
+      meta: { title: "个人主页"},
+      component: ProfileView
     },
   ],
 })

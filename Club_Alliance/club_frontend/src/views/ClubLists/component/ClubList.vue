@@ -1,29 +1,61 @@
 <template>
-  <div class="club-list">
-    <div class="scroll-container">
-      <ClubCard
-        v-for="club in clubs"
-        :key="club.clubId"
-        :club="club"
-        class="club-item"
+  <div>
+    <div class="tabs-center">
+    <el-tabs v-model="selectedCategory" @tab-click="filterClubs">
+      <el-tab-pane label="全部" name="ALL" />
+      <el-tab-pane
+        v-for="(label, key) in categories"
+        :key="key"
+        :label="label"
+        :name="key"
       />
+    </el-tabs>
+    </div>
+    <div class="club-list">
+      <div class="scroll-container">
+        <ClubCard
+          v-for="club in filteredClubs"
+          :key="club.clubId"
+          :club="club"
+          class="club-item"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { getAllClubs } from '@/api/clublists' // 你需要实现此API
+import { ref, onMounted, computed } from 'vue'
+import { getAllClubs } from '@/api/clublists'
 import ClubCard from './ClubCard.vue'
 import { ElMessage } from 'element-plus'
 
+
+const categories = {
+  'ACADEMIC': '学术',
+  'ARTS': '艺术',
+  'SPORTS': '体育',
+  'VOLUNTEER': '公益',
+  'HOBBY': '兴趣',
+  'CAREER': '职业',
+  'DEBATE': '辩论',
+  'MAKER': '创客',
+  'OTHER': '其他'
+}
+
 const clubs = ref([])
+const selectedCategory = ref('ALL')
+
+const filteredClubs = computed(() => {
+  if (selectedCategory.value === 'ALL') return clubs.value
+  return clubs.value.filter(club => club.category === selectedCategory.value)
+})
 
 onMounted(() => {
   fetchAllClubs()
 })
 
-const fetchAllClubs = async () => {
+ const fetchAllClubs = async () => {
   try {
     const data = await getAllClubs()
     clubs.value = data.map(club => ({
@@ -37,6 +69,10 @@ const fetchAllClubs = async () => {
     console.error('获取社团列表失败:', error)
     clubs.value = getFallbackClubs()
   }
+}
+
+const filterClubs = () => {
+  // 这里不需要做任何事，切换tab时filteredClubs会自动更新
 }
 
 const getClubTag = (club) => {
@@ -60,6 +96,9 @@ const getFallbackClubs = () => [
     favoriteCount: 0
   }
 ]
+
+
+
 </script>
 
 <style scoped>
@@ -80,5 +119,13 @@ const getFallbackClubs = () => [
 }
 .club-item {
   flex: 0 0 300px;
+}
+.tabs-center {
+  display: flex;
+  justify-content: center;
+  margin-bottom:30px;
+}
+.tabs-center :deep(.el-tabs__item) {
+  font-size: 18px;
 }
 </style>
