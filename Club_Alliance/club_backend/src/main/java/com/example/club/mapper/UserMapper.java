@@ -13,4 +13,6 @@ public interface UserMapper {
 
     User findByStuIdAndPassword(String stuId, String password);
 
+    int updateUser(User user);
+
 }

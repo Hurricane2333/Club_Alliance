@@ -41,14 +41,10 @@
         </el-aside>
         
         <el-main class="main-content">
-          <ActivityTabs 
-            :activeTab="activeTab" 
-            @tab-change="setActiveTab" 
-          />
-          
           <div class="activity-list">
+            <h3>参与的活动</h3>
             <ActivityItem 
-              v-for="activity in filteredActivities" 
+              v-for="activity in activities.filter(a => a.type === 'participated')" 
               :key="activity.id" 
               :activity="activity" 
             />
@@ -80,6 +76,9 @@
         <el-form-item label="邮箱">
           <el-input v-model="editForm.email" />
         </el-form-item>
+        <el-form-item label="新密码">
+          <el-input v-model="editForm.password" type="password" show-password />
+        </el-form-item>
       </el-form>
       
       <template #footer>
@@ -102,12 +101,12 @@ import UserBanner from './components/UserBanner.vue';
 import UserProfile from './components/UserProfile.vue';
 import JoinedClubs from './components/JoinedClubs.vue';
 import RecommendedClubs from './components/RecommendedClubs.vue';
-import ActivityTabs from './components/ActivityTabs.vue';
+
 import ActivityItem from './components/ActivityItem.vue';
 
 const navbarShadow = ref('shadow-sm');
 const mobileMenuOpen = ref(false);
-const activeTab = ref(0);
+
 const isSelf = ref(true); // 当前用户是否是自己
 const isEditModalOpen = ref(false);
 const error = ref(null);
@@ -127,10 +126,7 @@ const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value;
 };
 
-// 标签页切换
-const setActiveTab = (index) => {
-  activeTab.value = index;
-};
+
 
 // 编辑资料相关
 const openEditProfile = () => {
@@ -140,18 +136,34 @@ const openEditProfile = () => {
 const editForm = ref({
   stuName: '',
   stuId: '',
-  email: ''
+  email: '',
+  password: ''
 });
 
 const submitEditProfile = () => {
-  // 更新用户信息
-  userInfo.value = {
-    ...userInfo.value,
+  const userId = route.params.id || 2;
+  axios.put(`/api/user/${userId}`, {
     stuName: editForm.value.stuName,
-    email: editForm.value.email
-  };
-  
-  isEditModalOpen.value = false;
+    email: editForm.value.email,
+    password: editForm.value.password
+  })
+  .then(response => {
+    if (response.data.code === '200') {
+      userInfo.value = {
+        ...userInfo.value,
+        stuName: editForm.value.stuName,
+        email: editForm.value.email
+      };
+      isEditModalOpen.value = false;
+    } else {
+      error.value = response.data.msg || 'Failed to update user data.';
+      console.error('Failed to update user data:', response.data.msg);
+    }
+  })
+  .catch(err => {
+    console.error('API Error:', err);
+    error.value = '更新数据时出错，请稍后重试。';
+  });
 };
 
 const userInfo = ref({});
@@ -260,19 +272,7 @@ const activities = ref([
     likes: 15,
     comments: 3
   },
-  {
-    id: 2,
-    type: 'commented',
-    user: {
-      name: '张三',
-      avatar: 'https://picsum.photos/id/1027/40/40'
-    },
-    time: '昨天',
-    content: '在 <span class="text-primary font-medium">科技创新社</span> 发表了评论：',
-    comment: '"这次讲座真的很精彩，专家分享的人工智能前沿技术让我受益匪浅，期待下次活动！"',
-    likes: 8,
-    comments: 2
-  },
+
   {
     id: 3,
     type: 'joined',
@@ -292,17 +292,7 @@ const activities = ref([
   }
 ]);
 
-// 根据活动类型过滤活动
-const filteredActivities = computed(() => {
-  if (activeTab.value === 0) {
-    return activities.value; // 全部动态
-  } else if (activeTab.value === 1) {
-    return activities.value.filter(activity => activity.type === 'participated'); // 参与的活动
-  } else if (activeTab.value === 2) {
-    return activities.value.filter(activity => activity.type === 'commented'); // 发表的评论
-  }
-  return activities.value;
-});
+
 </script>
 
 <style scoped>

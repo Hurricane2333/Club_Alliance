@@ -27,4 +27,20 @@
         select user_id, stu_id, stu_name, password, email, avatar, is_admin, created_at from `user` where stu_id = #{stuId} and password = #{password}
     </select>
 
+    <update id="updateUser" parameterType="com.example.club.entity.User">
+        update `user`
+        <set>
+            <if test="stuName != null and stuName != ''">
+                stu_name = #{stuName},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+        </set>
+        where user_id = #{userId}
+    </update>
+
 </mapper>

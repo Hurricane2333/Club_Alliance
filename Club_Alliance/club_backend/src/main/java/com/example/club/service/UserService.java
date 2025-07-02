@@ -16,4 +16,6 @@ public interface UserService {
     User selectById(int id);
 
     Map<String, Object> login(String stuId, String password);
+
+    int updateUser(User user);
 }

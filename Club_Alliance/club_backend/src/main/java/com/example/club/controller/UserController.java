@@ -36,6 +36,17 @@ public class UserController {
         }
     }
 
+    @PutMapping("/{id}")
+    public Result updateUser(@PathVariable Integer id, @RequestBody User user) {
+        user.setUserId(id);
+        int res = userService.updateUser(user);
+        if (res > 0) {
+            return Result.success();
+        } else {
+            return Result.error("Failed to update user");
+        }
+    }
+
     @PostMapping("/login")
     public Result login(@RequestBody Map<String, String> credentials) {
         String stuId = credentials.get("stuId");
