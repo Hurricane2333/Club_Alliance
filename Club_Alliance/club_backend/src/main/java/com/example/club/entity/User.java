@@ -4,41 +4,41 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
 
 public class User {
-    private int user_id;
-    private String stu_id;
-    private String stu_name;
+    private int userId;
+    private String stuId;
+    private String stuName;
     private String password;
     private String email;
     private String avatar;
-    private int is_admin;
+    private int isAdmin;
 
     private LocalDateTime createdAt;
 
     // Getters and Setters
 
 
-    public String getStu_id() {
-        return stu_id;
+    public String getStuId() {
+        return stuId;
     }
 
-    public void setStu_id(String stu_id) {
-        this.stu_id = stu_id;
+    public void setStuId(String stuId) {
+        this.stuId = stuId;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public String getStu_name() {
-        return stu_name;
+    public String getStuName() {
+        return stuName;
     }
 
-    public void setStu_name(String stu_name) {
-        this.stu_name = stu_name;
+    public void setStuName(String stuName) {
+        this.stuName = stuName;
     }
 
     public String getPassword() {
@@ -65,12 +65,12 @@ public class User {
         this.avatar = avatar;
     }
 
-    public int getIs_admin() {
-        return is_admin;
+    public int getIsAdmin() {
+        return isAdmin;
     }
 
-    public void setIs_admin(int is_admin) {
-        this.is_admin = is_admin;
+    public void setIsAdmin(int isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -79,5 +79,18 @@ public class User {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", stuId='" + stuId + '\'' +
+                ", stuName='" + stuName + '\'' +
+                ", email='" + email + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", isAdmin=" + isAdmin +
+                ", createdAt=" + createdAt +
+                '}';
     }
 }

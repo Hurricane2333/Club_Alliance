@@ -3,13 +3,25 @@
     <NavBar />
     
     <div class="main-container">
-      <UserBanner 
-        v-if="userInfo.stu_id"
-        :userInfo="userInfo" 
-        :isSelf="isSelf"
-        @edit-profile="openEditProfile"
+      <el-alert
+        v-if="error"
+        :title="error"
+        type="error"
+        :closable="false"
+        class="error-alert"
       />
-      <UserProfile v-if="userInfo.stu_id" :userInfo="userInfo" />
+      <div v-if="isLoading" class="loading-spinner">
+        <el-spinner size="large"></el-spinner>
+      </div>
+      <template v-else-if="!error">
+        <UserBanner 
+          v-if="userInfo.stuId"
+          :userInfo="userInfo" 
+          :isSelf="isSelf"
+          @edit-profile="openEditProfile"
+        />
+        <UserProfile v-if="userInfo.stuId" :userInfo="userInfo" />
+      </template>
 
       <el-container class="content-container">
         <el-aside width="300px" class="sidebar">
@@ -20,8 +32,8 @@
                 <span>喜欢的社团</span>
               </div>
             </template>
-            <div v-for="club in favoriteClubs" :key="club.club_id">
-              <p><strong>社团名称:</strong> {{ club.club_name }}</p>
+            <div v-for="club in favoriteClubs" :key="club.clubId">
+              <p><strong>社团名称:</strong> {{ club.clubName }}</p>
               <p><strong>社团介绍:</strong> {{ club.description }}</p>
               <el-divider />
             </div>
@@ -60,10 +72,10 @@
     >
       <el-form :model="editForm" label-width="80px">
         <el-form-item label="姓名">
-          <el-input v-model="editForm.stu_name" />
+          <el-input v-model="editForm.stuName" />
         </el-form-item>
         <el-form-item label="学号">
-          <el-input v-model="editForm.stu_id" disabled />
+          <el-input v-model="editForm.stuId" disabled />
         </el-form-item>
         <el-form-item label="邮箱">
           <el-input v-model="editForm.email" />
@@ -98,6 +110,8 @@ const mobileMenuOpen = ref(false);
 const activeTab = ref(0);
 const isSelf = ref(true); // 当前用户是否是自己
 const isEditModalOpen = ref(false);
+const error = ref(null);
+const isLoading = ref(true);
 
 // 导航栏滚动效果
 onMounted(() => {
@@ -124,8 +138,8 @@ const openEditProfile = () => {
 };
 
 const editForm = ref({
-  stu_name: '',
-  stu_id: '',
+  stuName: '',
+  stuId: '',
   email: ''
 });
 
@@ -133,7 +147,7 @@ const submitEditProfile = () => {
   // 更新用户信息
   userInfo.value = {
     ...userInfo.value,
-    stu_name: editForm.value.stu_name,
+    stuName: editForm.value.stuName,
     email: editForm.value.email
   };
   
@@ -145,23 +159,37 @@ const route = useRoute();
 
 onMounted(() => {
   const userId = route.params.id || 2; // Fallback to 2 if no id
-  axios.get(`/api/user/${userId}`).then(response => {
-    console.log('API Response:', response.data);
-    const userData = response.data.data;
-    if (userData) {
-      userInfo.value = userData;
-      console.log('User Info:', userInfo.value);
-      editForm.value = {
-        stu_name: userInfo.value.stu_name,
-        stu_id: userInfo.value.stu_id,
-        email: userInfo.value.email
-      };
-      console.log('Edit Form:', editForm.value);
+  isLoading.value = true;
+  const userRequest = axios.get(`/api/user/${userId}`);
+    const favoriteClubsRequest = axios.get(`/api/favorite/list?userId=${userId}`);
+
+  Promise.all([userRequest, favoriteClubsRequest]).then(([userResponse, favoriteClubsResponse]) => {
+    if (userResponse.data.code === '200') {
+      const userData = userResponse.data.data;
+      if (userData) {
+        userInfo.value = userData;
+        editForm.value = {
+          stuName: userInfo.value.stuName,
+          stuId: userInfo.value.stuId,
+          email: userInfo.value.email
+        };
+      } else {
+        console.error('User data is null or undefined despite success code.');
+      }
     } else {
-      console.error('User data is null or undefined:', userData);
+      error.value = userResponse.data.msg || 'Failed to fetch user data.';
+      console.error('Failed to fetch user data:', userResponse.data.msg);
     }
-  }).catch(error => {
-    console.error('API Error:', error);
+
+    if (favoriteClubsResponse.data.code === '200') {
+      favoriteClubs.value = favoriteClubsResponse.data.data;
+    }
+
+  }).catch(err => {
+    console.error('API Error:', err);
+    error.value = '加载数据时出错，请稍后重试。';
+  }).finally(() => {
+    isLoading.value = false;
   });
 });
 
@@ -191,14 +219,6 @@ const joinedClubs = ref([
 
 const favoriteClubs = ref([]);
 
-onMounted(() => {
-  const userId = route.params.id || 2; // Fallback to 2 if no id
-  axios.get(`/api/favorite/list?userId=${userId}`).then(response => {
-    if (response.data.code === '200') {
-      favoriteClubs.value = response.data.data;
-    }
-  });
-});
 
 const recommendedClubs = ref([
   { 

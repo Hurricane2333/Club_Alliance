@@ -5,13 +5,13 @@
 <mapper namespace="com.example.club.mapper.UserMapper">
 
     <resultMap id="UserResultMap" type="com.example.club.entity.User">
-        <id property="user_id" column="user_id"/>
-        <result property="stu_id" column="stu_id"/>
-        <result property="stu_name" column="stu_name"/>
+        <id property="userId" column="user_id"/>
+        <result property="stuId" column="stu_id"/>
+        <result property="stuName" column="stu_name"/>
         <result property="password" column="password"/>
         <result property="email" column="email"/>
         <result property="avatar" column="avatar"/>
-        <result property="is_admin" column="is_admin"/>
+        <result property="isAdmin" column="is_admin"/>
         <result property="createdAt" column="created_at"/>
     </resultMap>
 

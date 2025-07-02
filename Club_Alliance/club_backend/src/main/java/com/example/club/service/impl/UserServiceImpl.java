@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.findByStuIdAndPassword(stuId, password);
         if (user != null) {
             String token = Jwts.builder()
-                    .setSubject(user.getStu_id())
+                    .setSubject(user.getStuId())
                     .setIssuedAt(new Date())
                     .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
                     .signWith(key)

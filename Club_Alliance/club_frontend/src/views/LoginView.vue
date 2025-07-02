@@ -4,8 +4,8 @@
       <h2>登录</h2>
       <form @submit.prevent="login">
         <div class="form-group">
-          <label for="stu_id">学号</label>
-          <input type="text" id="stu_id" v-model="stu_id" required>
+          <label for="stuId">学号</label>
+          <input type="text" id="stuId" v-model="stuId" required>
         </div>
         <div class="form-group">
           <label for="password">密码</label>
@@ -25,7 +25,7 @@ import axios from 'axios';
 import { useUserStore } from '@/stores/user';
 
 
-const stu_id = ref('');
+const stuId = ref('');
 const password = ref('');
 const error = ref('');
 const router = useRouter();
@@ -34,24 +34,24 @@ const userStore = useUserStore();
 
 const login = async () => {
   error.value = ''; // Reset error message
-  console.log('Attempting to log in with stu_id:', stu_id.value);
+  console.log('Attempting to log in with stuId:', stuId.value);
   try {
     const response = await axios.post('/api/user/login', {
-      stu_id: stu_id.value,
+      stuId: stuId.value,
       password: password.value
     });
     console.log('Login response received:', response);
     const result = response.data;
     console.log('Response data:', result);
-    if (result.code === '200' && result.data && result.data.user && result.data.user.user_id) {
+    if (result.code === '200' && result.data && result.data.user && result.data.user.userId) {
       const user = result.data.user;
       console.log('Login successful, user:', user);
       userStore.setToken(result.data.token);
       userStore.setUser(user);
-      if (user.is_admin === 1) {
-        router.push('/admin/dashboard');
+      if (user.isAdmin === 1) {
+        router.push('/dashboard');
       } else {
-        router.push(`/user/${user.user_id}`);
+        router.push(`/user/${user.userId}`);
       }
     } else {
       console.error('Login failed with response:', result);

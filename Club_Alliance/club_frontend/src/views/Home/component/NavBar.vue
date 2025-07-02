@@ -54,7 +54,7 @@ const router = useRouter();
 const userStore = useUserStore();
 
 const isLoggedIn = computed(() => !!userStore.token);
-const userId = computed(() => userStore.user?.user_id);
+const userId = computed(() => userStore.user?.userId);
 
 const goToLogin = () => {
   router.push('/login');

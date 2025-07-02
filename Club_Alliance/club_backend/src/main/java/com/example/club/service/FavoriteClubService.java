@@ -26,7 +26,7 @@ public class FavoriteClubService {
     public List<Club> getFavoriteClubsByUserId(int userId) {
         List<FavoriteClub> favoriteClubs = favoriteClubMapper.selectByUserId(userId);
         return favoriteClubs.stream()
-                .map(favoriteClub -> clubService.selectById(favoriteClub.getClub_id()))
+                .map(favoriteClub -> clubService.selectById(favoriteClub.getClubId()))
                 .collect(Collectors.toList());
     }
 }

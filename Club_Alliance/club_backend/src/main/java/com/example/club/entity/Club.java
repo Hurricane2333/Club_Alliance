@@ -1,25 +1,25 @@
 package com.example.club.entity;
 
 public class Club {
-    private int club_id;
-    private String club_name;
+    private int clubId;
+    private String clubName;
     private String description;
 
     // Getters and Setters
-    public int getClub_id() {
-        return club_id;
+    public int getClubId() {
+        return clubId;
     }
 
-    public void setClub_id(int club_id) {
-        this.club_id = club_id;
+    public void setClubId(int clubId) {
+        this.clubId = clubId;
     }
 
-    public String getClub_name() {
-        return club_name;
+    public String getClubName() {
+        return clubName;
     }
 
-    public void setClub_name(String club_name) {
-        this.club_name = club_name;
+    public void setClubName(String clubName) {
+        this.clubName = clubName;
     }
 
     public String getDescription() {

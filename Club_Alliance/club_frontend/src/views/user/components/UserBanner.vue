@@ -5,8 +5,8 @@
       <div class="banner-content">
         <el-avatar :size="96" :src="userInfo.avatar" class="user-avatar" />
         <div class="user-details">
-          <h2 class="user-name">{{ userInfo.stu_name }}</h2>
-          <p class="user-info">{{ userInfo.college }} | {{ userInfo.enrollmentYear }}级本科生</p>
+          <h2 class="user-name">{{ userInfo.stuName }}</h2>
+          <p class="user-info">学号: {{ userInfo.stuId }}</p>
           <div class="actions">
             <div v-if="!isSelf">
               <el-button type="primary" :icon="Plus" round>关注</el-button>

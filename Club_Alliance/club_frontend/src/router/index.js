@@ -30,16 +30,12 @@ const router = createRouter({
     },
     {
       path: '/dashboard',
+      name: 'admin-dashboard',
       component: DashBoard,
     },
     {
       path: '/manageClub/info',
       component: ClubInfo,
-    },
-    {
-      path: '/admin/dashboard',
-      name: 'admin-dashboard',
-      component: DashBoard
     }
   ],
 })

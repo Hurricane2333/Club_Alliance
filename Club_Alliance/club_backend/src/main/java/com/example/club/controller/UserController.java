@@ -29,12 +29,16 @@ public class UserController {
     @GetMapping("/{id}")
     public Result selectById(@PathVariable Integer id){
         User user = userService.selectById(id);
-        return Result.success(user);
+        if (user != null) {
+            return Result.success(user);
+        } else {
+            return Result.error("404", "User not found");
+        }
     }
 
     @PostMapping("/login")
     public Result login(@RequestBody Map<String, String> credentials) {
-        String stuId = credentials.get("stu_id");
+        String stuId = credentials.get("stuId");
         String password = credentials.get("password");
         Map<String, Object> result = userService.login(stuId, password);
         if (result != null) {
