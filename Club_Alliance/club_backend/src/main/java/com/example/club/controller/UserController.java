@@ -51,11 +51,16 @@ public class UserController {
     public Result login(@RequestBody Map<String, String> credentials) {
         String stuId = credentials.get("stuId");
         String password = credentials.get("password");
-        Map<String, Object> result = userService.login(stuId, password);
-        if (result != null) {
-            return Result.success(result);
-        } else {
-            return Result.error("学号或密码错误");
-        }
+        return userService.login(stuId, password);
+    }
+
+    @PostMapping("/register")
+    public Result register(@RequestBody Map<String, String> credentials) {
+        User user = new User();
+        user.setStuId(credentials.get("stuId"));
+        user.setStuName(credentials.get("stuName"));
+        user.setEmail(credentials.get("email"));
+        user.setPassword(credentials.get("password"));
+        return userService.register(user);
     }
 }

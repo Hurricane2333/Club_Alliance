@@ -3,6 +3,7 @@ import HomeView from '../views/Home/HomeView.vue'
 import DashBoard from '../views/Admin/DashBoard.vue'
 import ClubInfo from '../views/Admin/ClubInfo.vue'
 import LoginView from '../views/LoginView.vue'
+import RegisterView from '../views/RegisterView.vue'
 import ProfileView from '../views/User/ProfileView.vue'
 
 
@@ -37,6 +38,12 @@ const router = createRouter({
       name: 'Login',
       component: LoginView,
       meta: { title: "登录"}
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: RegisterView,
+      meta: { title: "注册"}
     },
     {
       path: '/user/:id',

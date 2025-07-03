@@ -27,6 +27,15 @@
         select user_id, stu_id, stu_name, password, email, avatar, is_admin, created_at from `user` where stu_id = #{stuId} and password = #{password}
     </select>
 
+    <select id="findByStuId" resultMap="UserResultMap">
+        select user_id, stu_id, stu_name, password, email, avatar, is_admin, created_at from `user` where stu_id = #{stuId}
+    </select>
+
+    <insert id="insertUser" parameterType="com.example.club.entity.User" useGeneratedKeys="true" keyProperty="userId">
+        insert into `user`(stu_id, stu_name, password, email, avatar, is_admin, created_at)
+        values(#{stuId}, #{stuName}, #{password}, #{email}, #{avatar}, #{isAdmin}, #{createdAt})
+    </insert>
+
     <update id="updateUser" parameterType="com.example.club.entity.User">
         update `user`
         <set>
