@@ -53,4 +53,42 @@ public class AdminClubServiceImpl implements AdminClubService {
             return true;
         return false;
     }
+
+    public boolean createClub(AdminClub adminClub) {
+        if(adminClubDao.insert(adminClub)!=0)
+            return true;
+        return false;
+    }
+
+    public boolean editClub(AdminClub adminClub){
+        if(adminClubDao.updateByPrimaryKey(adminClub)!=0)
+            return true;
+        return false;
+    }
+
+    public List<ClubResponse> searchClub(String name) {
+        AdminClubExample example = new AdminClubExample();
+        example.setOrderByClause("club_id desc");
+        AdminClubExample.Criteria criteria = example.createCriteria();
+        criteria.andStatusEqualTo("APPROVED");
+        criteria.andClubNameLike(name);
+        List<ClubResponse> clubResponse=new ArrayList<>();
+        for(var club:adminClubDao.selectByExample(example)){
+            ClubResponse response=new ClubResponse();
+            response.setClubId(club.getClubId());
+            response.setClubName(club.getClubName());
+            response.setCategory(club.getCategory());
+            response.setIcon(club.getIcon());
+            response.setCreatedAt(club.getCreatedAt());
+            response.setCurrentMembers(club.getCurrentMembers());
+            response.setFavoriteCount(club.getFavoriteCount());
+            response.setPresidentId(club.getPresidentId());
+            response.setStatus(club.getStatus());
+            response.setDescription(club.getDescription());
+            response.setRequirements(club.getRequirements());
+            response.president=adminUserService.findUserByID(club.getPresidentId()).getStuName();
+            clubResponse.add(response);
+        }
+        return clubResponse;
+    }
 }

@@ -5,19 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fead4fb8-60e2-48a2-bf7b-dc588f5bf3d3" name="更改" comment="Updated">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/entity/AdminClub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/entity/AdminClubExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/entity/AdminClubWithBLOBs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/mapper/AdminClubDao.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubService.java" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/club_backend/src/main/resources/mapper/AdminClubDao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/club_frontend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/club_frontend/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminUserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/club_frontend/src/views/Admin/ClubInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/club_frontend/src/views/Admin/ClubInfo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/club_frontend/src/views/Admin/DashBoard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/club_frontend/src/views/Admin/DashBoard.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +178,10 @@
       <workItem from="1751350054177" duration="8203000" />
       <workItem from="1751359992999" duration="176000" />
       <workItem from="1751360188027" duration="1472000" />
-      <workItem from="1751417841870" duration="9721000" />
+      <workItem from="1751417841870" duration="10930000" />
+      <workItem from="1751436500209" duration="11625000" />
+      <workItem from="1751504464556" duration="10533000" />
+      <workItem from="1751522927207" duration="9644000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -219,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751340548094</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Updated">
+      <option name="closed" value="true" />
+      <created>1751427624253</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1751427624253</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
