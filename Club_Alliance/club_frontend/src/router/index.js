@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DashBoard from '../views/Admin/DashBoard.vue'
 import ClubInfo from '../views/Admin/ClubInfo.vue'
+import ClubMember from "@/views/Admin/ClubMember.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,7 +13,11 @@ const router = createRouter({
     {
       path: '/manageClub/info',
       component: ClubInfo,
-    }
+    },
+    {
+      path: '/manageClub/member',
+      component: ClubMember,
+    },
   ],
 })
 

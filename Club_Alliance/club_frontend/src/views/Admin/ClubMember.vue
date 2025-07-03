@@ -52,7 +52,7 @@
               <el-menu
                 class="el-menu-vertical"
                 @select="handleSide"
-                default-active="/manageClub/info"
+                default-active="/manageClub/member"
                 router="true"
               >
                 <el-menu-item index="/dashboard">
@@ -94,11 +94,11 @@
           </el-row>
         </el-aside>
         <el-main>
-          <el-button type="primary" style="margin-top:40px;margin-left: 40px" plain @click="addDialog=true">
+          <el-button v-show="whichVisble" type="primary" style="margin-top:40px;margin-left: 40px" plain @click="addDialog=true">
             <el-icon size="18"><DocumentAdd /></el-icon>
             <el-text type="primary">新增</el-text>
           </el-button>
-          <el-button type="danger" style="margin-top: 40px" plain @click="deleteMultiple">
+          <el-button  v-show="whichVisble"type="danger" style="margin-top: 40px" plain @click="deleteMultiple">
             <el-icon size="18"><FolderDelete /></el-icon>
             <el-text type="danger">批量删除</el-text>
           </el-button>
@@ -217,16 +217,10 @@
             <el-table-column property="president" label="负责人" width="120" header-align="center" align="center" sortable/>
             <el-table-column property="createdAt" label="创建时间" width="120" header-align="center" align="center" show-overflow-tooltip sortable/>
             <el-table-column property="requirements" label="加入条件" width="120" header-align="center" align="center"/>
-              <el-table-column v-slot="scope" width="100">
-                <el-button type="warning" plain @click="iniEdit(scope.row)">
-                  <el-icon size="18"><Edit /></el-icon>
-                  <el-text type="warning">编辑</el-text>
-                </el-button>
-            </el-table-column>
             <el-table-column v-slot="scope" width="100">
-              <el-button type="danger" plain @click="deleteSingle(scope.row)">
-                <el-icon size="18"><Delete /></el-icon>
-                <el-text type="danger">删除</el-text>
+              <el-button type="primary" plain @click="clubSelected(scope.row)">
+                <el-icon size="18"><Select /></el-icon>
+                <el-text type="primary">选择</el-text>
               </el-button>
             </el-table-column>
           </el-table>
@@ -253,7 +247,7 @@ import {
   Document,
   Menu as IconMenu,
   Location,
-  Setting, UserFilled, Menu, Delete, Search, Refresh,
+  Setting, UserFilled, Menu, Delete, Search, Refresh, Select,
 } from '@element-plus/icons-vue'
 import {ElMessage, ElMessageBox, paginationProps} from 'element-plus'
 
@@ -263,7 +257,7 @@ export default{
       return Search
     }
   },
-  components: {Refresh, Delete, Menu, Location, UserFilled},
+  components: {Select, Refresh, Delete, Menu, Location, UserFilled},
   data(){
     return{
       userData:[],
@@ -275,6 +269,9 @@ export default{
       addDialog:false,
       editDialog:false,
       selection:[],
+      whichVisble:false,
+      selectedClubName:'',
+      selectedClubId:undefined,
       form:{
         clubName: '',
         category: '',
@@ -292,6 +289,11 @@ export default{
         createdAt:'',
         description:'',
         presidenttemp:undefined
+      },
+      member:{
+        userId:undefined,
+        stuId:undefined,
+        stuName:''
       }
     }
   },
@@ -459,6 +461,11 @@ export default{
         this.clubData.total=res.data.length
         this.updateTableData()
       })
+    },
+    clubSelected(row){
+      this.whichVisble=true
+      this.selectedClubName=row.clubName
+      this.selectedClubId = row.clubId
     }
   },
   mounted(){

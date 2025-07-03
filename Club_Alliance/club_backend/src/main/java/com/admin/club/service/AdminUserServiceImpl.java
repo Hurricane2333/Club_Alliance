@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class AdminUserServiceImpl implements AdminUserService {
@@ -31,6 +32,9 @@ public class AdminUserServiceImpl implements AdminUserService {
         AdminUserExample example = new AdminUserExample();
         AdminUserExample.Criteria criteria = example.createCriteria();
         criteria.andUserIdEqualTo(id);
-        return adminUserDao.selectByExample(example).get(0);
+        List<AdminUser> list = adminUserDao.selectByExample(example);
+        if(list.size()>0)
+            return list.get(0);
+        return null;
     }
 }

@@ -70,7 +70,7 @@
                   </template>
                   <el-menu-item-group title="管理">
                     <el-menu-item index="/manageClub/info">社团信息管理</el-menu-item>
-                    <el-menu-item index="1-2">社团成员管理</el-menu-item>
+                    <el-menu-item index="/manageClub/member">社团成员管理</el-menu-item>
                   </el-menu-item-group>
                   <el-menu-item-group title="审核">
                     <el-menu-item index="1-4">新建社团审核</el-menu-item>
