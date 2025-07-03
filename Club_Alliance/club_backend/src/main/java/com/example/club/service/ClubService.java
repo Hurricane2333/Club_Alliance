@@ -14,7 +14,9 @@ public class ClubService {
     @Autowired
     private  ClubMapper clubMapper;
 
-
+    public ClubService(ClubMapper clubMapper) {
+        this.clubMapper = clubMapper;
+    }
     
 
     public List<Club> getHomeRecommendedClubs() {
@@ -26,8 +28,7 @@ public class ClubService {
         return clubMapper.selectAllApprovedClubs(ClubStatus.APPROVED);
     }
 
-     public Club selectById(int id) {
+    public Club selectById(int id) {
         return clubMapper.selectById(id);
     }
-    
 }

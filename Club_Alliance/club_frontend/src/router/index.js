@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/Home/HomeView.vue'
 import DashBoard from '../views/Admin/DashBoard.vue'
 import ClubInfo from '../views/Admin/ClubInfo.vue'
-import LoginView from '../views/Login/LoginView.vue'
+import LoginView from '../views/LoginView.vue'
 import ProfileView from '../views/User/ProfileView.vue'
 
 

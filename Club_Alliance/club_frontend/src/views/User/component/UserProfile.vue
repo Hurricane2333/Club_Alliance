@@ -11,13 +11,13 @@
         <template #label>
           <el-icon><Postcard /></el-icon> 学号
         </template>
-        {{ userInfo.stu_id }}
+        {{ userInfo.stuId }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template #label>
           <el-icon><User /></el-icon> 姓名
         </template>
-        {{ userInfo.stu_name }}
+        {{ userInfo.stuName }}
       </el-descriptions-item>
       <el-descriptions-item>
         <template #label>

@@ -3,13 +3,25 @@
     <NavBar />
 
     <div class="main-container">
-      <UserBanner
-        v-if="userInfo.stu_id"
-        :userInfo="userInfo"
-        :isSelf="isSelf"
-        @edit-profile="openEditProfile"
+      <el-alert
+        v-if="error"
+        :title="error"
+        type="error"
+        :closable="false"
+        class="error-alert"
       />
-      <UserProfile v-if="userInfo.stu_id" :userInfo="userInfo" />
+      <div v-if="isLoading" class="loading-spinner">
+        <el-spinner size="large"></el-spinner>
+      </div>
+      <template v-else-if="!error">
+        <UserBanner
+          v-if="userInfo.stuId"
+          :userInfo="userInfo"
+          :isSelf="isSelf"
+          @edit-profile="openEditProfile"
+        />
+        <UserProfile v-if="userInfo.stuId" :userInfo="userInfo" />
+      </template>
 
       <el-container class="content-container">
         <el-aside width="300px" class="sidebar">
@@ -20,8 +32,8 @@
                 <span>喜欢的社团</span>
               </div>
             </template>
-            <div v-for="club in favoriteClubs" :key="club.club_id">
-              <p><strong>社团名称:</strong> {{ club.club_name }}</p>
+            <div v-for="club in favoriteClubs" :key="club.clubId">
+              <p><strong>社团名称:</strong> {{ club.clubName }}</p>
               <p><strong>社团介绍:</strong> {{ club.description }}</p>
               <el-divider />
             </div>
@@ -29,14 +41,10 @@
         </el-aside>
 
         <el-main class="main-content">
-          <ActivityTabs
-            :activeTab="activeTab"
-            @tab-change="setActiveTab"
-          />
-
           <div class="activity-list">
+            <h3>参与的活动</h3>
             <ActivityItem
-              v-for="activity in filteredActivities"
+              v-for="activity in activities.filter(a => a.type === 'participated')"
               :key="activity.id"
               :activity="activity"
             />
@@ -60,13 +68,16 @@
     >
       <el-form :model="editForm" label-width="80px">
         <el-form-item label="姓名">
-          <el-input v-model="editForm.stu_name" />
+          <el-input v-model="editForm.stuName" />
         </el-form-item>
         <el-form-item label="学号">
-          <el-input v-model="editForm.stu_id" disabled />
+          <el-input v-model="editForm.stuId" disabled />
         </el-form-item>
         <el-form-item label="邮箱">
           <el-input v-model="editForm.email" />
+        </el-form-item>
+        <el-form-item label="新密码">
+          <el-input v-model="editForm.password" type="password" show-password />
         </el-form-item>
       </el-form>
 
@@ -90,14 +101,18 @@ import UserBanner from './component/UserBanner.vue';
 import UserProfile from './component/UserProfile.vue';
 import JoinedClubs from './component/JoinedClubs.vue';
 import RecommendedClubs from './component/RecommendedClubs.vue';
-import ActivityTabs from './component/ActivityTabs.vue';
+import { useUserStore } from '@/stores/user';
+
 import ActivityItem from './component/ActivityItem.vue';
 
 const navbarShadow = ref('shadow-sm');
 const mobileMenuOpen = ref(false);
-const activeTab = ref(0);
+const userStore = useUserStore();
+
 const isSelf = ref(true); // 当前用户是否是自己
 const isEditModalOpen = ref(false);
+const error = ref(null);
+const isLoading = ref(true);
 
 // 导航栏滚动效果
 onMounted(() => {
@@ -113,10 +128,7 @@ const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value;
 };
 
-// 标签页切换
-const setActiveTab = (index) => {
-  activeTab.value = index;
-};
+
 
 // 编辑资料相关
 const openEditProfile = () => {
@@ -124,81 +136,98 @@ const openEditProfile = () => {
 };
 
 const editForm = ref({
-  stu_name: '',
-  stu_id: '',
-  email: ''
+  stuName: '',
+  stuId: '',
+  email: '',
+  password: ''
 });
 
 const submitEditProfile = () => {
-  // 更新用户信息
-  userInfo.value = {
-    ...userInfo.value,
-    stu_name: editForm.value.stu_name,
-    email: editForm.value.email
-  };
-
-  isEditModalOpen.value = false;
+  const userId = userStore.user?.userId;
+  axios.put(`/api/user/${userId}`, {
+    stuName: editForm.value.stuName,
+    email: editForm.value.email,
+    password: editForm.value.password
+  })
+  .then(response => {
+    if (response.data.code === 'success') {
+      userInfo.value = {
+        ...userInfo.value,
+        stuName: editForm.value.stuName,
+        email: editForm.value.email
+      };
+      isEditModalOpen.value = false;
+    } else {
+      error.value = response.data.msg || 'Failed to update user data.';
+      console.error('Failed to update user data:', response.data.msg);
+    }
+  })
+  .catch(err => {
+    console.error('API Error:', err);
+    error.value = '更新数据时出错，请稍后重试。';
+  });
 };
 
 const userInfo = ref({});
 const route = useRoute();
 
 onMounted(() => {
-  const userId = route.params.id || 2; // Fallback to 2 if no id
-  axios.get(`/api/user/${userId}`).then(response => {
-    console.log('API Response:', response.data);
-    const userData = response.data.data;
-    if (userData) {
-      userInfo.value = userData;
-      console.log('User Info:', userInfo.value);
-      editForm.value = {
-        stu_name: userInfo.value.stu_name,
-        stu_id: userInfo.value.stu_id,
-        email: userInfo.value.email
-      };
-      console.log('Edit Form:', editForm.value);
+  const userId = userStore.user?.userId; // Fallback to 2 if no id
+  isLoading.value = true;
+  const userRequest = axios.get(`/api/user/${userId}`);
+    const favoriteClubsRequest = axios.get(`/api/favorite/list?userId=${userId}`);
+
+  Promise.all([userRequest, favoriteClubsRequest]).then(([userResponse, favoriteClubsResponse]) => {
+    if (userResponse.data.code === 'success') {
+      const userData = userResponse.data.data;
+      if (userData) {
+        console.log(userData);
+        userInfo.value = userData;
+        editForm.value = {
+          stuName: userInfo.value.stuName,
+          stuId: userInfo.value.stuId,
+          email: userInfo.value.email
+        };
+      } else {
+        console.error('User data is null or undefined despite success code.');
+      }
     } else {
-      console.error('User data is null or undefined:', userData);
+      error.value = userResponse.data.msg || 'Failed to fetch user data.';
+      console.error('Failed to fetch user data:', userResponse.data.msg);
     }
-  }).catch(error => {
-    console.error('API Error:', error);
+
+    if (favoriteClubsResponse.data.code === 'success') {
+      favoriteClubs.value = favoriteClubsResponse.data.data;
+    }
+
+  }).catch(err => {
+    console.error('API Error:', err);
+    error.value = '加载数据时出错，请稍后重试。';
+  }).finally(() => {
+    isLoading.value = false;
   });
 });
 
-const joinedClubs = ref([
-  {
-    id: 1,
-    name: '科技创新社',
-    role: '成员',
-    joinDate: '2022-09-10',
-    logo: 'https://picsum.photos/id/1005/60/60'
-  },
-  {
-    id: 2,
-    name: '篮球社',
-    role: '成员',
-    joinDate: '2022-10-15',
-    logo: 'https://picsum.photos/id/1015/60/60'
-  },
-  {
-    id: 3,
-    name: '摄影协会',
-    role: '成员',
-    joinDate: '2023-03-05',
-    logo: 'https://picsum.photos/id/1025/60/60'
-  }
-]);
+const joinedClubs = ref([]);
+onMounted(() => {
+  const userId = userStore.user?.userId; // 或用当前登录用户ID
+  axios.get(`/club_member/joined?userId=${userId}`)
+    .then(res => {
+      console.log('joined clubs api result:', res.data);
+      if (Array.isArray(res.data)) {
+        joinedClubs.value = res.data;
+      } else if (res.data && res.data.code === 'success' && Array.isArray(res.data.data)) {
+        joinedClubs.value = res.data.data;
+      }
+    })
+    .catch(err => {
+      console.error('加载已加入社团失败', err);
+    });
+});
+
 
 const favoriteClubs = ref([]);
 
-onMounted(() => {
-  const userId = route.params.id || 2; // Fallback to 2 if no id
-  axios.get(`/api/favorite/list?userId=${userId}`).then(response => {
-    if (response.data.code === '200') {
-      favoriteClubs.value = response.data.data;
-    }
-  });
-});
 
 const recommendedClubs = ref([
   {
@@ -240,19 +269,7 @@ const activities = ref([
     likes: 15,
     comments: 3
   },
-  {
-    id: 2,
-    type: 'commented',
-    user: {
-      name: '张三',
-      avatar: 'https://picsum.photos/id/1027/40/40'
-    },
-    time: '昨天',
-    content: '在 <span class="text-primary font-medium">科技创新社</span> 发表了评论：',
-    comment: '"这次讲座真的很精彩，专家分享的人工智能前沿技术让我受益匪浅，期待下次活动！"',
-    likes: 8,
-    comments: 2
-  },
+
   {
     id: 3,
     type: 'joined',
@@ -272,17 +289,7 @@ const activities = ref([
   }
 ]);
 
-// 根据活动类型过滤活动
-const filteredActivities = computed(() => {
-  if (activeTab.value === 0) {
-    return activities.value; // 全部动态
-  } else if (activeTab.value === 1) {
-    return activities.value.filter(activity => activity.type === 'participated'); // 参与的活动
-  } else if (activeTab.value === 2) {
-    return activities.value.filter(activity => activity.type === 'commented'); // 发表的评论
-  }
-  return activities.value;
-});
+
 </script>
 
 <style scoped>

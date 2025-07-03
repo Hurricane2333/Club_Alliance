@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.club.mapper.ClubMapper">
+
+    <resultMap id="ClubResultMap" type="com.example.club.entity.Club">
+        <id property="clubId" column="club_id"/>
+        <result property="clubName" column="club_name"/>
+        <result property="description" column="description"/>
+    </resultMap>
+
+    <select id="selectById" resultMap="ClubResultMap">
+        select club_id, club_name, description from club where club_id = #{id}
+    </select>
+
+</mapper>

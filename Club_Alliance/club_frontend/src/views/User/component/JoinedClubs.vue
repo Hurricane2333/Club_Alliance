@@ -11,7 +11,7 @@
         <el-avatar :size="48" :src="club.logo" />
         <div class="club-info">
           <h4 class="club-name">{{ club.name }}</h4>
-          <p class="club-meta">{{ club.role }} · {{ club.joinDate }} 加入</p>
+          <p class="club-meta"> {{ club.joinDate.replace('T', ' ').slice(0, 16) }} 加入</p>
         </div>
         <el-button type="text" :icon="ArrowRight" class="details-button" />
       </div>
@@ -31,6 +31,8 @@ import { OfficeBuilding, ArrowRight, ArrowDown } from '@element-plus/icons-vue';
 defineProps({
   joinedClubs: Array
 });
+
+
 </script>
 
 <style scoped>

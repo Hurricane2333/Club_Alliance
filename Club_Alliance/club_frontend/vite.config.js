@@ -16,8 +16,12 @@ export default defineConfig({
         target: 'http://localhost:8080',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, '')
-      }
+      },
+      '/club_member': {
+        target: 'http://localhost:8080', // 后端服务地址
+        changeOrigin: true,
+      },
     }
-  }
+  },
 }
 )

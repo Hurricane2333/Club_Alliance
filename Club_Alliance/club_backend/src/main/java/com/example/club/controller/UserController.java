@@ -36,20 +36,26 @@ public class UserController {
         }
     }
 
+    @PutMapping("/{id}")
+    public Result updateUser(@PathVariable Integer id, @RequestBody User user) {
+        user.setUserId(id);
+        int res = userService.updateUser(user);
+        if (res > 0) {
+            return Result.success();
+        } else {
+            return Result.error("Failed to update user");
+        }
+    }
+
     @PostMapping("/login")
     public Result login(@RequestBody Map<String, String> credentials) {
-        try {
-            String stuId = credentials.get("stuId");
-            String password = credentials.get("password");
-            Map<String, Object> result = userService.login(stuId, password);
-            if (result != null) {
-                return Result.success(result);
-            } else {
-                return Result.error("学号或密码错误");
-            }
-        } catch (Exception e) {
-            e.printStackTrace(); // 控制台输出异常
-            return Result.error("500", "服务器内部错误: " + e.getMessage());
+        String stuId = credentials.get("stuId");
+        String password = credentials.get("password");
+        Map<String, Object> result = userService.login(stuId, password);
+        if (result != null) {
+            return Result.success(result);
+        } else {
+            return Result.error("学号或密码错误");
         }
     }
 }

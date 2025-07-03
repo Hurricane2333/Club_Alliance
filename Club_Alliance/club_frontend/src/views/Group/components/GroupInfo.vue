@@ -10,9 +10,26 @@
           <el-text truncated style="font-size: 40px; font-weight: 600; color: black; margin-top: 25px">
             {{ club.clubName }}
           </el-text>
-          <el-button type="primary" style="font-size: 20px; margin: 40px 0 0 40px">
+          <!-- 只有未加入时显示按钮 -->
+          <el-button
+            v-if="!hasJoined"
+            type="primary"
+            style="font-size: 20px; margin: 40px 0 0 40px"
+            @click="dialogVisible = true"
+          >
             申请加入
           </el-button>
+          <el-dialog v-model="dialogVisible" title="申请加入社团" width="400px">
+            <el-form label-width="120px">
+              <el-form-item label="申请理由">
+                <el-input type="textarea" v-model="applyReason" placeholder="请输入申请理由" />
+              </el-form-item>
+            </el-form>
+            <template #footer>
+              <el-button @click="dialogVisible = false">取消</el-button>
+              <el-button type="primary" @click="submitApplication" :loading="loading">提交申请</el-button>
+            </template>
+          </el-dialog>
         </div>
         <div style="margin-top: 40px">
           <el-text truncated style="font-size: 20px; font-weight: 500; width: min(100px,20%); margin-left:10px">
@@ -51,12 +68,44 @@ import {reactive} from "vue";
 import {useRoute} from "vue-router";
 import {Avatar, StarFilled, UserFilled} from "@element-plus/icons-vue";
 import request from "@/utils/request.js";
+import { ref } from "vue";
+import { useUserStore } from "@/stores/user";
+import { ElMessage } from "element-plus";
 
+
+const dialogVisible = ref(false);
+const applyReason = ref('');
+const loading = ref(false);
+
+
+const userStore = useUserStore();
 const route = useRoute();
 
 const group = reactive({
   id: route.params.id,
 })
+
+const submitApplication = async () => {
+  if (!applyReason.value.trim()) {
+    ElMessage.warning("请填写申请理由");
+    return;
+  }
+  loading.value = true;
+  try {
+    await request.post('/club_member/apply', {
+      userId: userStore.user.userId,
+      clubId: club.clubId,
+      applyReason: applyReason.value
+    });
+    ElMessage.success("申请已提交，等待审核");
+    dialogVisible.value = false;
+    applyReason.value = '';
+  } catch  {
+    ElMessage.error("提交失败，请重试");
+  } finally {
+    loading.value = false;
+  }
+};
 
 const club = reactive({
   clubId: 0,
@@ -70,6 +119,20 @@ const club = reactive({
   currentMembers: 0,
   createdAt: '0',
 })
+
+const hasJoined = ref(false); // 新增：是否已加入
+// 查询社团信息
+request.get('/group/selectId/' + group.id).then(res => {
+  Object.assign(club, res);
+  // 查询当前用户是否已加入该社团
+  if (userStore.user && club.clubId) {
+    request.get(`/group/check?userId=${userStore.user.userId}&clubId=${club.clubId}`)
+      .then(res => {
+        hasJoined.value = res && res.joined; // 后端返回 { joined: true/false }
+      });
+  }
+});
+
 
 request.get('/group/selectId/' + group.id).then(res => {
   Object.assign(club, res)

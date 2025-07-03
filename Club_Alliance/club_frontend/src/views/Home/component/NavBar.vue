@@ -1,10 +1,5 @@
 <template>
-  <el-menu
-    mode="horizontal"
-    :ellipsis="false"
-    class="custom-navbar"
-    router
-  >
+  <div class="navbar-wrapper">
     <div class="flex items-center px-4">
       <img
         src="@/assets/title.jpg"
@@ -12,23 +7,18 @@
         class="h-10"
       />
     </div>
-
-    <div class="flex-grow"></div>
-
-    <el-menu-item index="/">首页</el-menu-item>
-    <el-menu-item index="/clublists">社团列表</el-menu-item>
-    <el-menu-item index="/activitylists">活动信息</el-menu-item>
-    <el-menu-item :index="'/user/' + userId" v-if="isLoggedIn">个人主页</el-menu-item>
-
-
-
-     <div class="flex items-center px-4">
-      <el-input
-        placeholder="搜索社团、活动..."
-        class="w-64"
-        :prefix-icon="Search"
-      />
-    <div class="nav-auth-btns">
+    <el-menu
+      mode="horizontal"
+      :ellipsis="false"
+      class="custom-navbar"
+      router
+    >
+      <el-menu-item index="/">首页</el-menu-item>
+      <el-menu-item index="/clublists">社团列表</el-menu-item>
+      <el-menu-item index="/activitylists">活动信息</el-menu-item>
+      <el-menu-item :index="'/user/' + userId" v-if="isLoggedIn">个人主页</el-menu-item>
+    </el-menu>
+    <div class="nav-auth-btns flex items-center px-4">
       <div v-if="!isLoggedIn">
         <el-button type="primary" plain @click="goToLogin">登录</el-button>
         <el-button type="primary" class="ml-2">注册</el-button>
@@ -37,10 +27,10 @@
         <el-button type="danger" plain @click="logout">注销</el-button>
       </div>
     </div>
-
-    </div>
-  </el-menu>
+  </div>
 </template>
+
+
 
 <script setup>
 import { User, Search } from '@element-plus/icons-vue';
@@ -70,21 +60,26 @@ const logout = () => {
 <style scoped>
 .navbar-wrapper {
   display: flex;
+  align-items: center;
   justify-content: center;
   width: 100%;
+  height: 70px;
+  background: #f7f7f8;
 }
 
 .custom-navbar {
-  height: 80px;
-  line-height: 80px;
-  max-width: 1200px; /* 限制导航栏最大宽度 */
-  width: 100%;
-  margin: 0 auto; /* 水平居中 */
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  border-bottom: none;
+  box-shadow: none;
 }
 
 .custom-navbar .el-menu-item {
   font-size: 18px;
   padding: 0 25px;
   font-weight: 500;
+  margin: 0 20px;
 }
 </style>
