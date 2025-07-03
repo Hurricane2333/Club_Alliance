@@ -41,6 +41,7 @@
       {{ club.description }}
     </el-text>
   </div>
+  <router-view/>
 </template>
 
 <script setup>
@@ -69,7 +70,7 @@ const club = reactive({
   createdAt: '0',
 })
 
-request.get('/group/selectId/' + group.id).then(res => {
+request.get(`/group/selectId/${route.params.id}`).then(res => {
   Object.assign(club, res)
 })
 

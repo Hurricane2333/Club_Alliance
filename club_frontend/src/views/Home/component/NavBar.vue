@@ -23,14 +23,14 @@
 
     <div class="flex items-center px-4">
       <el-input
-        placeholder="搜索社团、活动..."
-        class="w-64"
-        :prefix-icon="Search"
+          placeholder="搜索社团、活动..."
+          class="w-64"
+          :prefix-icon="Search"
       />
-    <div class="nav-auth-btns">
-      <el-button type="primary" plain>登录</el-button>
-      <el-button type="primary" class="ml-2">注册</el-button>
-    </div>
+      <div class="nav-auth-btns">
+        <el-button type="primary" plain>登录</el-button>
+        <el-button type="primary" class="ml-2">注册</el-button>
+      </div>
 
     </div>
   </el-menu>

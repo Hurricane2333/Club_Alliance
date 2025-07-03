@@ -1,74 +1,97 @@
 <template>
-  <div class="group-home">
+  <div>
+    <NavBar />
+  </div>
 
-    <div class="group-container">
-      <div class="group-info">
-        <router-view/>
-      </div>
+  <div class="group-header">
+    <img :src="club.icon" class="group-avatar" />
+    <h1 class="group-name">{{ club.clubName }}</h1>
+  </div>
 
-      <div class="group-post">
-        <GroupPostCard v-for="item in post.info" :key="item.post_id" :post="item"/>
-      </div>
-    </div>
+  <GroupNavBar />
 
+  <div class="group-container">
+    <main class="main-content">
+      <router-view />
+    </main>
+
+    <aside class="side-bar">
+      <GroupSidebar />
+    </aside>
   </div>
 </template>
 
 <script setup>
-
-import {reactive} from "vue";
-import {useRoute} from "vue-router";
-import GroupPostCard from "@/views/Group/components/GroupPostCard.vue";
+import NavBar from "@/views/Home/component/NavBar.vue";
+import GroupSidebar from "@/views/Group/components/GroupSidebar.vue";
+import GroupNavBar from "@/views/Group/components/GroupNavBar.vue";
+import { reactive } from 'vue';
+import { useRoute } from 'vue-router';
 import request from "@/utils/request.js";
 
 const route = useRoute();
 
-const group = reactive({
-  id: route.params.id,
+const club = reactive({
+  clubId: 0,
+  clubName: '',
+  description: '',
+  category: '',
+  icon: '',
+  presidentId: 0,
+  requirements: '',
+  favoriteCount: 0,
+  currentMembers: 0,
+  createdAt: '0',
 })
 
-const post = reactive({
-  info: [],
-})
-
-request.get('/group/post/selectClubId/' + group.id).then(res => {
-  post.info = res
-})
-
+request.get(`/group/selectId/${route.params.id}`).then(res => {
+  Object.assign(club, res);
+});
 </script>
 
-<style>
-
-.group-home {
-  display: flex;
-  flex-direction: column;
-  background-color: #f0f0f0;
-}
-
+<style scoped>
 .group-container {
-  margin: auto;
-  width: 70%;
-  min-width: 700px;
+  display: flex;
   max-width: 1200px;
-  padding: 1px;
+  margin: 0 auto 20px;
+  gap: 20px;
 }
 
-.group-info {
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  max-width: 100%;
-  padding: 50px max(80px, 10%);
-  margin: 50px auto;
-  justify-content: center;
-}
-
-.group-post {
-  display: flex;
-  background-color: white;
-  max-width: 100%;
+.group-header {
+  background: #fff;
   padding: 20px 20px;
-  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  max-width: 1200px;
+  margin: 20px auto;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
+.group-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 0;
+}
+
+.group-name {
+  margin: 0;
+  font-size: 28px;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+.main-content {
+  flex: 1;
+  width: 70%;
+}
+
+.side-bar {
+  width: 25%;
+  min-width: 280px;
+}
 </style>
