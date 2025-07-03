@@ -6,11 +6,17 @@ export const useUserStore = defineStore('user', {
   //   token: localStorage.getItem('token') || '',
   // }),
   state: () => {
-    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    const userItem = localStorage.getItem('user');
+    const user = userItem && userItem !== 'undefined' ? JSON.parse(userItem) : null;
+
     const token = localStorage.getItem('token') || '';
-    const isPresident = JSON.parse(localStorage.getItem('isPresident') || 'false');
+
+    const isPresidentItem = localStorage.getItem('isPresident');
+    const isPresident = isPresidentItem && isPresidentItem !== 'undefined' ? JSON.parse(isPresidentItem) : false;
+
     const clubName = localStorage.getItem('clubName') || '';
     const clubId = localStorage.getItem('clubId') || null;
+
     return {
       user,
       token,
@@ -23,16 +29,26 @@ export const useUserStore = defineStore('user', {
     setAuthData({ user, token, isPresident, clubName, clubId }) {
       this.user = user;
       this.token = token;
-      this.isPresident = isPresident;
-      this.clubName = clubName;
-      this.clubId = clubId;
+      this.isPresident = !!isPresident;
+      this.clubName = clubName || '';
+      this.clubId = clubId || null;
 
       if (user && token) {
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('token', token);
-        localStorage.setItem('isPresident', JSON.stringify(isPresident));
-        if (clubName) localStorage.setItem('clubName', clubName);
-        if (clubId) localStorage.setItem('clubId', clubId);
+        localStorage.setItem('isPresident', JSON.stringify(!!isPresident));
+
+        if (clubName) {
+          localStorage.setItem('clubName', clubName);
+        } else {
+          localStorage.removeItem('clubName');
+        }
+
+        if (clubId) {
+          localStorage.setItem('clubId', clubId);
+        } else {
+          localStorage.removeItem('clubId');
+        }
       } else {
         this.logout();
       }

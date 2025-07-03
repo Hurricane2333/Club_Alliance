@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -85,7 +86,7 @@ public class UserServiceImpl implements UserService {
 
         user.setAvatar("default_avatar.png");
         user.setIsAdmin(0);
-        user.setCreatedAt(new Date());
+        user.setCreatedAt(LocalDateTime.now());
 
         int result = userMapper.insertUser(user);
         if (result > 0) {
