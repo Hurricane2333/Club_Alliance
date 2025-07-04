@@ -43,7 +43,7 @@ const fetchHomeClubs = async () => {
 }
 
 const getClubTag = (club) => {
-  if (club.favoriteCount > 50) return '热门'
+  if (club.favoriteCount > 30) return '热门'
   if (club.currentMembers > 80) return '火爆'
   const oneMonthAgo = new Date()
   oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1)

@@ -4,7 +4,7 @@ import DashBoard from '../views/Admin/DashBoard.vue'
 import ClubInfo from '../views/Admin/ClubInfo.vue'
 import LoginView from '../views/LoginView.vue'
 import ProfileView from '../views/User/ProfileView.vue'
-
+import ActivityDetailView from '@/views/ActivityDetail/ActivityDetailView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +44,11 @@ const router = createRouter({
       meta: { title: "个人主页"},
       component: ProfileView
     },
+    {
+    path: '/activity/:id',
+    name: 'ActivityDetail',
+    component: ActivityDetailView
+  }
   ],
 })
 

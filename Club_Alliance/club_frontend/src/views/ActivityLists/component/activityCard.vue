@@ -17,9 +17,9 @@
         {{ event.startTime ? event.startTime.replace('T', ' ').slice(0, 16) : '' }}
         <span v-if="event.endTime"> ~ {{ event.endTime.replace('T', ' ').slice(0, 16) }}</span>
       </div>
-      <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+     <!--  <p class="text-gray-600 text-sm mb-4 line-clamp-2">
         {{ event.content || '这个活动还没有添加描述...' }}
-      </p>
+      </p> -->
       <div class="flex items-center text-sm text-gray-500 mb-4">
         <div class="flex items-center">
           <el-icon class="text-gray-400 mr-1"><Location /></el-icon>
@@ -31,17 +31,11 @@
           type="primary"
           size="small"
           class="px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-custom"
-          @click="$emit('view-detail', event.activityId)"
+          @click="goToDetail(event.activityId)"
         >
           查看详情
         </el-button>
-        <el-button
-          type="primary"
-          size="small"
-          class="px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-custom"
-        >
-          报名参加
-        </el-button>
+
       </div>
     </div>
   </div>
@@ -49,6 +43,9 @@
 
 <script setup>
 import { Location } from '@element-plus/icons-vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 defineProps({
   event: {
@@ -63,6 +60,10 @@ defineProps({
     })
   }
 })
+
+const goToDetail = (id) => {
+  router.push(`/activity/${id}`)
+}
 </script>
 
 <style scoped>
