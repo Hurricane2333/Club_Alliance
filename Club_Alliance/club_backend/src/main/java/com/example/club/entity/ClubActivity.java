@@ -15,7 +15,7 @@ public class ClubActivity {
     private Date startTime;
     private Date endTime;
     private String location;
-    private ClubActivityStatus status;
+    private ClubActivityStatus clubactivitystatus;
     private Integer currentParticipants;
     private Integer maxParticipants;
     private Date createdAt;
@@ -89,11 +89,11 @@ public class ClubActivity {
     }
 
     public ClubActivityStatus getClubactivitystatus() {
-        return status;
+        return clubactivitystatus;
     }
 
     public void setClubactivitystatus(ClubActivityStatus clubactivitystatus) {
-        this.status = status;
+        this.clubactivitystatus = clubactivitystatus;
     }
 
     public Integer getCurrentParticipants() {
@@ -147,7 +147,7 @@ public class ClubActivity {
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 ", location='" + location + '\'' +
-                ", status=" + status +
+                ", clubactivitystatus=" + clubactivitystatus +
                 ", currentParticipants=" + currentParticipants +
                 ", maxParticipants=" + maxParticipants +
                 ", createdAt=" + createdAt +

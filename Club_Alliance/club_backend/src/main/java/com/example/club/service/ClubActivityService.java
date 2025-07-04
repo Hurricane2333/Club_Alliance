@@ -20,8 +20,4 @@ public class ClubActivityService {
         List<ClubActivity> AllclubActivities = clubActivityMapper.selectRecentActivities(100);
         return AllclubActivities;
     }
-
-    public ClubActivity getActivityDetailById(Integer id) {
-        return clubActivityMapper.selectActivityDetailById(id);
-    }
 }

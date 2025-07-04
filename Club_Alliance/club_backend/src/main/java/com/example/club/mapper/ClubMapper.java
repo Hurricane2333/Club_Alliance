@@ -28,5 +28,7 @@ public interface ClubMapper {
         List<Club> selectAllApprovedClubs(@Param("status") ClubStatus status);
 
         Club selectById(int id);
+
+        Club findByPresidentId(int presidentId);
         
 }
