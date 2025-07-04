@@ -1,6 +1,6 @@
 <template>
   <div class="user-banner">
-    <img :src="userInfo.background" alt="个人主页背景" class="banner-background">
+    <img :src="profileBackground" alt="个人主页背景" class="banner-background">
     <div class="banner-overlay">
       <div class="banner-content">
         <el-avatar :size="96" :src="userInfo.avatar" class="user-avatar" />
@@ -25,6 +25,7 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue';
 import { Plus, Message, Edit } from '@element-plus/icons-vue';
+import profileBackground from '@/assets/profile-background.svg';
 
 defineProps({
   userInfo: Object,

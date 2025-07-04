@@ -12,6 +12,9 @@
           <input type="password" id="password" v-model="password" required>
         </div>
         <button type="submit">登录</button>
+        <p style="text-align: center; margin-top: 1rem;">
+          没有账号？<router-link to="/register">立即注册</router-link>
+        </p>
         <p v-if="error" class="error-message">{{ error }}</p>
       </form>
     </div>
@@ -44,10 +47,9 @@ const login = async () => {
     const result = response.data;
     console.log('Response data:', result);
     if (result.code === 'success' && result.data) {
-      const { user, token } = result.data;
+      const { user, token, isPresident, clubName, clubId } = result.data;
       console.log('Login successful, user:', user);
-      userStore.setToken(token);
-      userStore.setUser(user);
+      userStore.setAuthData({ user, token, isPresident, clubName, clubId });
       if (user.isAdmin === 1) {
         router.push('/dashboard');
       } else {

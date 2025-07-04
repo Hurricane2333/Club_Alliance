@@ -21,7 +21,7 @@
     <div class="nav-auth-btns flex items-center px-4">
       <div v-if="!isLoggedIn">
         <el-button type="primary" plain @click="goToLogin">登录</el-button>
-        <el-button type="primary" class="ml-2">注册</el-button>
+        <el-button type="primary" class="ml-2" @click="goToRegister">注册</el-button>
       </div>
       <div v-else>
         <el-button type="danger" plain @click="logout">注销</el-button>
@@ -46,6 +46,10 @@ const userId = computed(() => userStore.user?.userId);
 
 const goToLogin = () => {
   router.push('/login');
+};
+
+const goToRegister = () => {
+  router.push('/register');
 };
 
 const logout = () => {

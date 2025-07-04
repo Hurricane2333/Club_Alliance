@@ -1,5 +1,6 @@
 package com.example.club.service;
 
+import com.example.club.entity.Result;
 import com.example.club.entity.User;
 import com.example.club.mapper.UserMapper;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,9 @@ public interface UserService {
 
     User selectById(int id);
 
-    Map<String, Object> login(String stuId, String password);
+    Result login(String stuId, String password);
+
+    Result register(User user);
 
     int updateUser(User user);
 }
