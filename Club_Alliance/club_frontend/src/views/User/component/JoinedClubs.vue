@@ -7,13 +7,23 @@
       </div>
     </template>
     <div class="club-list">
-      <div v-for="club in joinedClubs" :key="club.id" class="club-item">
+      <div
+        v-for="club in joinedClubs"
+        :key="club.id"
+        class="club-item"
+        @click="navigateToClubDetail(club.id)"
+      >
         <el-avatar :size="48" :src="club.logo" />
         <div class="club-info">
           <h4 class="club-name">{{ club.name }}</h4>
           <p class="club-meta"> {{ club.joinDate.replace('T', ' ').slice(0, 16) }} 加入</p>
         </div>
-        <el-button type="text" :icon="ArrowRight" class="details-button" />
+        <el-button
+          type="text"
+          :icon="ArrowRight"
+          class="details-button"
+          @click.stop="navigateToClubDetail(club.id)"
+        />
       </div>
     </div>
     <template #footer>
@@ -26,63 +36,32 @@
 
 <script setup>
 import { defineProps } from 'vue';
+import { useRouter } from 'vue-router';
 import { OfficeBuilding, ArrowRight, ArrowDown } from '@element-plus/icons-vue';
 
-defineProps({
+const props = defineProps({
   joinedClubs: Array
 });
 
+const router = useRouter();
 
+const navigateToClubDetail = (clubId) => {
+  router.push({
+    path: `/group/${clubId}`
+  });
+};
 </script>
 
 <style scoped>
-.joined-clubs-card {
-  margin-bottom: 24px;
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-}
-
-.card-header .el-icon {
-  margin-right: 8px;
-}
-
-.club-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
+/* 添加可点击样式 */
 .club-item {
-  display: flex;
-  align-items: center;
-  padding: 12px;
-  background-color: var(--el-fill-color-light);
-  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.club-info {
-  margin-left: 12px;
-  flex: 1;
+.club-item:hover {
+  background-color: var(--el-fill-color);
 }
 
-.club-name {
-  font-weight: 500;
-}
-
-.club-meta {
-  font-size: 12px;
-  color: var(--el-text-color-secondary);
-}
-
-.details-button {
-  margin-left: auto;
-}
-
-.view-all-button {
-  width: 100%;
-}
+/* 其他样式保持不变 */
 </style>

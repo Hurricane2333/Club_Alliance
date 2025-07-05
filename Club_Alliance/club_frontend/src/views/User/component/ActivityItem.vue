@@ -175,7 +175,11 @@ const activityTypeText = computed(() => {
 
 
 <template>
-  <el-card class="activity-item-card" shadow="hover">
+  <el-card
+    class="activity-item-card"
+    shadow="hover"
+    @click="navigateToDetail"
+  >
     <div class="activity-details">
       <img v-if="activity.clubIcon" :src="activity.clubIcon" :alt="activity.title" class="activity-image">
       <div class="activity-info">
@@ -198,6 +202,7 @@ const activityTypeText = computed(() => {
 import { defineProps } from 'vue';
 import { ElCard, ElIcon } from 'element-plus';
 import { Calendar, Location, OfficeBuilding } from '@element-plus/icons-vue';
+import { useRouter } from 'vue-router';
 
 const props = defineProps({
   activity: {
@@ -205,6 +210,15 @@ const props = defineProps({
     required: true
   }
 });
+
+const router = useRouter();
+
+const navigateToDetail = () => {
+  router.push({
+    name: 'ActivityDetail',
+    params: { id: props.activity.id }
+  });
+};
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -255,5 +269,8 @@ const formatTime = (dateString) => {
 
 .el-icon {
   margin-right: 8px;
+}
+.activity-item-card {
+  cursor: pointer;
 }
 </style>

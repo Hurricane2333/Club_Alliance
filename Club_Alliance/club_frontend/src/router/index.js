@@ -16,7 +16,7 @@ const router = createRouter({
       component: HomeView,
     },
     { path: '/group', component: () => import('../views/Group/GroupHomeView.vue'), children: [
-        {path: ':id', component: () => import('@/views/Group/components/GroupInfo.vue')}
+        {path: ':id', component: () => import('@/views/Group/components/GroupInfo.vue'),props:true}
   ]},
     {
       path: '/clublists',
@@ -56,6 +56,7 @@ const router = createRouter({
     path: '/activity/:id',
     name: 'ActivityDetail',
     component: ActivityDetailView,
+    props:true
   }
   ],
 })
