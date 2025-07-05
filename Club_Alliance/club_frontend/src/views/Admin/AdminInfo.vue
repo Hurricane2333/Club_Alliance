@@ -102,46 +102,29 @@
             <el-icon size="18"><FolderDelete /></el-icon>
             <el-text type="danger">批量删除</el-text>
           </el-button>
-          <el-dialog v-model="addDialog" title="新增社团" width="800">
+          <el-dialog v-model="addDialog" title="新增管理员" width="800">
             <el-form :model="form">
-              <el-form-item label="社团名称" :label-width="70">
-                <el-input v-model="form.clubName" placeholder="输入社团名称"/>
+              <el-form-item label="用户名" :label-width="70">
+                <el-input v-model="form.stuName" placeholder="输入用户名"/>
               </el-form-item>
-              <el-form-item label="社团图片" :label-width="70">
+              <el-form-item label="学号" :label-width="70">
+                <el-input v-model="form.stuId" placeholder="输入学号"/>
+              </el-form-item>
+              <el-form-item label="头像" :label-width="70">
                 <el-upload v-model="uploadPic" action="http://localhost:8080/uploadPic">
                   <el-button type="primary">
                     上传<el-icon size="18"><Upload /></el-icon>
                   </el-button>
                 </el-upload>
               </el-form-item>
-              <el-form-item label="社团分类" :label-width="70">
-                <el-select v-model="form.category" placeholder="输入社团分类" filterable>
-                  <el-option label="ACADEMIC" value="ACADEMIC" />
-                  <el-option label="ARTS" value="ARTS" />
-                  <el-option label="SPORTS" value="SPORTS" />
-                  <el-option label="VOLUNTEER" value="VOLUNTEER" />
-                  <el-option label="HOBBY" value="HOBBY" />
-                  <el-option label="CAREER" value="CAREER" />
-                  <el-option label="DEBATE" value="DEBATE" />
-                  <el-option label="MAKER" value="MAKER" />
-                  <el-option label="OTHER" value="OTHER" />
-                </el-select>
+              <el-form-item label="密码" :label-width="70">
+                <el-input v-model="form.password" placeholder="输入密码" show-password />
               </el-form-item>
-              <el-form-item label="负责人" :label-width="70">
-                <el-input v-model="form.presidentId" placeholder="输入负责人ID">
-                  <template #append>
-                    <el-button :icon="Search" @click="searchLeader()">查询</el-button>
-                  </template>
-                </el-input>
-              </el-form-item>
-              <el-form-item label="加入条件" :label-width="70">
-                <el-input v-model="form.requirements" placeholder="输入加入条件" />
+              <el-form-item label="邮箱" :label-width="70">
+                <el-input v-model="form.email" placeholder="输入邮箱" />
               </el-form-item>
               <el-form-item label="创建时间" :label-width="70">
                 <el-input v-model="form.createdAt" disabled />
-              </el-form-item>
-              <el-form-item label="社团介绍" :label-width="70">
-                <el-input type="textarea" v-model="form.description" resize="none" placeholder="输入社团介绍" :rows="4"/>
               </el-form-item>
             </el-form>
             <template #footer>
@@ -149,46 +132,29 @@
               <el-button @click="clearForm()">取消</el-button>
             </template>
           </el-dialog>
-          <el-dialog v-model="editDialog" title="编辑社团" width="800">
+          <el-dialog v-model="editDialog" title="编辑管理员" width="800">
             <el-form :model="editForm">
-              <el-form-item label="社团名称" :label-width="70">
-                <el-input v-model="editForm.clubName" placeholder="输入社团名称"/>
+              <el-form-item label="用户名" :label-width="70">
+                <el-input v-model="editForm.stuName" placeholder="输入用户名"/>
               </el-form-item>
-              <el-form-item label="社团图片" :label-width="70">
-                <el-upload v-model="editPic" action="http://localhost:8080/editPic">
+              <el-form-item label="学号" :label-width="70">
+                <el-input v-model="editForm.stuId" placeholder="输入学号"/>
+              </el-form-item>
+              <el-form-item label="头像" :label-width="70">
+                <el-upload v-model="uploadPic" action="http://localhost:8080/uploadPic">
                   <el-button type="primary">
                     上传<el-icon size="18"><Upload /></el-icon>
                   </el-button>
                 </el-upload>
               </el-form-item>
-              <el-form-item label="社团分类" :label-width="70">
-                <el-select v-model="editForm.category" placeholder="输入社团分类" filterable>
-                  <el-option label="ACADEMIC" value="ACADEMIC" />
-                  <el-option label="ARTS" value="ARTS" />
-                  <el-option label="SPORTS" value="SPORTS" />
-                  <el-option label="VOLUNTEER" value="VOLUNTEER" />
-                  <el-option label="HOBBY" value="HOBBY" />
-                  <el-option label="CAREER" value="CAREER" />
-                  <el-option label="DEBATE" value="DEBATE" />
-                  <el-option label="MAKER" value="MAKER" />
-                  <el-option label="OTHER" value="OTHER" />
-                </el-select>
+              <el-form-item label="密码" :label-width="70">
+                <el-input v-model="editForm.password" placeholder="输入密码" show-password />
               </el-form-item>
-              <el-form-item label="负责人" :label-width="70">
-                <el-input v-model="editForm.presidentId" placeholder="输入负责人ID">
-                  <template #append>
-                    <el-button :icon="Search" @click="editLeader()">查询</el-button>
-                  </template>
-                </el-input>
-              </el-form-item>
-              <el-form-item label="加入条件" :label-width="70">
-                <el-input v-model="editForm.requirements" placeholder="输入加入条件" />
+              <el-form-item label="邮箱" :label-width="70">
+                <el-input v-model="editForm.email" placeholder="输入邮箱" />
               </el-form-item>
               <el-form-item label="创建时间" :label-width="70">
                 <el-input v-model="editForm.createdAt" disabled />
-              </el-form-item>
-              <el-form-item label="社团介绍" :label-width="70">
-                <el-input type="textarea" v-model="editForm.description" resize="none" placeholder="输入社团介绍" :rows="4"/>
               </el-form-item>
             </el-form>
             <template #footer>
@@ -200,28 +166,26 @@
             v-model="inputSearch"
             style="width: 240px;margin-top:40px;margin-left:30px"
             placeholder="输入名称查询"
-            @change="searchClub"
+            @change="searchUser"
             clearable
           />
-          <el-button type="success" style="margin-top: 40px;margin-left: 10px" plain @click="searchClub">
+          <el-button type="success" style="margin-top: 40px;margin-left: 10px" plain @click="searchUser">
             <el-icon size="18"><Search /></el-icon>
             <el-text type="success">搜索</el-text>
           </el-button>
           <el-table :data="PageData.list"style="margin-top:30px;margin-left: 40px;width: fit-content" @selection-change="handleSelection">
             <el-table-column type="selection" width="30"></el-table-column>
-            <el-table-column property="clubId" label="ID" width="120" header-align="center" align="center" sortable/>
-            <el-table-column property="clubName" label="社团名称" width="120" header-align="center" align="center" sortable/>
-            <el-table-column property="category" label="分类" width="120" header-align="center" align="center" sortable/>
-            <el-table-column property="currentMembers" label="成员数" width="120" header-align="center" align="center" sortable/>
-            <el-table-column property="presidentId" label="负责人ID" width="120" header-align="center" align="center" sortable/>
-            <el-table-column property="president" label="负责人" width="120" header-align="center" align="center" sortable/>
-            <el-table-column property="createdAt" label="创建时间" width="120" header-align="center" align="center" show-overflow-tooltip sortable/>
-            <el-table-column property="requirements" label="加入条件" width="120" header-align="center" align="center"/>
-              <el-table-column v-slot="scope" width="100">
-                <el-button type="warning" plain @click="iniEdit(scope.row)">
-                  <el-icon size="18"><Edit /></el-icon>
-                  <el-text type="warning">编辑</el-text>
-                </el-button>
+            <el-table-column property="userId" label="ID" width="100" header-align="center" align="center" sortable/>
+            <el-table-column property="avator" label="头像" width="200" header-align="center" align="center"/>
+            <el-table-column property="stuName" label="用户名" width="200" header-align="center" align="center" sortable/>
+            <el-table-column property="joinedClub" label="加入的社团" width="200" header-align="center" align="center" sortable/>
+            <el-table-column property="email" label="邮箱" width="200" header-align="center" align="center"/>
+            <el-table-column property="createdAt" label="创建时间" width="200" header-align="center" align="center" show-overflow-tooltip sortable/>
+            <el-table-column v-slot="scope" width="100">
+              <el-button type="warning" plain @click="iniEdit(scope.row)">
+                <el-icon size="18"><Edit /></el-icon>
+                <el-text type="warning">编辑</el-text>
+              </el-button>
             </el-table-column>
             <el-table-column v-slot="scope" width="100">
               <el-button type="danger" plain @click="deleteSingle(scope.row)">
@@ -276,22 +240,20 @@ export default{
       editDialog:false,
       selection:[],
       form:{
-        clubName: '',
-        category: '',
-        presidentId :undefined,
-        requirements:'',
+        stuId:undefined,
+        stuName:'',
+        password:'',
+        email:'',
         createdAt:'',
-        description:'',
-        presidenttemp:undefined
+        isAdmin:1
       },
       editForm:{
-        clubName: '',
-        category: '',
-        presidentId :undefined,
-        requirements:'',
+        stuId:undefined,
+        stuName:'',
+        password:'',
+        email:'',
         createdAt:'',
-        description:'',
-        presidenttemp:undefined
+        isAdmin:1
       }
     }
   },
@@ -301,28 +263,17 @@ export default{
       this.updateTableData()
     },
     deleteSingle(row){
-      axios.delete("http://localhost:8080/deleteClub/"+row.clubId).then(res => {
+      axios.delete("http://localhost:8080/deleteUser/"+row.userId).then(res => {
         if(res.data==false) {
           ElMessage.error("删除失败")
           return
         }
-        axios.get("http://localhost:8080/allClub").then(res => {
+        axios.get("http://localhost:8080/allAdmin").then(res => {
           this.clubData.list=res.data;
           this.clubData.total=res.data.length;
           this.updateTableData()
           ElMessage.success("删除成功")
         })
-      })
-    },
-    searchLeader() {
-      if(this.form.presidentId==null)
-        return
-      axios.get("http://localhost:8080/searchLeader/" + this.form.presidentId).then((res) => {
-        if(res.data!=""){
-          this.form.presidenttemp = this.form.presidentId
-          this.form.presidentId = res.data
-        }
-        else ElMessage.error("查询失败")
       })
     },
     getNowTime() {
@@ -341,21 +292,20 @@ export default{
     },
     clearForm(){
       this.addDialog = false
-      this.form.clubName= ''
-      this.form.category= ''
-      this.form.presidentId =undefined
-      this.form.requirements=''
-      this.form.description=''
+      this.form.stuId=undefined
+      this.form.stuName=''
+      this.form.password=''
+      this.form.email=''
+      this.form.isAdmin=1
     },
     submitCreate(){
       this.addDialog = false
       this.form.createdAt=null
-      this.form.presidentId=this.form.presidenttemp
-      axios.post("http://localhost:8080/createClub",this.form).then(res => {
+      axios.post("http://localhost:8080/createUser",this.form).then(res => {
         if(res.data==true)
         {
           this.clearForm()
-          axios.get("http://localhost:8080/allClub").then(res => {
+          axios.get("http://localhost:8080/allAdmin").then(res => {
             this.clubData.list=res.data
             this.clubData.total=res.data.length
             this.updateTableData()
@@ -370,11 +320,11 @@ export default{
     deleteMultiple(){
       if(this.selection.length==0)
       {
-        ElMessage.warning("未选中社团")
+        ElMessage.warning("未选中用户")
         return
       }
       ElMessageBox.confirm(
-        '确定要删除选中的社团吗?',
+        '确定要删除选中的用户吗?',
         '警告',
         {
           confirmButtonText: '确认',
@@ -384,11 +334,11 @@ export default{
       )
         .then(() => {
           for(let i=0;i<this.selection.length;i++){
-            axios.delete("http://localhost:8080/deleteClub/"+this.selection[i].clubId).then(res => {
+            axios.delete("http://localhost:8080/deleteUser/"+this.selection[i].userId).then(res => {
               if(res.data==false)
                 ElMessage.error("删除失败")
               if(i==this.selection.length-1){
-                axios.get("http://localhost:8080/allClub").then(res => {
+                axios.get("http://localhost:8080/allAdmin").then(res => {
                   this.clubData.list=res.data;
                   this.clubData.total=res.data.length;
                   this.updateTableData()
@@ -405,29 +355,13 @@ export default{
     iniEdit(row){
       this.editForm=row
       this.editDialog = true
-      this.editLeader()
-    },
-    editLeader(){
-      axios.get("http://localhost:8080/searchLeader/" + this.editForm.presidentId).then((res) => {
-        if(res.data!=""){
-          this.editForm.presidenttemp = this.editForm.presidentId
-          this.editForm.presidentId = res.data
-          axios.get("http://localhost:8080/allClub").then((res)=>{
-            this.clubData.list=res.data
-            this.clubData.total=res.data.length
-            this.updateTableData()
-          })
-        }
-        else ElMessage.error("查询失败")
-      })
     },
     submitEdit(){
       this.editDialog = false
-      this.editForm.presidentId=this.editForm.presidenttemp
-      axios.put("http://localhost:8080/editClub",this.editForm).then(res => {
+      axios.put("http://localhost:8080/editAdmin",this.editForm).then(res => {
         if(res.data==true)
         {
-          axios.get("http://localhost:8080/allClub").then(res => {
+          axios.get("http://localhost:8080/allAdmin").then(res => {
             this.clubData.list=res.data
             this.clubData.total=res.data.length
             this.updateTableData()
@@ -439,20 +373,20 @@ export default{
         }
       })
     },
-    searchClub(){
+    searchUser(){
       if(this.inputSearch=="")
       {
         this.resetSearch()
         return
       }
-      axios.get("http://localhost:8080/searchClub/"+this.inputSearch).then((res) => {
+      axios.get("http://localhost:8080/searchAdmin/"+this.inputSearch).then((res) => {
         this.clubData.list=res.data
         this.clubData.total=res.data.length
         this.updateTableData()
       })
     },
     resetSearch(){
-      axios.get("http://localhost:8080/allClub").then((res)=>{
+      axios.get("http://localhost:8080/allAdmin").then((res)=>{
         this.clubData.list=res.data
         this.clubData.total=res.data.length
         this.updateTableData()
@@ -460,7 +394,7 @@ export default{
     }
   },
   mounted(){
-    axios.get("http://localhost:8080/allClub").then((res)=>{
+    axios.get("http://localhost:8080/allAdmin").then((res)=>{
       this.clubData.list=res.data
       this.clubData.total=res.data.length
       this.updateTableData()

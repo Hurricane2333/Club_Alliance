@@ -73,17 +73,17 @@
                     <el-menu-item index="/manageClub/member">社团成员管理</el-menu-item>
                   </el-menu-item-group>
                   <el-menu-item-group title="审核">
-                    <el-menu-item index="1-4">新建社团审核</el-menu-item>
-                    <el-menu-item index="1-5">活动申请审核</el-menu-item>
+                    <el-menu-item index="/review/club">社团创建审核</el-menu-item>
+                    <el-menu-item index="/review/activity">活动申请审核</el-menu-item>
                   </el-menu-item-group>
                 </el-sub-menu>
-                <el-sub-menu index="2">
+                <el-sub-menu>
                   <template #title>
                     <el-icon><Menu /></el-icon>
                     <span>用户管理</span>
                   </template>
-                  <el-menu-item index="2-1">管理员信息</el-menu-item>
-                  <el-menu-item index="2-2">学生信息</el-menu-item>
+                  <el-menu-item index="/manageUser/admin">管理员信息</el-menu-item>
+                  <el-menu-item index="/manageUser/student">学生信息</el-menu-item>
                 </el-sub-menu>
                 <el-menu-item index="3">
                   <el-icon><Menu /></el-icon>

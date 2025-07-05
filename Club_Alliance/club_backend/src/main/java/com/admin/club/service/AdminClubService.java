@@ -13,4 +13,12 @@ public interface AdminClubService {
     boolean createClub(AdminClub adminClub);
     boolean editClub(AdminClub adminClub);
     List<ClubResponse> searchClub(String name);
+    int getPresidentId(int clubId);
+    boolean modifyPresident(int clubId,int userId);
+    List<ClubResponse> allClubToOperate();
+    boolean passClub(int clubId);
+    boolean refuseClub(int clubId);
+    List<ClubResponse> searchClubToOperate(String name);
+    int findClubByName(String name);
+    AdminClub findClubById(int clubId);
 }

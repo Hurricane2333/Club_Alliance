@@ -5,12 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fead4fb8-60e2-48a2-bf7b-dc588f5bf3d3" name="更改" comment="实现：社团信息管理">
-      <change afterPath="$PROJECT_DIR$/club_frontend/src/views/Admin/ClubMember.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/entity/ActivityResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/entity/MemberResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/entity/UserResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubActivityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubActivityServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubMemberService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubMemberServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/club_frontend/src/views/Admin/ActivityReview.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/club_frontend/src/views/Admin/AdminInfo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/club_frontend/src/views/Admin/ClubMemberSpecified.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/club_frontend/src/views/Admin/ClubReview.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/club_frontend/src/views/Admin/StudentInfo.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/generator-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/generator-config.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubService.java" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/target/classes/com/admin/club/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/target/classes/com/admin/club/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/target/classes/com/admin/club/entity/ClubMemberResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/target/classes/com/admin/club/service/AdminClubService.class" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/target/classes/com/admin/club/service/AdminClubService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/target/classes/com/admin/club/service/AdminClubServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/target/classes/com/admin/club/service/AdminClubServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/target/classes/com/admin/club/service/AdminUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/target/classes/com/admin/club/service/AdminUserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_backend/target/classes/com/admin/club/service/AdminUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/target/classes/com/admin/club/service/AdminUserServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/club_frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/club_frontend/src/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/club_frontend/src/views/Admin/ClubInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/club_frontend/src/views/Admin/ClubInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/club_frontend/src/views/Admin/ClubMember.vue" beforeDir="false" afterPath="$PROJECT_DIR$/club_frontend/src/views/Admin/ClubMember.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/club_frontend/src/views/Admin/DashBoard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/club_frontend/src/views/Admin/DashBoard.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,6 +99,7 @@
     &quot;Spring Boot.AdminApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.ClubBackendApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;admin&quot;,
+    &quot;js.last.introduce.type&quot;: &quot;LET&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;E:/Codes/Club_Manager/Club_Alliance&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -116,7 +139,7 @@
       <recent name="com.example.club" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="Spring Boot.AdminApplication">
     <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="ms-21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -183,7 +206,10 @@
       <workItem from="1751436500209" duration="11625000" />
       <workItem from="1751504464556" duration="10533000" />
       <workItem from="1751522927207" duration="11518000" />
-      <workItem from="1751590171966" duration="2021000" />
+      <workItem from="1751590171966" duration="11413000" />
+      <workItem from="1751609393801" duration="11568000" />
+      <workItem from="1751676878318" duration="11113000" />
+      <workItem from="1751695732819" duration="11447000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -233,7 +259,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751532746620</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="实现：社团信息管理">
+      <option name="closed" value="true" />
+      <created>1751592313756</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1751592313757</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
