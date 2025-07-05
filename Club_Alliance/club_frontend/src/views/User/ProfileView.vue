@@ -40,22 +40,22 @@
           </el-card>
         </el-aside>
 
-        <el-main class="main-content">
-          <div class="activity-list">
-            <h3>参与的活动</h3>
+       <el-main class="main-content">
+        <div class="activity-list">
+          <h3>参与的活动</h3>
+          <div v-if="joinedActivitiesLoading" class="loading-spinner">
+            <el-spinner size="large"></el-spinner>
+          </div>
+          <div v-else-if="joinedActivities.length > 0">
             <ActivityItem
-              v-for="activity in activities.filter(a => a.type === 'participated')"
+              v-for="activity in joinedActivities"
               :key="activity.id"
               :activity="activity"
             />
           </div>
-
-          <div class="load-more">
-            <el-button type="primary" plain round>
-              加载更多 <el-icon class="el-icon--right"><ArrowDown /></el-icon>
-            </el-button>
-          </div>
-        </el-main>
+          <el-empty v-else description="暂无参与的活动" />
+        </div>
+      </el-main>
       </el-container>
     </div>
 
@@ -102,9 +102,9 @@ import UserProfile from './component/UserProfile.vue';
 import JoinedClubs from './component/JoinedClubs.vue';
 import RecommendedClubs from './component/RecommendedClubs.vue';
 import { useUserStore } from '@/stores/user';
-
+import request from '@/utils/request';
 import ActivityItem from './component/ActivityItem.vue';
-
+import { ElMessage } from 'element-plus';
 const navbarShadow = ref('shadow-sm');
 const mobileMenuOpen = ref(false);
 const userStore = useUserStore();
@@ -113,6 +113,33 @@ const isSelf = ref(true); // 当前用户是否是自己
 const isEditModalOpen = ref(false);
 const error = ref(null);
 const isLoading = ref(true);
+
+
+const joinedActivities = ref([]);
+const joinedActivitiesLoading = ref(true);
+
+const fetchJoinedActivities = async () => {
+  try {
+    joinedActivitiesLoading.value = true;
+    const userId = userStore.user?.userId;
+    const response = await request.get('/api/activity_participant/list', {
+      params: { userId }
+    });
+
+    if (response.code === 'success') {
+      joinedActivities.value = response.data;
+    } else {
+      console.error('获取参与活动失败:', response.msg);
+      ElMessage.error(response.msg || '获取参与活动失败');
+    }
+  } catch (err) {
+    console.error('API请求错误:', err);
+    ElMessage.error('加载参与活动失败，请稍后重试');
+  } finally {
+    joinedActivitiesLoading.value = false;
+  }
+};
+
 
 // 导航栏滚动效果
 onMounted(() => {
@@ -175,7 +202,7 @@ onMounted(() => {
   const userId = userStore.user?.userId; // Fallback to 2 if no id
   isLoading.value = true;
   const userRequest = axios.get(`/api/user/${userId}`);
-    const favoriteClubsRequest = axios.get(`/api/favorite/list?userId=${userId}`);
+  const favoriteClubsRequest = axios.get(`/api/favorite/list?userId=${userId}`);
 
   Promise.all([userRequest, favoriteClubsRequest]).then(([userResponse, favoriteClubsResponse]) => {
     if (userResponse.data.code === 'success') {
@@ -226,6 +253,11 @@ onMounted(() => {
 });
 
 
+onMounted(() => {
+  fetchJoinedActivities();
+  // 其他初始化逻辑...
+});
+
 const favoriteClubs = ref([]);
 
 
@@ -250,44 +282,7 @@ const recommendedClubs = ref([
   }
 ]);
 
-const activities = ref([
-  {
-    id: 1,
-    type: 'participated',
-    user: {
-      name: '张三',
-      avatar: 'https://picsum.photos/id/1027/40/40'
-    },
-    time: '2小时前',
-    content: '参加了 <span class="text-primary font-medium">科技创新社</span> 举办的 <span class="font-medium">科技创新讲座</span>',
-    activity: {
-      title: '科技创新讲座',
-      date: '6月25日 14:00-17:00',
-      location: '科技楼 301 会议室',
-      image: 'https://picsum.photos/id/1047/100/100'
-    },
-    likes: 15,
-    comments: 3
-  },
 
-  {
-    id: 3,
-    type: 'joined',
-    user: {
-      name: '张三',
-      avatar: 'https://picsum.photos/id/1027/40/40'
-    },
-    time: '3天前',
-    content: '加入了 <span class="text-primary font-medium">摄影协会</span>',
-    club: {
-      name: '摄影协会',
-      description: '记录校园美好瞬间，分享摄影技巧',
-      logo: 'https://picsum.photos/id/1025/60/60'
-    },
-    likes: 12,
-    comments: 4
-  }
-]);
 
 
 </script>

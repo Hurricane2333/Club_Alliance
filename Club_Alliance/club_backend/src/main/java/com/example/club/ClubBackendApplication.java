@@ -9,5 +9,4 @@ public class ClubBackendApplication {
     public static void main(String[] args) {
         SpringApplication.run(ClubBackendApplication.class, args);
     }
-
 }

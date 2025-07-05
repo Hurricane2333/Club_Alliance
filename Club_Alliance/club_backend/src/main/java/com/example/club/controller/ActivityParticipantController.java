@@ -26,7 +26,8 @@ public class ActivityParticipantController {
     }
 
     @GetMapping("/list")
-    public java.util.List<java.util.Map<String, Object>> getJoinedActivities(@RequestParam Integer userId) {
-        return service.getJoinedActivities(userId);
+    public Result getJoinedActivities(@RequestParam Integer userId) {
+    // 使用Result包装响应数据，与其他接口格式保持一致
+        return Result.success(service.getJoinedActivities(userId));
     }
 }
