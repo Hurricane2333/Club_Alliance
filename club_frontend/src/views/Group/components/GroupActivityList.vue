@@ -11,7 +11,7 @@
         <div class="meta-section">
           <div class="meta-item">
             <i class="icon icon-time"></i>
-            <span>{{ activity.time }}</span>
+            <span>{{ activity.startTime }}</span>
           </div>
           <div class="meta-item">
             <i class="icon icon-location"></i>
@@ -19,14 +19,14 @@
           </div>
         </div>
 
-        <p class="activity-desc">{{ activity.description }}</p>
+        <p class="activity-desc">{{ activity.content }}</p>
 
         <div class="action-bar">
           <button class="signup-button">
-            立即报名
+            查看详情
           </button>
           <span class="participants">
-            👥 已报名 {{ activity.participants || 0 }} 人
+            👥 已报名 {{ activity.currentParticipants || 0 }} / {{ activity.maxParticipants || 0 }} 人
           </span>
         </div>
       </div>
@@ -35,59 +35,49 @@
 </template>
 
 <script setup>
-const activities = [
-  {
-    id: 1,
-    title: '迎新见面会',
-    time: '2025-09-01 19:00',
-    location: '学生活动中心302',
-    description: '欢迎新成员加入的社团见面活动',
-    imageUrl: 'https://picsum.photos/id/100/800/400',
-    participants: 23
-  },
-  {
-    id: 2,
-    title: '技术分享会',
-    time: '2025-09-15 14:00',
-    location: '线上会议',
-    description: '前沿技术分享与交流活动'
-  },
-  {
-    id: 3,
-    title: '技术分享会',
-    time: '2025-09-15 14:00',
-    location: '线上会议',
-    description: '前沿技术分享与交流活动'
-  },
-  {
-    id: 4,
-    title: '技术分享会',
-    time: '2025-09-15 14:00',
-    location: '线上会议',
-    description: '前沿技术分享与交流活动'
-  },
-  {
-    id: 5,
-    title: '技术分享会',
-    time: '2025-09-15 14:00',
-    location: '线上会议',
-    description: '前沿技术分享与交流活动'
-  }
-];
+import request from "@/utils/request.js";
+import {ref} from "vue";
+import {useRoute} from "vue-router";
+
+const route = useRoute();
+
+const activities = ref([]);
+
+const fetchActivities = async () => {
+  const res = await request.get(`group/activity/selectClubId/${route.params.id}`);
+  activities.value = (await Promise.all(res.map(async activity => ({
+    ...activity,
+  })))).filter(a => a.status !== 'PENDING')
+  .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+};
+
+fetchActivities();
+
 </script>
 
 <style scoped>
 .activity-container {
-  display: grid;
-  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
   padding: 1rem;
   background: #f5f5f5;
 }
 
 .activity-card {
+  box-sizing: border-box;
   background: white;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 1rem;
+}
+
+.activity-desc {
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 1rem;
 }
 
 .activity-card:hover {
@@ -138,6 +128,12 @@ const activities = [
   color: #444;
   line-height: 1.6;
   margin-bottom: 1.5rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 
 .action-bar {

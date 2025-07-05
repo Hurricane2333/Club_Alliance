@@ -6,6 +6,14 @@
   <div class="group-header">
     <img :src="club.icon" class="group-avatar" />
     <h1 class="group-name">{{ club.clubName }}</h1>
+    <el-button
+      v-if="club.presidentId === currentUserId"
+      type="primary"
+      class="manage-button"
+      @click="$router.push(`/group/manage/${route.params.id}`)"
+    >
+      管理社团
+    </el-button>
   </div>
 
   <GroupNavBar />
@@ -27,9 +35,11 @@ import GroupSidebar from "@/views/Group/components/GroupSidebar.vue";
 import GroupNavBar from "@/views/Group/components/GroupNavBar.vue";
 import { reactive } from 'vue';
 import { useRoute } from 'vue-router';
+import { useUserStore } from "@/stores/user.js";
 import request from "@/utils/request.js";
 
 const route = useRoute();
+const currentUserId = useUserStore().user.userId;
 
 const club = reactive({
   clubId: 0,
@@ -83,6 +93,13 @@ request.get(`/group/selectId/${route.params.id}`).then(res => {
   font-size: 28px;
   color: #333;
   letter-spacing: 1px;
+}
+
+.manage-button {
+  margin-left: auto;
+  margin-right: 20px;
+  padding: 12px 24px;
+  border-radius: 20px;
 }
 
 .main-content {

@@ -50,7 +50,7 @@ public class GroupPostController {
         return groupPostService.deleteGroupPostById(postId);
     }
 
-    @PostMapping("update")
+    @PutMapping("update")
     private int updateGroupPostById(@RequestBody GroupPost groupPost) {
         return groupPostService.updateGroupPostById(groupPost);
     }

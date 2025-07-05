@@ -21,7 +21,7 @@
             <el-icon>
               <Edit/>
             </el-icon>
-            {{ post.userId }}
+            {{ userName }}
           </el-text>
         </el-row>
         <el-row>
@@ -40,13 +40,28 @@
 <script setup>
 
 import {Calendar, Edit} from "@element-plus/icons-vue";
+import {getUserName} from "@/utils/userCache.js";
+import { ref, watch } from 'vue';
 
-defineProps({
+const props = defineProps({
   post: {
     type: Object,
     required: true
   }
 });
+
+const userName = ref('加载中...');
+
+const updateUserName = async (newVal) => {
+  try {
+    userName.value = await getUserName(newVal);
+  } catch (error) {
+    userName.value = '未知用户';
+  }
+};
+
+updateUserName(props.post.userId);
+watch(() => props.post.userId, updateUserName);
 
 </script>
 

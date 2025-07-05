@@ -9,18 +9,17 @@
     >
       <div class="post-header">
         <div class="post-title">{{ post.title }}</div>
-        <div class="user-info">
-          <span class="user-id">@{{ post.userId }}</span>
-        </div>
-        <span class="time">{{ post.createdAt }}</span>
       </div>
       <div class="post-content">
         {{ post.content }}
       </div>
       <div class="post-footer">
         <div class="interaction">
-          <span class="icon comment">💬 {{ post.commentCount }}</span>
-          <span class="icon like">👍 {{ post.likes }}</span>
+          <div class="user-info">
+            <span class="user-id">@{{ post.userName }}</span>
+          </div>
+
+          <span class="time">{{ post.createdAt }}</span>
         </div>
       </div>
     </div>
@@ -31,13 +30,20 @@
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import request from '@/utils/request.js';
+import { getUserName } from '@/utils/userCache.js';
 
 const route = useRoute();
 const posts = ref([]);
 
-request.get(`/group/post/selectClubId/${route.params.id}`).then(res => {
-  posts.value = res;
-});
+const fetchPosts = async () => {
+  const res = await request.get(`/group/post/selectClubId/${route.params.id}`);
+  posts.value = await Promise.all(res.map(async post => ({
+    ...post,
+    userName: await getUserName(post.userId)
+  })));
+};
+
+fetchPosts();
 
 const hoverEffect = (element) => {
   element.style.transform = 'translateY(-3px)';
@@ -78,6 +84,11 @@ const resetEffect = (element) => {
   color: #333;
   line-height: 1.6;
   margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  max-height: 6.4em;
 }
 
 .post-footer {
@@ -106,8 +117,14 @@ const resetEffect = (element) => {
 }
 
 .user-id {
-  font-size: 0.8em;
+  font-size: 0.9em;
   color: #8590a6;
+}
+
+.time {
+  font-size: 0.9em;
+  color: #8590a6;
+  margin-left: auto;
 }
 
 .post-title {

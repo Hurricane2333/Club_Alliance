@@ -13,6 +13,7 @@ import { useRouter, useRoute } from 'vue-router';
 
 const router = useRouter();
 const route = useRoute();
+
 const activeTab = computed(() => {
   const segments = route.path.split('/');
   return segments[segments.length - 1];
@@ -22,6 +23,7 @@ const handleSelect = (key) => {
   activeTab.value = key;
   router.push(`/groupHome/${route.params.id}/${key}`);
 };
+
 </script>
 
 <style scoped>

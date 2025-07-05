@@ -13,21 +13,22 @@
     </div>
 
     <div class="notice-box">
-      <h3 class="blue-title">📌 置顶公告</h3>
-      <div class="notice-content">
-        {{ announcements }}
-      </div>
+      <h3 class="blue-title">📌 当前活动</h3>
+      <el-table :data="activities" stripe class="activity-table" height="200">
+        <el-table-column show-overflow-tooltip prop="title" label="活动标题" width="90"/>
+        <el-table-column show-overflow-tooltip prop="location" label="活动地点"/>
+        <el-table-column show-overflow-tooltip prop="currentParticipants" label="参与人数" width="90"/>
+      </el-table>
     </div>
   </div>
 </template>
 
 <script setup>
-import {reactive, ref} from 'vue';
-import { useRoute } from 'vue-router';
+import {reactive} from 'vue';
+import {useRoute} from 'vue-router';
 import request from '@/utils/request.js';
 
 const route = useRoute();
-const announcements = ref('');
 const club = reactive({
   clubId: 0,
   clubName: '',
@@ -40,13 +41,22 @@ const club = reactive({
   currentMembers: 0,
   createdAt: '0',
 })
+const activities = reactive([])
 
 request.get(`/group/selectId/${route.params.id}`).then(res => {
   Object.assign(club, res)
 });
 
-request.get(`/group/announcements/${route.params.id}`).then(res => {
-  announcements.value = res.content;
+request.get(`/group/activity/selectClubId/${route.params.id}`).then(res => {
+  console.log('活动接口原始数据:', res);
+  activities.splice(0, activities.length, ...res.map(item => ({
+    title: item.title,
+    location: item.location,
+    currentParticipants: item.currentParticipants,
+    status: item.status,
+    endTime: item.endTime
+  })).filter(item => item.status === 'ACTIVE').sort((a,b) => new Date(a.endTime) - new Date(b.endTime)));
+  console.log('处理后的活动数据:', activities);
 });
 </script>
 
@@ -54,7 +64,7 @@ request.get(`/group/announcements/${route.params.id}`).then(res => {
 .sidebar-container {
   background: #fff;
   border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   padding: 15px;
 }
 
@@ -79,17 +89,25 @@ request.get(`/group/announcements/${route.params.id}`).then(res => {
 
 .label {
   font-weight: 500;
+  margin-left: 10px;
 }
 
 .value {
   color: #0084ff;
+  margin-right: 10px;
 }
 
-.notice-content {
-  background: #f8f9fa;
-  padding: 12px;
+.activity-table {
+  margin-top: 10px;
   border-radius: 4px;
-  line-height: 1.5;
-  color: #444;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  :deep(.el-table__cell) {
+    padding: 8px 0;
+  }
+
+  :deep(th.el-table__cell) {
+    background-color: #f8f9fa;
+  }
 }
 </style>
