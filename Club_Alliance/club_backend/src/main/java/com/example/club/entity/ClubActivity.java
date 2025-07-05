@@ -92,7 +92,7 @@ public class ClubActivity {
         return status;
     }
 
-    public void setClubactivitystatus(ClubActivityStatus clubactivitystatus) {
+    public void setClubactivitystatus(ClubActivityStatus status) {
         this.status = status;
     }
 

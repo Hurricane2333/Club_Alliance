@@ -51,9 +51,9 @@ const login = async () => {
       console.log('Login successful, user:', user);
       userStore.setAuthData({ user, token, isPresident, clubName, clubId });
       if (user.isAdmin === 1) {
-        router.push('/dashboard');
+        router.push('/');
       } else {
-        router.push(`/user/${user.userId}`);
+        router.push(`/`);
       }
     } else {
       console.error('Login failed with response:', result);

@@ -40,22 +40,22 @@
           </el-card>
         </el-aside>
 
-       <el-main class="main-content">
-        <div class="activity-list">
-          <h3>参与的活动</h3>
-          <div v-if="joinedActivitiesLoading" class="loading-spinner">
-            <el-spinner size="large"></el-spinner>
+        <el-main class="main-content">
+          <div class="activity-list">
+           <h3>参与的活动</h3>
+           <div v-if="joinedActivitiesLoading" class="loading-spinner">
+             <el-spinner size="large"></el-spinner>
+           </div>
+            <div v-else-if="joinedActivities.length > 0">
+              <ActivityItem
+                v-for="activity in joinedActivities"
+                :key="activity.id"
+                :activity="activity"
+              />
+            </div>
+            <el-empty v-else description="暂无参与的活动" />
           </div>
-          <div v-else-if="joinedActivities.length > 0">
-            <ActivityItem
-              v-for="activity in joinedActivities"
-              :key="activity.id"
-              :activity="activity"
-            />
-          </div>
-          <el-empty v-else description="暂无参与的活动" />
-        </div>
-      </el-main>
+        </el-main>
       </el-container>
     </div>
 
@@ -176,23 +176,23 @@ const submitEditProfile = () => {
     email: editForm.value.email,
     password: editForm.value.password
   })
-  .then(response => {
-    if (response.data.code === 'success') {
-      userInfo.value = {
-        ...userInfo.value,
-        stuName: editForm.value.stuName,
-        email: editForm.value.email
-      };
-      isEditModalOpen.value = false;
-    } else {
-      error.value = response.data.msg || 'Failed to update user data.';
-      console.error('Failed to update user data:', response.data.msg);
-    }
-  })
-  .catch(err => {
-    console.error('API Error:', err);
-    error.value = '更新数据时出错，请稍后重试。';
-  });
+    .then(response => {
+      if (response.data.code === 'success') {
+        userInfo.value = {
+          ...userInfo.value,
+          stuName: editForm.value.stuName,
+          email: editForm.value.email
+        };
+        isEditModalOpen.value = false;
+      } else {
+        error.value = response.data.msg || 'Failed to update user data.';
+        console.error('Failed to update user data:', response.data.msg);
+      }
+    })
+    .catch(err => {
+      console.error('API Error:', err);
+      error.value = '更新数据时出错，请稍后重试。';
+    });
 };
 
 const userInfo = ref({});

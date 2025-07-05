@@ -13,7 +13,7 @@
         class="club-item"
         @click="navigateToClubDetail(club.id)"
       >
-        <el-avatar :size="48" :src="club.logo" />
+        <el-avatar :size="48" :src="club.logo"/>
         <div class="club-info">
           <h4 class="club-name">{{ club.name }}</h4>
           <p class="club-meta"> {{ club.joinDate.replace('T', ' ').slice(0, 16) }} 加入</p>
@@ -28,7 +28,10 @@
     </div>
     <template #footer>
       <el-button type="text" class="view-all-button">
-        查看全部 <el-icon class="el-icon--right"><ArrowDown /></el-icon>
+        查看全部
+        <el-icon class="el-icon--right">
+          <ArrowDown/>
+        </el-icon>
       </el-button>
     </template>
   </el-card>

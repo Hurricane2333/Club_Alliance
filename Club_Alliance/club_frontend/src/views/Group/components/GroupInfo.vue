@@ -2,7 +2,7 @@
   <div>
     <div style="display: flex; flex-direction: row">
       <div
-          style="width: 200px; height: 200px; margin: 0 15px 0 max(50px,10%); align-content: center; justify-content: center">
+        style="width: 200px; height: 200px; margin: 0 15px 0 max(50px,10%); align-content: center; justify-content: center">
         <el-avatar :size="150" :src="club.icon"/>
       </div>
       <div style="width: 500px; height: 200px; margin: 0 max(50px,10%) 0 15px">
@@ -19,6 +19,14 @@
           >
             申请加入
           </el-button>
+          <el-button
+            v-else
+            type="success"
+            style="font-size: 20px; margin: 40px 0 0 40px"
+            @click="router.push(`/groupHome/${club.clubId}`)"
+          >
+            社团主页
+          </el-button>
           <el-dialog v-model="dialogVisible" title="申请加入社团" width="400px">
             <el-form label-width="120px">
               <el-form-item label="申请理由">
@@ -32,11 +40,11 @@
           </el-dialog>
         </div>
         <div style="margin-top: 40px">
-          <el-text truncated style="font-size: 20px; font-weight: 500; width: min(100px,20%); margin-left:10px">
+          <el-text truncated style="font-size: 20px; font-weight: 500; width: min(100px,20%); margin-left:10px; margin-right: 20px">
             <el-icon color="#006bb5">
               <Avatar/>
             </el-icon>
-            {{ club.presidentId }}
+            {{ presidentName }}
           </el-text>
           <el-text truncated style="font-size: 20px; font-weight: 500; width: min(100px,20%); margin-left:10px">
             <el-icon color="#4eb3f4">
@@ -71,12 +79,13 @@ import request from "@/utils/request.js";
 import { ref } from "vue";
 import { useUserStore } from "@/stores/user";
 import { ElMessage } from "element-plus";
+import router from "@/router/index.js";
+import {getUserName} from "../../../utils/userCache.js";
 
 
 const dialogVisible = ref(false);
 const applyReason = ref('');
 const loading = ref(false);
-
 
 const userStore = useUserStore();
 const route = useRoute();
@@ -84,6 +93,26 @@ const route = useRoute();
 const group = reactive({
   id: route.params.id,
 })
+
+const club = reactive({
+  clubId: 0,
+  clubName: '',
+  description: '',
+  category: '',
+  icon: '',
+  presidentId: 0,
+  requirements: '',
+  favoriteCount: 0,
+  currentMembers: 0,
+  createdAt: '0',
+})
+
+request.get('/group/selectId/' + group.id).then(async res => {
+  Object.assign(club, res);
+  presidentName.value = await getUserName(club.presidentId);
+})
+
+const presidentName = ref('加载中...')
 
 const submitApplication = async () => {
   if (!applyReason.value.trim()) {
@@ -107,19 +136,6 @@ const submitApplication = async () => {
   }
 };
 
-const club = reactive({
-  clubId: 0,
-  clubName: '',
-  description: '',
-  category: '',
-  icon: '',
-  presidentId: 0,
-  requirements: '',
-  favoriteCount: 0,
-  currentMembers: 0,
-  createdAt: '0',
-})
-
 const hasJoined = ref(false); // 新增：是否已加入
 // 查询社团信息
 request.get('/group/selectId/' + group.id).then(res => {
@@ -128,15 +144,11 @@ request.get('/group/selectId/' + group.id).then(res => {
   if (userStore.user && club.clubId) {
     request.get(`/group/check?userId=${userStore.user.userId}&clubId=${club.clubId}`)
       .then(res => {
+        console.log('check接口返回数据:', res);
         hasJoined.value = res && res.joined; // 后端返回 { joined: true/false }
       });
   }
 });
-
-
-request.get('/group/selectId/' + group.id).then(res => {
-  Object.assign(club, res)
-})
 
 </script>
 

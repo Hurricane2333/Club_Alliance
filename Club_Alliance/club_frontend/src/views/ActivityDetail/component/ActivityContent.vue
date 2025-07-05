@@ -23,6 +23,9 @@
       <el-icon class="mr-2"><Location /></el-icon>
       <span>{{ activity.location || '待获取' }}</span>
     </div>
+    <div style="width: 600px; height: 600px; margin-top: 20px;">
+      <MapView :location="activity.location" />
+    </div>
     <!-- 活动发布时间 -->
     <div class="text-sm text-gray-400 mb-2">
       发布于 {{ activity.createdAt ? formatTime(activity.createdAt) : '' }}
@@ -47,12 +50,13 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-import { Location } from '@element-plus/icons-vue'
+import {ref, onMounted} from 'vue'
+import {useRoute} from 'vue-router'
+import {Location} from '@element-plus/icons-vue'
 import request from '@/utils/request'
-import { useUserStore } from '@/stores/user'
-import { ElMessage } from 'element-plus'
+import {useUserStore} from '@/stores/user'
+import MapView from './MapView.vue'
+import {ElMessage} from 'element-plus'
 
 
 const route = useRoute()
@@ -85,14 +89,14 @@ async function confirmJoin() {
   const activityId = activity.value.activityId
   try {
     const res = await request.post('/api/activity_participant/join', null, {
-      params: { activityId, userId }
+      params: {activityId, userId}
     })
     if (res.code === 'success') {
       ElMessage.success('已成功申请参加活动')
     } else {
       ElMessage.warning(res.msg || '报名失败')
     }
-  } catch{
+  } catch {
     ElMessage.error('网络错误，报名失败')
   }
   dialogVisible.value = false
@@ -112,18 +116,21 @@ onMounted(async () => {
 .activity-content-card {
   font-family: 'Inter', '微软雅黑', Arial, sans-serif;
 }
+
 .club-name {
   font-size: 24px;
   font-weight: 600;
   color: #0e0e0e;
   margin-bottom: 4px;
 }
+
 .activity-title {
   font-size: 28px;
   font-weight: bold;
   color: #222;
   margin-bottom: 16px;
 }
+
 .activity-desc {
   font-size: 18px;
   color: #222;

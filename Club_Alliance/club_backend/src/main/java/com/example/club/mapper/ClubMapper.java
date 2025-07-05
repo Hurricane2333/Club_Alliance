@@ -22,13 +22,13 @@ public interface ClubMapper {
         List<Club> selectRecommendedClubs(@Param("limit") int limit ,@Param("status") ClubStatus status);
 
         @Select("SELECT c.*, u.stu_name as president_name " +
-            "FROM club c LEFT JOIN user u ON c.president_id = u.user_id " +
-            "WHERE c.status = #{status} " +
-            "ORDER BY c.created_at DESC")
+                "FROM club c LEFT JOIN user u ON c.president_id = u.user_id " +
+                "WHERE c.status = #{status} " +
+                "ORDER BY c.created_at DESC")
         List<Club> selectAllApprovedClubs(@Param("status") ClubStatus status);
 
         Club selectById(int id);
 
-         Club findByPresidentId(int presidentId);
-        
+        Club findByPresidentId(int presidentId);
+
 }

@@ -27,7 +27,7 @@ onMounted(() => {
 
 const fetchHomeClubs = async () => {
   try {
-    const data= await getHomeClubs()
+    const data = await getHomeClubs()
     clubs.value = data.map(club => ({
       ...club,
       tag: getClubTag(club)
@@ -75,6 +75,7 @@ const getFallbackClubs = () => [
   overflow-x: auto;
   padding-bottom: 20px;
 }
+
 .scroll-container {
   display: flex;
   gap: 20px;
@@ -82,6 +83,7 @@ const getFallbackClubs = () => [
   width: max-content;
   overflow-x: auto;
 }
+
 .club-item {
   flex: 0 0 300px;
 }
