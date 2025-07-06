@@ -17,8 +17,9 @@
       <el-menu-item index="/clublists">社团列表</el-menu-item>
       <el-menu-item index="/activitylists">活动信息</el-menu-item>
       <el-menu-item :index="'/user/' + userId" v-if="isLoggedIn">个人主页</el-menu-item>
+      <el-menu-item index="/group/create" v-if="isLoggedIn">社团创建</el-menu-item>
     </el-menu>
-    <div class="nav-auth-btns flex items-center px-4">
+    <div class="nav-auth-btns flex items-center px-4" style="margin-right: 20px">
       <div v-if="!isLoggedIn">
         <el-button type="primary" plain @click="goToLogin">登录</el-button>
         <el-button type="primary" class="ml-2" @click="goToRegister">注册</el-button>
@@ -31,12 +32,11 @@
 </template>
 
 
-
 <script setup>
-import { User, Search } from '@element-plus/icons-vue';
-import { computed } from 'vue';
-import { useRouter } from 'vue-router';
-import { useUserStore } from '@/stores/user';
+import {User, Search} from '@element-plus/icons-vue';
+import {computed} from 'vue';
+import {useRouter} from 'vue-router';
+import {useUserStore} from '@/stores/user';
 
 const router = useRouter();
 const userStore = useUserStore();
@@ -78,6 +78,7 @@ const logout = () => {
   background: transparent;
   border-bottom: none;
   box-shadow: none;
+  margin-right: 180px;
 }
 
 .custom-navbar .el-menu-item {

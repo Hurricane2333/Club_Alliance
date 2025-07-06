@@ -25,9 +25,11 @@
           {{ mapCategory(club.category) }}
         </span>
       </div>
-      <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-        {{ club.description || '这个社团还没有添加描述...' }}
-      </p>
+      <div class="w-full">
+        <p class="text-gray-600 text-sm mb-4">
+          {{ club.description ? club.description.slice(0, 12) + (club.description.length > 12 ? '...' : '') : '这个社团还没有添加描述...' }}
+        </p>
+      </div>
       <div class="flex items-center text-sm text-gray-500 mb-4">
         <div class="flex items-center mr-4">
           <el-icon class="text-gray-400 mr-1"><User /></el-icon>

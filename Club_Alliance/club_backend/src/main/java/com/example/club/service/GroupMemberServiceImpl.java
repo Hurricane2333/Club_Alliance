@@ -59,4 +59,9 @@ public class GroupMemberServiceImpl implements GroupMemberService {
         return groupMemberMapper.queryGroupMemberByClubIdAndStatus(clubId, status);
     }
 
+    @Override
+    public GroupMember queryGroupMemberStatusByUserIdAndClubId(Integer userId, Integer clubId) {
+        return groupMemberMapper.queryGroupMemberStatusByUserIdAndClubId(userId, clubId);
+    }
+
 }

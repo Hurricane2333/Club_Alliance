@@ -58,4 +58,5 @@ public class GroupActivityServiceImpl implements GroupActivityService {
     public int updateGroupActivityById(GroupActivity groupActivity) {
         return groupActivityMapper.updateGroupActivityById(groupActivity);
     }
+
 }

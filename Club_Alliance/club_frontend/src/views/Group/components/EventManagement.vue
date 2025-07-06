@@ -109,15 +109,13 @@
 </template>
 
 <script setup>
-import {ref, reactive, inject} from 'vue'
+import {ref, reactive} from 'vue'
 import request from '@/utils/request.js'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import {useRoute} from "vue-router";
 import {useUserStore} from "@/stores/user.js";
 
 const route = useRoute()
-
-const clubData = inject('clubData', {})
 
 const events = reactive({
   data: []

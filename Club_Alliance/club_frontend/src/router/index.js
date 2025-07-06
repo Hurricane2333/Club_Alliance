@@ -5,8 +5,15 @@ import ClubInfo from '../views/Admin/ClubInfo.vue'
 import LoginView from '../views/LoginView.vue'
 import ProfileView from '../views/User/ProfileView.vue'
 import {useUserStore} from "@/stores/user.js";
+import { ElMessage } from 'element-plus'
 import ActivityDetailView from '@/views/ActivityDetail/ActivityDetailView.vue'
 import RegisterView from '../views/RegisterView.vue'
+import ClubMember from "@/views/Admin/ClubMember.vue";
+import ClubMemberSpecified from "@/views/Admin/ClubMemberSpecified.vue";
+import ClubReview from "@/views/Admin/ClubReview.vue";
+import ActivityReview from "@/views/Admin/ActivityReview.vue";
+import AdminInfo from "@/views/Admin/AdminInfo.vue";
+import StudentInfo from "@/views/Admin/StudentInfo.vue";
 
 
 const router = createRouter({
@@ -42,6 +49,16 @@ const router = createRouter({
       ]
     },
     {
+      path: '/group/create',
+      component: () => import('@/views/Group/GroupCreateView.vue'),
+      meta: { title: '社团创建' }
+    },
+    {
+      path: '/group/:id/postCreate',
+      component: () => import('@/views/Group/GroupPostCreate.vue'),
+      meta: { title: '发帖' }
+    },
+    {
       path: '/clublists',
       component: () => import('../views/ClubLists/ClubListsView.vue'),
       meta: { title: '社团列表' }
@@ -50,14 +67,6 @@ const router = createRouter({
       path: '/activitylists',
       component: () => import('../views/ActivityLists/ActivityListsView.vue'),
       meta: { title: '活动列表' }
-    },
-    {
-      path: '/dashboard',
-      component: DashBoard,
-    },
-    {
-      path: '/manageClub/info',
-      component: ClubInfo,
     },
     {
       path: '/login',
@@ -82,11 +91,65 @@ const router = createRouter({
       name: 'ActivityDetail',
       component: ActivityDetailView,
       props:true
+    },
+    {
+      path: '/dashboard',
+      component: DashBoard,
+    },
+    {
+      path: '/manageClub/info',
+      component: ClubInfo,
+    },
+    {
+      path: '/manageClub/member',
+      component: ClubMember,
+    },
+    {
+      path: '/manageClub/member/:clubId',
+      component: ClubMemberSpecified,
+    },
+    {
+      path:'/review/club',
+      component:ClubReview,
+    },
+    {
+      path:'/review/activity',
+      component:ActivityReview,
+    },
+    {
+      path:'/manageUser/admin',
+      component:AdminInfo,
+    },
+    {
+      path:'/manageUser/student',
+      component:StudentInfo,
     }
   ],
 })
 
 router.beforeEach(async (to, from, next) => {
+  const userStore = useUserStore();
+
+  // 成员权限验证
+  if (to.path.startsWith('/groupHome/')) {
+    if (!userStore.token) {
+      ElMessage.warning('请先登录')
+      return next('/login')
+    }
+    try {
+      const response = await fetch(`/api/group/member/selectMemberStatus/${userStore.user?.userId}/${to.params.id}`)
+      const member = await response.json();
+      if (member.status !== 'APPROVED') {
+        ElMessage.warning('仅社团成员可访问该页面')
+        return next('/')
+      }
+    } catch (error) {
+      console.error('成员状态验证失败:', error)
+      ElMessage.error('权限验证失败，请稍后重试')
+      return next('/')
+    }
+  }
+
   // 社长权限验证
   if (to.meta.requiresPresident) {
     try {

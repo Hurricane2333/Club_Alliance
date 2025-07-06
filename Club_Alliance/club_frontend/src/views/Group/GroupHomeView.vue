@@ -25,6 +25,11 @@
 
     <aside class="side-bar">
       <GroupSidebar />
+      <div style="margin-top: 20px">
+        <el-button @click="router.push(`/group/${club.clubId}/postCreate`)" type="primary" style="width: 100%">
+          发表帖子
+        </el-button>
+      </div>
     </aside>
   </div>
 </template>
@@ -37,6 +42,7 @@ import { reactive } from 'vue';
 import { useRoute } from 'vue-router';
 import { useUserStore } from "@/stores/user.js";
 import request from "@/utils/request.js";
+import router from "@/router/index.js";
 
 const route = useRoute();
 const currentUserId = useUserStore().user.userId;

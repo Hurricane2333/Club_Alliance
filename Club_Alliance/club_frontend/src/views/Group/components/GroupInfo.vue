@@ -7,7 +7,8 @@
       </div>
       <div style="width: 500px; height: 200px; margin: 0 max(50px,10%) 0 15px">
         <div style="display: flex">
-          <el-text truncated style="font-size: 40px; font-weight: 600; color: black; margin-top: 25px">
+          <el-text truncated
+                   style="font-size: 40px; font-weight: 600; color: black; margin-top: 25px">
             {{ club.clubName }}
           </el-text>
           <!-- 只有未加入时显示按钮 -->
@@ -19,6 +20,7 @@
           >
             申请加入
           </el-button>
+
           <el-button
             v-else
             type="success"
@@ -27,32 +29,43 @@
           >
             社团主页
           </el-button>
+          <el-button
+            type="warning"
+            style="font-size: 20px; margin: 40px 0 0 20px"
+            @click="handleFavorite"
+          >
+            {{ isFavorited ? '已收藏' : '添加收藏' }}
+          </el-button>
           <el-dialog v-model="dialogVisible" title="申请加入社团" width="400px">
             <el-form label-width="120px">
               <el-form-item label="申请理由">
-                <el-input type="textarea" v-model="applyReason" placeholder="请输入申请理由" />
+                <el-input type="textarea" v-model="applyReason" placeholder="请输入申请理由"/>
               </el-form-item>
             </el-form>
             <template #footer>
               <el-button @click="dialogVisible = false">取消</el-button>
-              <el-button type="primary" @click="submitApplication" :loading="loading">提交申请</el-button>
+              <el-button type="primary" @click="submitApplication" :loading="loading">提交申请
+              </el-button>
             </template>
           </el-dialog>
         </div>
         <div style="margin-top: 40px">
-          <el-text truncated style="font-size: 20px; font-weight: 500; width: min(100px,20%); margin-left:10px; margin-right: 20px">
+          <el-text truncated
+                   style="font-size: 20px; font-weight: 500; width: min(100px,20%); margin-left:10px; margin-right: 20px">
             <el-icon color="#006bb5">
               <Avatar/>
             </el-icon>
             {{ presidentName }}
           </el-text>
-          <el-text truncated style="font-size: 20px; font-weight: 500; width: min(100px,20%); margin-left:10px">
+          <el-text truncated
+                   style="font-size: 20px; font-weight: 500; width: min(100px,20%); margin-left:10px">
             <el-icon color="#4eb3f4">
               <UserFilled/>
             </el-icon>
             {{ club.currentMembers }}
           </el-text>
-          <el-text truncated style="font-size: 20px; font-weight: 500; width: min(100px,20%); margin-left:10px">
+          <el-text truncated
+                   style="font-size: 20px; font-weight: 500; width: min(100px,20%); margin-left:10px">
             <el-icon color="#edda05">
               <star-filled/>
             </el-icon>
@@ -76,9 +89,9 @@ import {reactive} from "vue";
 import {useRoute} from "vue-router";
 import {Avatar, StarFilled, UserFilled} from "@element-plus/icons-vue";
 import request from "@/utils/request.js";
-import { ref } from "vue";
-import { useUserStore } from "@/stores/user";
-import { ElMessage } from "element-plus";
+import {ref} from "vue";
+import {useUserStore} from "@/stores/user";
+import {ElMessage} from "element-plus";
 import router from "@/router/index.js";
 import {getUserName} from "../../../utils/userCache.js";
 
@@ -89,6 +102,8 @@ const loading = ref(false);
 
 const userStore = useUserStore();
 const route = useRoute();
+
+const isFavorited = ref(false);
 
 const group = reactive({
   id: route.params.id,
@@ -129,7 +144,7 @@ const submitApplication = async () => {
     ElMessage.success("申请已提交，等待审核");
     dialogVisible.value = false;
     applyReason.value = '';
-  } catch  {
+  } catch {
     ElMessage.error("提交失败，请重试");
   } finally {
     loading.value = false;
@@ -148,6 +163,39 @@ request.get('/group/selectId/' + group.id).then(res => {
         hasJoined.value = res && res.joined; // 后端返回 { joined: true/false }
       });
   }
+});
+
+const handleFavorite = async () => {
+  if (!userStore.user?.userId) {
+    ElMessage.warning('请先登录');
+    return;
+  }
+
+  try {
+    const res = await request.post('/favorite/add', null, {
+      params: {
+        userId: userStore.user.userId,
+        clubId: club.clubId
+      }
+    });
+
+    if (res.code === 'success') {
+      ElMessage.success(res.msg);
+      isFavorited.value = true;
+      club.favoriteCount += 1;
+    } else {
+      ElMessage.warning(res.msg);
+    }
+  } catch {
+    ElMessage.error('操作失败');
+  }
+};
+
+// 初始化时检查收藏状态
+request.get('/favorite/list', {
+  params: {userId: userStore.user?.userId}
+}).then(res => {
+  isFavorited.value = res.data?.some(c => c.clubId === club.clubId);
 });
 
 </script>

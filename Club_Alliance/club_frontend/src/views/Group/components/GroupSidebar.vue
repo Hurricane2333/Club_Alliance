@@ -14,7 +14,13 @@
 
     <div class="notice-box">
       <h3 class="blue-title">📌 当前活动</h3>
-      <el-table :data="activities" stripe class="activity-table" height="200">
+      <el-table
+        :data="activities"
+        stripe
+        class="activity-table"
+        height="200"
+        @row-click="handleRowClick"
+      >
         <el-table-column show-overflow-tooltip prop="title" label="活动标题" width="90"/>
         <el-table-column show-overflow-tooltip prop="location" label="活动地点"/>
         <el-table-column show-overflow-tooltip prop="currentParticipants" label="参与人数" width="90"/>
@@ -50,6 +56,7 @@ request.get(`/group/selectId/${route.params.id}`).then(res => {
 request.get(`/group/activity/selectClubId/${route.params.id}`).then(res => {
   console.log('活动接口原始数据:', res);
   activities.splice(0, activities.length, ...res.map(item => ({
+    activityId: item.activityId,
     title: item.title,
     location: item.location,
     currentParticipants: item.currentParticipants,
@@ -58,6 +65,13 @@ request.get(`/group/activity/selectClubId/${route.params.id}`).then(res => {
   })).filter(item => item.status === 'ACTIVE').sort((a,b) => new Date(a.endTime) - new Date(b.endTime)));
   console.log('处理后的活动数据:', activities);
 });
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const handleRowClick = (row) => {
+  router.push(`/activity/${row.activityId}`);
+};
 </script>
 
 <style scoped>
@@ -108,6 +122,10 @@ request.get(`/group/activity/selectClubId/${route.params.id}`).then(res => {
 
   :deep(th.el-table__cell) {
     background-color: #f8f9fa;
+  }
+  :deep(.el-table__row:hover) {
+    cursor: pointer;
+    background-color: #f5f7fa;
   }
 }
 </style>

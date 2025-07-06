@@ -16,5 +16,6 @@ public interface GroupMemberService {
     int deleteGroupMemberById(Integer relationId);
     int updateGroupMemberById(GroupMember groupMember);
     List<GroupMember> queryGroupMemberByClubIdAndStatus(Integer clubId, ClubMemberStatus status);
+    GroupMember queryGroupMemberStatusByUserIdAndClubId(Integer userId, Integer clubId);
 
 }

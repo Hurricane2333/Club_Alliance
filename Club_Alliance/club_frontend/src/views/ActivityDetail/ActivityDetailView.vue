@@ -3,7 +3,15 @@
     <NavBar />
     <el-divider />
     <div class="main-content">
-      <div class="activity-content-card bg-white rounded-xl shadow-card p-8 mx-auto" style="max-width: 2000px;">
+      <div class="content-card">
+        <el-button
+          type="primary"
+          @click="router.go(-1)"
+          class="mb-4"
+          :icon="ArrowLeft"
+        >返回</el-button>
+        <h1 class="title">活动详情</h1>
+        <el-divider />
 
         <ActivityContent/>
       </div>
@@ -14,6 +22,9 @@
 <script setup>
 import ActivityContent from './component/ActivityContent.vue'
 import NavBar from '../Home/component/NavBar.vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 </script>
 
 <style scoped>
@@ -31,12 +42,19 @@ import NavBar from '../Home/component/NavBar.vue'
   flex-direction: column;
 }
 .main-content {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* 或 center，如果你想垂直居中 */
-  max-width: 1300px;      /* 设置最大宽度 */
-  width: 100%;           /* 宽度自适应 */
+  padding: 32px;
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.content-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  padding: 32px;
+  margin-bottom: 24px;
+  width: 600px;
   margin: 0 auto;
 }
 </style>

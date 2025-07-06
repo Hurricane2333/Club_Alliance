@@ -12,10 +12,10 @@
         <h3 class="text-xl font-bold text-dark">{{ event.title }}</h3>
         <h3 class="text-xl font-bold text-dark">{{ event.clubName }}</h3>
       </div>
-      <div class="text-gray-500 text-xs">发布于 {{ event.createdAt ? event.createdAt.replace('T', ' ').slice(0, 16) : '' }}</div>
+      <div class="text-gray-500 text-xs">发布于 {{ formatTime(event.createdAt) }}</div>
       <div class="text-sm mt-1">
-        {{ event.startTime ? event.startTime.replace('T', ' ').slice(0, 16) : '' }}
-        <span v-if="event.endTime"> ~ {{ event.endTime.replace('T', ' ').slice(0, 16) }}</span>
+        {{ formatTime(event.startTime) }}
+        <span v-if="event.endTime"> ~ {{ formatTime(event.endTime) }}</span>
       </div>
       <div class="flex items-center text-sm text-gray-500 mb-4">
         <div class="flex items-center">
@@ -41,6 +41,18 @@
 <script setup>
 import { Location } from '@element-plus/icons-vue'
 import { useRouter } from 'vue-router'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
+
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
+
+const formatTime = (timeString) => {
+  if (!timeString) return ''
+  return dayjs.utc(timeString).tz(dayjs.tz.guess()).format('YYYY-MM-DD HH:mm')
+}
 
 const router = useRouter()
 

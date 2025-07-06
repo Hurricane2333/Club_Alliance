@@ -51,7 +51,7 @@
           :on-success="handleAvatarSuccess"
         >
           <img v-if="clubData.icon" :src="clubData.icon" class="avatar" />
-          <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
+          <el-icon v-else class="avatar-uploader-icon" style="background-color: #eaeaea"><Plus /></el-icon>
         </el-upload>
       </el-form-item>
 
@@ -70,6 +70,7 @@ import {ElMessage, ElMessageBox} from 'element-plus'
 import request from '@/utils/request.js'
 import {useRoute} from "vue-router";
 import { ref } from 'vue'
+import {Plus} from "@element-plus/icons-vue";
 
 const route = useRoute()
 

@@ -36,4 +36,7 @@ public interface GroupMemberMapper {
     @Select("select * from club_member where club_id = #{clubId} and status = #{status}")
     List<GroupMember> queryGroupMemberByClubIdAndStatus(Integer clubId, ClubMemberStatus status);
 
+    @Select("select status from club_member where user_id = #{userId} and club_id = #{clubId}")
+    GroupMember queryGroupMemberStatusByUserIdAndClubId(Integer userId, Integer clubId);
+
 }

@@ -60,4 +60,9 @@ public class GroupMemberController {
         return groupMemberService.queryGroupMemberByClubIdAndStatus(clubId, status);
     }
 
+    @GetMapping("selectMemberStatus/{userId}/{clubId}")
+    private GroupMember queryGroupMemberStatusByUserIdAndClubId(@PathVariable("userId") Integer userId, @PathVariable("clubId") Integer clubId) {
+        return groupMemberService.queryGroupMemberStatusByUserIdAndClubId(userId, clubId);
+    }
+
 }

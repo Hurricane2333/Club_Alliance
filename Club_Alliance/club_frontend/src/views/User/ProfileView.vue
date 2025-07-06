@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <NavBar />
+    <NavBar/>
 
     <div class="main-container">
       <el-alert
@@ -20,12 +20,12 @@
           :isSelf="isSelf"
           @edit-profile="openEditProfile"
         />
-        <UserProfile v-if="userInfo.stuId" :userInfo="userInfo" />
+        <UserProfile v-if="userInfo.stuId" :userInfo="userInfo"/>
       </template>
 
       <el-container class="content-container">
         <el-aside width="300px" class="sidebar">
-          <JoinedClubs :joinedClubs="joinedClubs" />
+          <JoinedClubs :joinedClubs="joinedClubs"/>
           <el-card class="box-card" style="margin-top: 20px;" v-if="favoriteClubs.length > 0">
             <template #header>
               <div class="clearfix">
@@ -35,17 +35,17 @@
             <div v-for="club in favoriteClubs" :key="club.clubId">
               <p><strong>社团名称:</strong> {{ club.clubName }}</p>
               <p><strong>社团介绍:</strong> {{ club.description }}</p>
-              <el-divider />
+              <el-divider/>
             </div>
           </el-card>
         </el-aside>
 
         <el-main class="main-content">
           <div class="activity-list">
-           <h3>参与的活动</h3>
-           <div v-if="joinedActivitiesLoading" class="loading-spinner">
-             <el-spinner size="large"></el-spinner>
-           </div>
+            <h3>参与的活动</h3>
+            <div v-if="joinedActivitiesLoading" class="loading-spinner">
+              <el-spinner size="large"></el-spinner>
+            </div>
             <div v-else-if="joinedActivities.length > 0">
               <ActivityItem
                 v-for="activity in joinedActivities"
@@ -53,7 +53,10 @@
                 :activity="activity"
               />
             </div>
-            <el-empty v-else description="暂无参与的活动" />
+            <el-empty v-else description="暂无参与的活动"/>
+          </div>
+          <div class="map-container">
+            <MapView :activities="joinedActivities"/>
           </div>
         </el-main>
       </el-container>
@@ -68,16 +71,16 @@
     >
       <el-form :model="editForm" label-width="80px">
         <el-form-item label="姓名">
-          <el-input v-model="editForm.stuName" />
+          <el-input v-model="editForm.stuName"/>
         </el-form-item>
         <el-form-item label="学号">
-          <el-input v-model="editForm.stuId" disabled />
+          <el-input v-model="editForm.stuId" disabled/>
         </el-form-item>
         <el-form-item label="邮箱">
-          <el-input v-model="editForm.email" />
+          <el-input v-model="editForm.email"/>
         </el-form-item>
         <el-form-item label="新密码">
-          <el-input v-model="editForm.password" type="password" show-password />
+          <el-input v-model="editForm.password" type="password" show-password/>
         </el-form-item>
       </el-form>
 
@@ -92,19 +95,21 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
-import { useRoute } from 'vue-router';
+import {ref, onMounted, computed} from 'vue';
+import {useRoute} from 'vue-router';
 import axios from 'axios';
-import { ArrowDown } from '@element-plus/icons-vue';
+import {ArrowDown} from '@element-plus/icons-vue';
 import NavBar from '../Home/component/NavBar.vue';
 import UserBanner from './component/UserBanner.vue';
 import UserProfile from './component/UserProfile.vue';
 import JoinedClubs from './component/JoinedClubs.vue';
 import RecommendedClubs from './component/RecommendedClubs.vue';
-import { useUserStore } from '@/stores/user';
+import {useUserStore} from '@/stores/user';
 import request from '@/utils/request';
 import ActivityItem from './component/ActivityItem.vue';
-import { ElMessage } from 'element-plus';
+import MapView from './component/ProfileMapView.vue';
+import {ElMessage} from 'element-plus';
+
 const navbarShadow = ref('shadow-sm');
 const mobileMenuOpen = ref(false);
 const userStore = useUserStore();
@@ -123,7 +128,7 @@ const fetchJoinedActivities = async () => {
     joinedActivitiesLoading.value = true;
     const userId = userStore.user?.userId;
     const response = await request.get('/api/activity_participant/list', {
-      params: { userId }
+      params: {userId}
     });
 
     if (response.code === 'success') {
@@ -139,22 +144,6 @@ const fetchJoinedActivities = async () => {
     joinedActivitiesLoading.value = false;
   }
 };
-
-
-// 导航栏滚动效果
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
-});
-
-const handleScroll = () => {
-  navbarShadow.value = window.scrollY > 10 ? 'shadow-md' : 'shadow-sm';
-};
-
-// 移动端菜单切换
-const toggleMobileMenu = () => {
-  mobileMenuOpen.value = !mobileMenuOpen.value;
-};
-
 
 
 // 编辑资料相关
@@ -283,8 +272,6 @@ const recommendedClubs = ref([
 ]);
 
 
-
-
 </script>
 
 <style scoped>
@@ -311,6 +298,12 @@ const recommendedClubs = ref([
 
 .sidebar {
   width: 300px !important;
+}
+
+.map-container {
+  width: 600px;
+  height: 600px;
+  margin-top: 20px;
 }
 
 .main-content {
@@ -340,5 +333,9 @@ const recommendedClubs = ref([
   .sidebar {
     width: 100% !important;
   }
+}
+
+.map-container {
+  margin-top: 20px;
 }
 </style>

@@ -22,7 +22,7 @@
         <p class="activity-desc">{{ activity.content }}</p>
 
         <div class="action-bar">
-          <button class="signup-button">
+          <button class="signup-button" @click="router.push(`/activity/${activity.activityId}`)">
             查看详情
           </button>
           <span class="participants">
@@ -38,6 +38,7 @@
 import request from "@/utils/request.js";
 import {ref} from "vue";
 import {useRoute} from "vue-router";
+import router from "@/router/index.js";
 
 const route = useRoute();
 

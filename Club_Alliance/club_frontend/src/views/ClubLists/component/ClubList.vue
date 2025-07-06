@@ -1,15 +1,30 @@
 <template>
   <div>
     <div class="tabs-center">
-    <el-tabs v-model="selectedCategory" @tab-click="filterClubs">
-      <el-tab-pane label="全部" name="ALL" />
-      <el-tab-pane
-        v-for="(label, key) in categories"
-        :key="key"
-        :label="label"
-        :name="key"
-      />
-    </el-tabs>
+      <el-tabs v-model="selectedCategory" @tab-click="filterClubs">
+        <el-tab-pane label="全部" name="ALL"/>
+        <el-tab-pane
+          v-for="(label, key) in categories"
+          :key="key"
+          :label="label"
+          :name="key"
+        />
+      </el-tabs>
+      <div class="search-box">
+        <el-input
+          v-model="searchQuery"
+          placeholder="输入社团名称搜索"
+          clearable
+          @input="filterClubs"
+          class="w-64"
+        >
+          <template #prefix>
+            <el-icon>
+              <Search/>
+            </el-icon>
+          </template>
+        </el-input>
+      </div>
     </div>
     <div class="club-list">
       <div class="scroll-container">
@@ -25,11 +40,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
-import { getAllClubs } from '@/api/clublists'
+import {ref, onMounted, computed} from 'vue'
+import {getAllClubs} from '@/api/clublists'
 import ClubCard from './ClubCard.vue'
-import { ElMessage } from 'element-plus'
-
+import {ElMessage} from 'element-plus'
+import {Search} from '@element-plus/icons-vue'
 
 const categories = {
   'ACADEMIC': '学术',
@@ -45,17 +60,21 @@ const categories = {
 
 const clubs = ref([])
 const selectedCategory = ref('ALL')
+const searchQuery = ref('')
 
 const filteredClubs = computed(() => {
-  if (selectedCategory.value === 'ALL') return clubs.value
-  return clubs.value.filter(club => club.category === selectedCategory.value)
+  return clubs.value.filter(club => {
+    const matchCategory = selectedCategory.value === 'ALL' || club.category === selectedCategory.value
+    const matchSearch = club.clubName.includes(searchQuery.value)
+    return matchCategory && matchSearch
+  })
 })
 
 onMounted(() => {
   fetchAllClubs()
 })
 
- const fetchAllClubs = async () => {
+const fetchAllClubs = async () => {
   try {
     const data = await getAllClubs()
     clubs.value = data.map(club => ({
@@ -98,7 +117,6 @@ const getFallbackClubs = () => [
 ]
 
 
-
 </script>
 
 <style scoped>
@@ -108,6 +126,7 @@ const getFallbackClubs = () => [
   justify-content: center; /* 水平居中 */
   padding-bottom: 20px;
 }
+
 .scroll-container {
   display: flex;
   flex-wrap: wrap;
@@ -117,15 +136,23 @@ const getFallbackClubs = () => [
   width: 100%;
   max-width: 1200px; /* 可选，限制最大宽度 */
 }
+
 .club-item {
   flex: 0 0 300px;
 }
+
 .tabs-center {
   display: flex;
-  justify-content: center;
-  margin-bottom:30px;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
+
 .tabs-center :deep(.el-tabs__item) {
   font-size: 18px;
+}
+
+.search-box {
+  margin-top: 10px;
 }
 </style>

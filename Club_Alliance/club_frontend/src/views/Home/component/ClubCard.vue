@@ -1,5 +1,6 @@
 <template>
-  <div class="club-card bg-white rounded-xl shadow-card overflow-hidden hover:shadow-hover transition-custom group">
+  <div
+    class="club-card bg-white rounded-xl shadow-card overflow-hidden hover:shadow-hover transition-custom group">
     <!-- 图片区域 -->
     <div class="relative h-48 overflow-hidden">
       <el-image
@@ -29,20 +30,25 @@
           {{ mapCategory(club.category) }}
         </span>
       </div>
-
-      <!-- 描述 -->
-      <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-        {{ club.description || '这个社团还没有添加描述...' }}
-      </p>
-
+      <div class="w-full">
+        <p class="text-gray-600 text-sm mb-4">
+          {{
+            club.description ? club.description.slice(0, 12) + (club.description.length > 12 ? '...' : '') : '这个社团还没有添加描述...'
+          }}
+        </p>
+      </div>
       <!-- 负责人和成员信息 -->
       <div class="flex items-center text-sm text-gray-500 mb-4">
         <div class="flex items-center mr-4">
-          <el-icon class="text-gray-400 mr-1"><User /></el-icon>
+          <el-icon class="text-gray-400 mr-1">
+            <User/>
+          </el-icon>
           <span>{{ club.presidentName || '待获取' }}</span>
         </div>
         <div class="flex items-center">
-          <el-icon class="text-gray-400 mr-1"><UserFilled /></el-icon>
+          <el-icon class="text-gray-400 mr-1">
+            <UserFilled/>
+          </el-icon>
           <span>{{ club.currentMembers || 0 }} 成员</span>
         </div>
       </div>
@@ -51,11 +57,15 @@
       <div class="flex items-center justify-between">
         <div class="flex items-center">
           <el-button text circle class="text-gray-400 hover:text-primary transition-custom">
-            <el-icon><Star /></el-icon>
+            <el-icon>
+              <Star/>
+            </el-icon>
             <span class="ml-1 text-xs">{{ club.favoriteCount || 0 }}</span>
           </el-button>
           <el-button text circle class="text-gray-400 hover:text-primary transition-custom ml-2">
-            <el-icon><Collection /></el-icon>
+            <el-icon>
+              <Collection/>
+            </el-icon>
           </el-button>
         </div>
         <el-button
@@ -72,8 +82,9 @@
 </template>
 
 <script setup>
-import { User, UserFilled, Star, Collection } from '@element-plus/icons-vue'
-import { useRouter } from 'vue-router'
+import {User, UserFilled, Star, Collection} from '@element-plus/icons-vue'
+import {useRouter} from 'vue-router'
+
 const router = useRouter()
 
 defineProps({
