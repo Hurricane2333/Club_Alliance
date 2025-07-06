@@ -12,7 +12,16 @@ public class ClubActivityService {
     @Autowired
     private ClubActivityMapper clubActivityMapper;
 
-    public List<ClubActivity> getRecentActivities(int limit) {
-        return clubActivityMapper.selectRecentActivities(limit);
+    public List<ClubActivity> getRecentActivities() {
+        List<ClubActivity> clubActivities=clubActivityMapper.selectRecentActivities(2);
+        return clubActivities;
+    }
+    public List<ClubActivity> getAllActivities() {
+        List<ClubActivity> AllclubActivities = clubActivityMapper.selectRecentActivities(100);
+        return AllclubActivities;
+    }
+
+    public ClubActivity getActivityDetailById(Integer id) {
+        return clubActivityMapper.selectActivityDetailById(id);
     }
 }

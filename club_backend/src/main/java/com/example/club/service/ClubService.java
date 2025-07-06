@@ -14,28 +14,21 @@ public class ClubService {
     @Autowired
     private  ClubMapper clubMapper;
 
-
-    /*public ClubService(ClubMapper clubMapper) {
+    public ClubService(ClubMapper clubMapper) {
         this.clubMapper = clubMapper;
-    }*/
-
+    }
+    
 
     public List<Club> getHomeRecommendedClubs() {
         List<Club> clubs = clubMapper.selectRecommendedClubs(2, ClubStatus.APPROVED);
         return clubs;
     }
 
-    public Club getClubById(Integer clubId) {
-        return clubMapper.selectClubById(clubId);
+    public List<Club> getAllApprovedClubs(ClubStatus approved) {
+        return clubMapper.selectAllApprovedClubs(ClubStatus.APPROVED);
     }
 
-    // 新增方法：增加社团收藏数
-    /*public boolean increaseFavoriteCount(Integer clubId) {
-        try {
-            int affectedRows = clubMapper.increaseFavoriteCount(clubId);
-            return affectedRows > 0;
-        } catch (Exception e) {
-            throw new RuntimeException("更新收藏数失败", e);
-        }
-    }*/
+    public Club selectById(int id) {
+        return clubMapper.selectById(id);
+    }
 }

@@ -6,8 +6,8 @@ spring:
     name: "Club_Alliance"
   datasource:
     driver-class-name: "com.mysql.cj.jdbc.Driver"
-    username: root
-    password: hzs07280104
+    username: "root"
+    password: "hzs07280104"
     url: "jdbc:mysql://localhost:3306/club_alliance?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT"
 
 mybatis:

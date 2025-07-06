@@ -1,12 +1,17 @@
 package com.example.club.controller;
 
+import com.example.club.entity.ClubMember;
 import com.example.club.entity.GroupInfo;
 import com.example.club.enums.ClubCategory;
+import com.example.club.enums.ClubMemberStatus;
+import com.example.club.mapper.ApplyMapper;
 import com.example.club.service.GroupInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("group")
@@ -14,6 +19,9 @@ public class GroupInfoController {
 
     @Autowired
     private GroupInfoService groupInfoService;
+
+    @Autowired
+    private ApplyMapper applyMapper;
 
     @GetMapping("selectAll")
     public List<GroupInfo> queryAllGroupInfo(){
@@ -49,5 +57,15 @@ public class GroupInfoController {
     public int updateGroupInfoById(@RequestBody GroupInfo groupInfo){
         return groupInfoService.updateGroupInfoById(groupInfo);
     }
+   
 
+    //检查用户是否已加入社团--hzs
+    @GetMapping("/check")
+    public Map<String, Object> checkJoined(@RequestParam Integer userId, @RequestParam Integer clubId) {
+    Map<String, Object> result = new HashMap<>();
+    ClubMember member = applyMapper.selectByUserIdAndClubId(userId, clubId);
+    result.put("joined", member != null && member.getStatus() == ClubMemberStatus.APPROVED);
+    return result;
+    }
 }
+
