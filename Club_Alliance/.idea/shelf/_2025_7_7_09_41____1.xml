@@ -1,0 +1,219 @@
+<changelist name="在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1" date="1751852488782" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/shelved.patch" />
+  <option name="DESCRIPTION" value="在进行签出之前于 2025/7/7 09:41 取消提交了更改 [更改]" />
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/service/ApplyService.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/service/ApplyService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ApplyService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/mapper/GroupPostMapper.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/mapper/GroupPostMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/GroupPostMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/entity/Result$ResultBuilder.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/entity/Result$ResultBuilder.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/Result$ResultBuilder.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/entity/FavoriteClub.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/entity/FavoriteClub.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/FavoriteClub.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/service/GroupPostService.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/service/GroupPostService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/GroupPostService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/entity/ClubMember.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/entity/ClubMember.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ClubMember.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/enums/ClubPostStatus.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/enums/ClubPostStatus.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ClubPostStatus.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/mapper/FavoriteClubMapper.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/mapper/FavoriteClubMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/FavoriteClubMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/enums/ClubCategory.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/enums/ClubCategory.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ClubCategory.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/service/GroupInfoServiceImpl.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/service/GroupInfoServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/GroupInfoServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/config/CorsConfig.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/config/CorsConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/CorsConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/entity/Result.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/entity/Result.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/Result.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/enums/ClubMemberStatus.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/enums/ClubMemberStatus.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ClubMemberStatus.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/config/WebConfig.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/config/WebConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/WebConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/controller/ActivityListsController.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/controller/ActivityListsController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ActivityListsController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/entity/User.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/entity/User.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/User.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/entity/ClubActivity.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/entity/ClubActivity.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ClubActivity.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/entity/GroupInfo.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/entity/GroupInfo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/GroupInfo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/service/impl/UserServiceImpl.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/service/impl/UserServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/UserServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/enums/ClubActivityStatus.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/enums/ClubActivityStatus.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ClubActivityStatus.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/controller/HomeController.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/controller/HomeController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/HomeController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/enums/ClubPostVisibility.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/enums/ClubPostVisibility.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ClubPostVisibility.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/service/GroupPostServiceImpl.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/service/GroupPostServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/GroupPostServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/service/FavoriteClubService.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/service/FavoriteClubService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/FavoriteClubService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/service/ClubActivityService.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/service/ClubActivityService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ClubActivityService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/service/UserService.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/service/UserService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/UserService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/mapper/ClubActivityMapper.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/mapper/ClubActivityMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ClubActivityMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/mapper/ClubMapper.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/mapper/ClubMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ClubMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/controller/FavoriteClubController.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/controller/FavoriteClubController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/FavoriteClubController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/controller/UserController.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/controller/UserController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/UserController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/mapper/UserMapper.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/mapper/UserMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/UserMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/service/GroupInfoService.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/service/GroupInfoService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/GroupInfoService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/controller/GroupInfoController.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/controller/GroupInfoController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/GroupInfoController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/mapper/ApplyMapper.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/mapper/ApplyMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ApplyMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/entity/Club.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/entity/Club.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/Club.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/controller/ClubListsController.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/controller/ClubListsController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ClubListsController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/controller/GroupPostController.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/controller/GroupPostController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/GroupPostController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/entity/GroupPost.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/entity/GroupPost.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/GroupPost.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/controller/ApplyController.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/controller/ApplyController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ApplyController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/service/ClubService.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/service/ClubService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ClubService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/ClubBackendApplication.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/ClubBackendApplication.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ClubBackendApplication.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/mapper/GroupInfoMapper.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/mapper/GroupInfoMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/GroupInfoMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="club_backend/target/classes/com/example/club/enums/ClubStatus.class" />
+    <option name="AFTER_PATH" value="club_backend/target/classes/com/example/club/enums/ClubStatus.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行签出之前于_2025_7_7_09_41_取消提交了更改_[更改]1/ClubStatus.class" />
+  </binary>
+</changelist>

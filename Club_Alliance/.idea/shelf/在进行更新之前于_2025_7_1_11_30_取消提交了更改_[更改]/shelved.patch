@@ -1,0 +1,143 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"fead4fb8-60e2-48a2-bf7b-dc588f5bf3d3\" name=\"更改\" comment=\"add gitignore\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/controller/AdminController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/controller/AdminController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/entity/ClubResponse.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/entity/ClubResponse.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubServiceImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubServiceImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/club_frontend/src/views/Admin/ClubInfo.vue\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/club_frontend/src/views/Admin/ClubInfo.vue\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JavaScript File\" />\r\n        <option value=\"Interface\" />\r\n        <option value=\"Vue Composition API Component\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$/..\" value=\"admin\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Iron-Guest&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/Hurricane2333/Club_Alliance.git&quot;,\r\n    &quot;accountId&quot;: &quot;34588a00-25f5-4871-89b0-5df87eaec60e&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 7\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2z1jbn0y03lbpa4Vzrjzqnkc5yq\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;JavaScript 调试.admin.html.executor&quot;: &quot;Run&quot;,\r\n    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,\r\n    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,\r\n    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,\r\n    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,\r\n    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;Spring Boot.AdminApplication.executor&quot;: &quot;Run&quot;,\r\n    &quot;Spring Boot.ClubBackendApplication.executor&quot;: &quot;Run&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;admin&quot;,\r\n    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;E:/Codes/Club_Manager/Club_Alliance&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;npm.run.executor&quot;: &quot;Run&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,\r\n    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,\r\n    &quot;ts.external.directory.path&quot;: &quot;C:\\\\Program Files\\\\JetBrains\\\\IntelliJ IDEA 2025.1.2\\\\plugins\\\\javascript-plugin\\\\jsLanguageServicesImpl\\\\external&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  },\r\n  &quot;keyToStringList&quot;: {\r\n    &quot;vue.recent.templates&quot;: [\r\n      &quot;Vue Composition API Component&quot;\r\n    ]\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"E:\\Codes\\Club_Manager\\Club_Alliance\\club_backend\\src\\main\\resources\\mapper\" />\r\n      <recent name=\"E:\\Codes\\Club_Manager\\Club_Alliance\\club_backend\\src\\main\\resources\" />\r\n      <recent name=\"E:\\Codes\\Club_Manager\\Club_Alliance\\club_frontend\\src\\views\\Admin\" />\r\n      <recent name=\"E:\\Codes\\Club_Manager\\Club_Alliance\\club_frontend\" />\r\n    </key>\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"com.example.club\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Spring Boot.AdminApplication\">\r\n    <configuration name=\"AdminApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <option name=\"ALTERNATIVE_JRE_PATH\" value=\"ms-21\" />\r\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"true\" />\r\n      <module name=\"club\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.admin.club.AdminApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"run\" type=\"js.build_tools.npm\" nameIsGenerated=\"true\">\r\n      <package-json value=\"$PROJECT_DIR$/club_frontend/package.json\" />\r\n      <command value=\"run\" />\r\n      <scripts>\r\n        <script value=\"dev\" />\r\n      </scripts>\r\n      <node-interpreter value=\"project\" />\r\n      <envs />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"npm.run\" />\r\n      <item itemvalue=\"Spring Boot.AdminApplication\" />\r\n    </list>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-IU-251.26094.121\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"StructureViewState\">\r\n    <option name=\"selectedTab\" value=\"逻辑\" />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"默认任务\">\r\n      <changelist id=\"fead4fb8-60e2-48a2-bf7b-dc588f5bf3d3\" name=\"更改\" comment=\"\" />\r\n      <created>1750905547448</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1750905547448</updated>\r\n      <workItem from=\"1750905548630\" duration=\"4869000\" />\r\n      <workItem from=\"1750918413470\" duration=\"11199000\" />\r\n      <workItem from=\"1750986233640\" duration=\"10479000\" />\r\n      <workItem from=\"1751004539289\" duration=\"6934000\" />\r\n      <workItem from=\"1751011561146\" duration=\"4505000\" />\r\n      <workItem from=\"1751072175343\" duration=\"10911000\" />\r\n      <workItem from=\"1751090676189\" duration=\"4822000\" />\r\n      <workItem from=\"1751095530714\" duration=\"6918000\" />\r\n      <workItem from=\"1751117352356\" duration=\"30000\" />\r\n      <workItem from=\"1751244983419\" duration=\"9958000\" />\r\n      <workItem from=\"1751255739706\" duration=\"5000\" />\r\n      <workItem from=\"1751263783824\" duration=\"1121000\" />\r\n      <workItem from=\"1751264947724\" duration=\"279000\" />\r\n      <workItem from=\"1751265237979\" duration=\"552000\" />\r\n      <workItem from=\"1751265858146\" duration=\"587000\" />\r\n      <workItem from=\"1751266462123\" duration=\"7933000\" />\r\n      <workItem from=\"1751331221932\" duration=\"8909000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"1\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1751265577158</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1751265577158</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Upload AdminView\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1751273854127</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1751273854127</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"add gitignore\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1751336718551</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1751336718551</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"main\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"1\" />\r\n    <MESSAGE value=\"Upload AdminView\" />\r\n    <MESSAGE value=\"add gitignore\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"add gitignore\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 2bf93bd6a52037c28bda5322756e3163d87a2245)
++++ b/.idea/workspace.xml	(date 1751340557721)
+@@ -4,13 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="fead4fb8-60e2-48a2-bf7b-dc588f5bf3d3" name="更改" comment="add gitignore">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/controller/AdminController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/entity/ClubResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/entity/ClubResponse.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/club_backend/src/main/java/com/admin/club/service/AdminClubServiceImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/club_frontend/src/views/Admin/ClubInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/club_frontend/src/views/Admin/ClubInfo.vue" afterDir="false" />
+-    </list>
++    <list default="true" id="fead4fb8-60e2-48a2-bf7b-dc588f5bf3d3" name="更改" comment="Updated" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -60,45 +54,45 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;JavaScript 调试.admin.html.executor&quot;: &quot;Run&quot;,
+-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;Spring Boot.AdminApplication.executor&quot;: &quot;Run&quot;,
+-    &quot;Spring Boot.ClubBackendApplication.executor&quot;: &quot;Run&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;admin&quot;,
+-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;E:/Codes/Club_Manager/Club_Alliance&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;npm.run.executor&quot;: &quot;Run&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
+-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2025.1.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "JavaScript 调试.admin.html.executor": "Run",
++    "ModuleVcsDetector.initialDetectionPerformed": "true",
++    "RequestMappingsPanelOrder0": "0",
++    "RequestMappingsPanelOrder1": "1",
++    "RequestMappingsPanelWidth0": "75",
++    "RequestMappingsPanelWidth1": "75",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
++    "RunOnceActivity.git.unshallow": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "Spring Boot.AdminApplication.executor": "Run",
++    "Spring Boot.ClubBackendApplication.executor": "Run",
++    "git-widget-placeholder": "admin",
++    "junie.onboarding.icon.badge.shown": "true",
++    "last_opened_file_path": "E:/Codes/Club_Manager/Club_Alliance",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.standard": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.standard": "",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "npm.run.executor": "Run",
++    "project.structure.last.edited": "项目",
++    "project.structure.proportion": "0.0",
++    "project.structure.side.proportion": "0.2",
++    "run.code.analysis.last.selected.profile": "pProject Default",
++    "settings.editor.selected.configurable": "preferences.pluginManager",
++    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2025.1.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
++    "vue.rearranger.settings.migration": "true"
+   },
+-  &quot;keyToStringList&quot;: {
+-    &quot;vue.recent.templates&quot;: [
+-      &quot;Vue Composition API Component&quot;
++  "keyToStringList": {
++    "vue.recent.templates": [
++      "Vue Composition API Component"
+     ]
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="E:\Codes\Club_Manager\Club_Alliance\club_backend\src\main\resources\mapper" />
+@@ -169,7 +163,7 @@
+       <workItem from="1751265237979" duration="552000" />
+       <workItem from="1751265858146" duration="587000" />
+       <workItem from="1751266462123" duration="7933000" />
+-      <workItem from="1751331221932" duration="8909000" />
++      <workItem from="1751331221932" duration="9223000" />
+     </task>
+     <task id="LOCAL-00001" summary="1">
+       <option name="closed" value="true" />
+@@ -195,7 +189,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1751336718551</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <task id="LOCAL-00004" summary="Updated">
++      <option name="closed" value="true" />
++      <created>1751340548094</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1751340548094</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -228,7 +230,8 @@
+     <MESSAGE value="1" />
+     <MESSAGE value="Upload AdminView" />
+     <MESSAGE value="add gitignore" />
+-    <option name="LAST_COMMIT_MESSAGE" value="add gitignore" />
++    <MESSAGE value="Updated" />
++    <option name="LAST_COMMIT_MESSAGE" value="Updated" />
+   </component>
+   <component name="XSLT-Support.FileAssociations.UIState">
+     <expand />

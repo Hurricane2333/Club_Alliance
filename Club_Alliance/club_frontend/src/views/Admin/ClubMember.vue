@@ -107,7 +107,7 @@
             <el-table-column property="presidentId" label="负责人ID" width="120" header-align="center" align="center" sortable/>
             <el-table-column property="president" label="负责人" width="120" header-align="center" align="center" sortable/>
             <el-table-column property="createdAt" label="创建时间" width="120" header-align="center" align="center" show-overflow-tooltip sortable/>
-            <el-table-column property="requirements" label="加入条件" width="120" header-align="center" align="center"/>
+            <el-table-column property="requirements" label="加入条件" width="120" header-align="center" align="center" show-overflow-tooltip/>
             <el-table-column v-slot="scope" width="110">
               <el-button type="primary" plain @click="clubSelected(scope.row)">
                 <el-icon size="18"><Select /></el-icon>

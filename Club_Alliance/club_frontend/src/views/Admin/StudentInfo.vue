@@ -169,7 +169,7 @@
           <el-table :data="PageData.list"style="margin-top:30px;margin-left: 40px;width: fit-content" @selection-change="handleSelection">
             <el-table-column type="selection" width="30"></el-table-column>
             <el-table-column property="userId" label="ID" width="100" header-align="center" align="center" sortable/>
-            <el-table-column property="avator" label="头像" width="200" header-align="center" align="center"/>
+            <el-table-column property="stuId" label="学号" width="200" header-align="center" align="center" sortable/>
             <el-table-column property="stuName" label="用户名" width="200" header-align="center" align="center" sortable/>
             <el-table-column property="joinedClub" label="加入的社团" width="200" header-align="center" align="center" sortable/>
             <el-table-column property="email" label="邮箱" width="200" header-align="center" align="center"/>

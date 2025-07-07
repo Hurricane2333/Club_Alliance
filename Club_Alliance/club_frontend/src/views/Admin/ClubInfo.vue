@@ -245,7 +245,7 @@
             <el-table-column property="createdAt" label="创建时间" width="120" header-align="center"
                              align="center" show-overflow-tooltip sortable/>
             <el-table-column property="requirements" label="加入条件" width="120"
-                             header-align="center" align="center"/>
+                             header-align="center" align="center" show-overflow-tooltip/>
             <el-table-column v-slot="scope" width="110">
               <el-button type="warning" plain @click="iniEdit(scope.row)">
                 <el-icon size="18">

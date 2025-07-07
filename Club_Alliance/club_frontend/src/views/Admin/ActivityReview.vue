@@ -113,30 +113,30 @@
           <el-table :data="PageData.list"style="margin-top:30px;width: fit-content" @selection-change="handleSelection">
             <el-table-column type="selection" width="30"></el-table-column>
             <el-table-column property="activityId" label="ID" width="70" header-align="center" align="center" sortable/>
-            <el-table-column property="title" label="活动名" width="120" header-align="center" align="center"/>
-            <el-table-column property="clubName" label="申请社团" width="120" header-align="center" align="center" sortable/>
-            <el-table-column property="userName" label="申请人" width="120" header-align="center" align="center" sortable/>
-            <el-table-column property="content" label="内容" width="120" header-align="center" align="center" show-overflow-tooltip/>
-            <el-table-column property="startTime" label="开始时间" width="120" header-align="center" align="center" show-overflow-tooltip sortable/>
-            <el-table-column property="endTime" label="结束时间" width="120" header-align="center" align="center" show-overflow-tooltip sortable/>
-            <el-table-column property="createdAt" label="申请时间" width="120" header-align="center" align="center" show-overflow-tooltip sortable/>
+            <el-table-column property="title" label="活动名" width="110" header-align="center" align="center" show-overflow-tooltip/>
+            <el-table-column property="clubName" label="申请社团" width="110" header-align="center" align="center" sortable/>
+            <el-table-column property="userName" label="申请人" width="110" header-align="center" align="center" sortable/>
+            <el-table-column property="content" label="内容" width="110" header-align="center" align="center" show-overflow-tooltip/>
+            <el-table-column property="startTime" label="开始时间" width="110" header-align="center" align="center" show-overflow-tooltip sortable/>
+            <el-table-column property="endTime" label="结束时间" width="110" header-align="center" align="center" show-overflow-tooltip sortable/>
+            <el-table-column property="createdAt" label="申请时间" width="110" header-align="center" align="center" show-overflow-tooltip sortable/>
             <el-table-column property="location" label="地点" width="110" header-align="center" align="center" show-overflow-tooltip/>
             <el-table-column property="status" label="状态" width="110" header-align="center" align="center" sortable/>
-            <el-table-column v-slot="scope" width="110">
+            <el-table-column v-slot="scope" width="105">
               <el-button type="success" plain @click="passSingle(scope.row)">
-                <el-icon size="18"><Select /></el-icon>
+                <el-icon><Select /></el-icon>
                 <el-text type="success">批准</el-text>
               </el-button>
             </el-table-column>
-            <el-table-column v-slot="scope" width="110">
+            <el-table-column v-slot="scope" width="105">
               <el-button type="warning" plain @click="refuseSingle(scope.row)">
-                <el-icon size="18"><CloseBold /></el-icon>
+                <el-icon><CloseBold /></el-icon>
                 <el-text type="warning">拒绝</el-text>
               </el-button>
             </el-table-column>
-            <el-table-column v-slot="scope" width="110">
+            <el-table-column v-slot="scope" width="105">
               <el-button type="danger" plain @click="deleteSingle(scope.row)">
-                <el-icon size="18"><Delete /></el-icon>
+                <el-icon><Delete /></el-icon>
                 <el-text type="danger">删除</el-text>
               </el-button>
             </el-table-column>
