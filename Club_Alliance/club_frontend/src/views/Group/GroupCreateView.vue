@@ -44,8 +44,10 @@
       <el-form-item label="社团图标">
         <el-upload
           class="avatar-uploader"
-          action="/api/upload"
+          action="/picgo/api/1/upload"
           :show-file-list="false"
+          :data="{ key: 'chv_SdO9i_06b936112c56b74d9839811834701d588141e9d40b08f5d0f77f80f00a46b7c44452d28b97f7d5465837ae3e83b2a78fff44de2e79acb5790f61616e2dd6d916' }"
+          name="source"
           :on-success="handleAvatarSuccess"
         >
           <img v-if="clubData.icon" :src="clubData.icon" class="avatar" />
@@ -126,7 +128,7 @@ const submitForm = async () => {
 }
 
 const handleAvatarSuccess = (response) => {
-  clubData.icon = response.url
+  clubData.icon = response.image.display_url
 }
 
 const categoryOptions = [

@@ -17,10 +17,10 @@ public class ClubService {
     public ClubService(ClubMapper clubMapper) {
         this.clubMapper = clubMapper;
     }
-    
+
 
     public List<Club> getHomeRecommendedClubs() {
-        List<Club> clubs = clubMapper.selectRecommendedClubs(2, ClubStatus.APPROVED);
+        List<Club> clubs = clubMapper.selectRecommendedClubs(3, ClubStatus.APPROVED);
         return clubs;
     }
 

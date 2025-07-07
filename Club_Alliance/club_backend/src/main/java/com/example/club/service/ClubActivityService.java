@@ -13,7 +13,7 @@ public class ClubActivityService {
     private ClubActivityMapper clubActivityMapper;
 
     public List<ClubActivity> getRecentActivities() {
-        List<ClubActivity> clubActivities=clubActivityMapper.selectRecentActivities(2);
+        List<ClubActivity> clubActivities=clubActivityMapper.selectRecentActivities(3);
         return clubActivities;
     }
     public List<ClubActivity> getAllActivities() {
