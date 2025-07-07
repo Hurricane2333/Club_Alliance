@@ -187,9 +187,10 @@ import {
   Location,
   Setting, UserFilled, Menu,
 } from '@element-plus/icons-vue'
+import NavBar from "@/views/Home/component/NavBar.vue";
 
 export default {
-  components: {Menu, Location, UserFilled, ClubInfo},
+  components: {NavBar, Menu, Location, UserFilled, ClubInfo},
   data() {
     return {
       userData: [],
@@ -214,6 +215,7 @@ export default {
 
 <style scoped>
 .common-layout {
+
   position: absolute;
   top: 0;
   right: 0;
