@@ -1,5 +1,6 @@
 <template>
-  <div class="event-card bg-white rounded-xl shadow-card overflow-hidden hover:shadow-hover transition-custom group">
+  <div
+    class="event-card bg-white rounded-xl shadow-card overflow-hidden hover:shadow-hover transition-custom group border-4 border-gray-400 p-4 padding:20px">
     <div class="relative h-48 overflow-hidden">
       <el-image
         :src="event.clubIcon || 'https://picsum.photos/id/1011/800/600'"
@@ -76,7 +77,19 @@ const goToDetail = (id) => {
 </script>
 
 <style scoped>
+
 .event-card {
-  /* 可添加自定义样式 */
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-width: 4px;
+  border-color: #9ca3af;
+  margin: 2px;
+  padding: 20px;
 }
+
+
+.event-card {
+  @apply rounded-xl shadow-md border border-gray-200;
+}
+
 </style>

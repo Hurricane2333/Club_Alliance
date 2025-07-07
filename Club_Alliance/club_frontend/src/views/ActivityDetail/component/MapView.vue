@@ -18,7 +18,7 @@ let amap = null;
 
 const initMap = () => {
   AMapLoader.load({
-    key: 'a5ccaa53d9b0ff4781628973c94f907e',
+    key: 'f93df160e22b00bb8295ef13ab5b4cf5',
     version: '2.0',
     plugins: ['AMap.Geocoder'],
   })
@@ -41,7 +41,7 @@ const initMap = () => {
 const geocodeAddress = async (address) => {
   if (!address) return;
   const fullAddress = `湖北省武汉市武汉大学${address}`;
-  const url = `https://restapi.amap.com/v3/geocode/geo?key=a5ccaa53d9b0ff4781628973c94f907e&address=${encodeURIComponent(fullAddress)}&city=武汉`;
+  const url = `https://restapi.amap.com/v3/geocode/geo?key=f93df160e22b00bb8295ef13ab5b4cf5&address=${encodeURIComponent(fullAddress)}&city=武汉`;
 
   try {
     const response = await axios.get(url);

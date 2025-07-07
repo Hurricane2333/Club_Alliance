@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="home-container">
     <NavBar />
-  </div>
 
+  <div class="main-content">
   <div class="club-header">
     <img :src="club.icon" class="club-avatar" />
     <h1 class="club-name">{{ club.clubName }}</h1>
@@ -28,6 +28,8 @@
         <GroupManageSidebar />
       </el-col>
     </el-row>
+  </div>
+  </div>
   </div>
 </template>
 
@@ -72,6 +74,20 @@ request.get(`/group/selectId/${route.params.id}`).then(res => {
 </script>
 
 <style scoped>
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(rgba(222, 246, 250, 0.9), rgba(231, 247, 250, 0.9)),
+              url('@/assets/homeback.jpg') center/cover no-repeat;
+}
+
+.main-content {
+  width: 100%;
+  padding: 20px 0;
+}
+
+
 .group-container {
   max-width: 1200px;
   margin: 0 auto 20px;

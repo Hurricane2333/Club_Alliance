@@ -4,6 +4,7 @@ import com.example.club.entity.ClubMember;
 import com.example.club.entity.GroupInfo;
 import com.example.club.enums.ClubCategory;
 import com.example.club.enums.ClubMemberStatus;
+import com.example.club.enums.ClubStatus;
 import com.example.club.mapper.ApplyMapper;
 import com.example.club.service.GroupInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +58,7 @@ public class GroupInfoController {
     public int updateGroupInfoById(@RequestBody GroupInfo groupInfo){
         return groupInfoService.updateGroupInfoById(groupInfo);
     }
-   
+
 
     //检查用户是否已加入社团--hzs
     @GetMapping("/check")
@@ -67,5 +68,11 @@ public class GroupInfoController {
     result.put("joined", member != null && member.getStatus() == ClubMemberStatus.APPROVED);
     return result;
     }
+
+    @GetMapping("selectStatus/{status}")
+    public List<GroupInfo> queryGroupInfoByStatus(@PathVariable("status") ClubStatus status){
+        return groupInfoService.queryGroupInfoByStatus(status);
+    }
+
 }
 

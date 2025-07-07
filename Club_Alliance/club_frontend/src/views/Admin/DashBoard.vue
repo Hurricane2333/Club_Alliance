@@ -1,57 +1,58 @@
 <template>
   <div class="common-layout">
+    <NavBar/>
     <el-container>
-      <el-header>
-        <el-menu
-          default-active="5"
-          class="el-menu-main"
-          mode="horizontal"
-          :ellipsis="false"
-          @select="handleTop"
-        >
-          <el-menu-item index="0">
-            <el-icon>
-              <UserFilled/>
-            </el-icon>
-            <el-text class="title-tag" type="primary" size="large">社团联盟后台管理</el-text>
-          </el-menu-item>
-          <el-menu-item index="1">首页</el-menu-item>
-          <el-sub-menu index="2">
-            <template #title>我的社团</template>
-            <el-menu-item index="2-1">item one</el-menu-item>
-            <el-menu-item index="2-2">item two</el-menu-item>
-            <el-menu-item index="2-3">item three</el-menu-item>
-          </el-sub-menu>
-          <el-menu-item index="3">我的活动</el-menu-item>
-          <el-menu-item index="4">个人中心</el-menu-item>
-          <el-menu-item index="5">后台管理</el-menu-item>
-          <el-space wrap :size="'large'">
-            <el-image
-              style="width: 40px; height: 40px; border-radius:40px; box-shadow:3px 3px 10px 0px dimgray"
-              src="/avatar.jpg"></el-image>
-            <div class="border">
-              <div class="border-title">管理员</div>
-            </div>
-          </el-space>
-          <el-dropdown>
-            <span class="el-dropdown-link">
-              <el-text class="user-name" size="large">荷塘月色</el-text>
-              <el-icon class="el-icon--right">
-                <arrow-down-bold/>
-              </el-icon>
-            </span>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item>Action 1</el-dropdown-item>
-                <el-dropdown-item>Action 2</el-dropdown-item>
-                <el-dropdown-item>Action 3</el-dropdown-item>
-                <el-dropdown-item disabled>Action 4</el-dropdown-item>
-                <el-dropdown-item divided>Action 5</el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
-        </el-menu>
-      </el-header>
+      <!--      <el-header>-->
+      <!--        <el-menu-->
+      <!--          default-active="5"-->
+      <!--          class="el-menu-main"-->
+      <!--          mode="horizontal"-->
+      <!--          :ellipsis="false"-->
+      <!--          @select="handleTop"-->
+      <!--        >-->
+      <!--          <el-menu-item index="0">-->
+      <!--            <el-icon>-->
+      <!--              <UserFilled/>-->
+      <!--            </el-icon>-->
+      <!--            <el-text class="title-tag" type="primary" size="large">社团联盟后台管理</el-text>-->
+      <!--          </el-menu-item>-->
+      <!--          <el-menu-item index="1">首页</el-menu-item>-->
+      <!--          <el-sub-menu index="2">-->
+      <!--            <template #title>我的社团</template>-->
+      <!--            <el-menu-item index="2-1">item one</el-menu-item>-->
+      <!--            <el-menu-item index="2-2">item two</el-menu-item>-->
+      <!--            <el-menu-item index="2-3">item three</el-menu-item>-->
+      <!--          </el-sub-menu>-->
+      <!--          <el-menu-item index="3">我的活动</el-menu-item>-->
+      <!--          <el-menu-item index="4">个人中心</el-menu-item>-->
+      <!--          <el-menu-item index="5">后台管理</el-menu-item>-->
+      <!--          <el-space wrap :size="'large'">-->
+      <!--            <el-image-->
+      <!--              style="width: 40px; height: 40px; border-radius:40px; box-shadow:3px 3px 10px 0px dimgray"-->
+      <!--              src="/avatar.jpg"></el-image>-->
+      <!--            <div class="border">-->
+      <!--              <div class="border-title">管理员</div>-->
+      <!--            </div>-->
+      <!--          </el-space>-->
+      <!--          <el-dropdown>-->
+      <!--            <span class="el-dropdown-link">-->
+      <!--              <el-text class="user-name" size="large">荷塘月色</el-text>-->
+      <!--              <el-icon class="el-icon&#45;&#45;right">-->
+      <!--                <arrow-down-bold/>-->
+      <!--              </el-icon>-->
+      <!--            </span>-->
+      <!--            <template #dropdown>-->
+      <!--              <el-dropdown-menu>-->
+      <!--                <el-dropdown-item>Action 1</el-dropdown-item>-->
+      <!--                <el-dropdown-item>Action 2</el-dropdown-item>-->
+      <!--                <el-dropdown-item>Action 3</el-dropdown-item>-->
+      <!--                <el-dropdown-item disabled>Action 4</el-dropdown-item>-->
+      <!--                <el-dropdown-item divided>Action 5</el-dropdown-item>-->
+      <!--              </el-dropdown-menu>-->
+      <!--            </template>-->
+      <!--          </el-dropdown>-->
+      <!--        </el-menu>-->
+      <!--      </el-header>-->
       <el-container>
         <el-aside width="200px">
           <el-row class="tac">
@@ -95,18 +96,6 @@
                   <el-menu-item index="/manageUser/admin">管理员信息</el-menu-item>
                   <el-menu-item index="/manageUser/student">学生信息</el-menu-item>
                 </el-sub-menu>
-                <el-menu-item index="3">
-                  <el-icon>
-                    <Menu/>
-                  </el-icon>
-                  <span>公告管理</span>
-                </el-menu-item>
-                <el-menu-item index="4">
-                  <el-icon>
-                    <Menu/>
-                  </el-icon>
-                  <span>系统设置</span>
-                </el-menu-item>
               </el-menu>
             </el-col>
           </el-row>
@@ -133,13 +122,13 @@
               <template #header>
                 <span>活动总数</span>
               </template>
-              <div class="card-text">100</div>
+              <div class="card-text">{{ activities }}</div>
             </el-card>
             <el-card class="box-card" style="width: 300px">
               <template #header>
                 <span>待审核</span>
               </template>
-              <div class="card-text">100</div>
+              <div class="card-text">{{ pendings }}</div>
             </el-card>
           </el-space>
           <div class="titles">最近创建的社团</div>
@@ -188,6 +177,23 @@ import {
   Setting, UserFilled, Menu,
 } from '@element-plus/icons-vue'
 import NavBar from "@/views/Home/component/NavBar.vue";
+import {ref} from "vue";
+import request from '@/utils/request.js';
+
+const pendingGroupCounts = ref();
+const pendingActivityCounts = ref();
+const totalCounts = ref();
+const activities = ref();
+
+// request.get(`/group/member/selectClubIdAndStatus/${route.params.id}/PENDING`).then(res => {
+//   // console.log(res)
+//   pendingMembers.value = res.length;
+// });
+
+// request.get(`/group/activity/selectAll`).then(res => {
+//    console.log(res)
+//   activities.value = res.length;
+// });
 
 export default {
   components: {NavBar, Menu, Location, UserFilled, ClubInfo},
@@ -196,6 +202,8 @@ export default {
       userData: [],
       clubData: [],
       iniTable: [],
+      activities: 0,
+      pendings: 0,
     }
   },
   methods: {},
@@ -207,6 +215,18 @@ export default {
       axios.get("http://localhost:8080/recentClub").then((res) => {
         console.log(res);
         this.clubData = res.data;
+      }),
+      axios.get("http://localhost:8080/group/activity/selectAll").then((res) => {
+        console.log(res);
+        this.activities = res.data.length;
+      }),
+      axios.get("http://localhost:8080/group/activity/selectStatus/PENDING").then((res) => {
+        console.log(res);
+        this.pendings += res.data.length;
+      }),
+      axios.get("http://localhost:8080/group/selectStatus/PENDING").then((res) => {
+        console.log(res);
+        this.pendings += res.data.length;
       })
   }
 }

@@ -1,36 +1,38 @@
 <template>
-  <div>
+  <div class="home-container">
     <NavBar />
+
+
+  <div class="main-content">
+    <div class="group-header">
+      <img :src="club.icon" class="group-avatar" />
+      <h1 class="group-name">{{ club.clubName }}</h1>
+      <el-button
+        v-if="club.presidentId === currentUserId"
+        type="primary"
+        class="manage-button"
+        @click="$router.push(`/group/manage/${route.params.id}`)"
+      >
+        管理社团
+      </el-button>
+    </div>
+    <GroupNavBar />
+
+    <div class="group-container">
+      <main class="main-content">
+        <router-view />
+      </main>
+
+      <aside class="side-bar">
+        <GroupSidebar />
+        <div style="margin-top: 20px">
+          <el-button @click="router.push(`/group/${club.clubId}/postCreate`)" type="primary" style="width: 100%">
+            发表帖子
+          </el-button>
+        </div>
+      </aside>
+    </div>
   </div>
-
-  <div class="group-header">
-    <img :src="club.icon" class="group-avatar" />
-    <h1 class="group-name">{{ club.clubName }}</h1>
-    <el-button
-      v-if="club.presidentId === currentUserId"
-      type="primary"
-      class="manage-button"
-      @click="$router.push(`/group/manage/${route.params.id}`)"
-    >
-      管理社团
-    </el-button>
-  </div>
-
-  <GroupNavBar />
-
-  <div class="group-container">
-    <main class="main-content">
-      <router-view />
-    </main>
-
-    <aside class="side-bar">
-      <GroupSidebar />
-      <div style="margin-top: 20px">
-        <el-button @click="router.push(`/group/${club.clubId}/postCreate`)" type="primary" style="width: 100%">
-          发表帖子
-        </el-button>
-      </div>
-    </aside>
   </div>
 </template>
 
@@ -66,7 +68,21 @@ request.get(`/group/selectId/${route.params.id}`).then(res => {
 </script>
 
 <style scoped>
+
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(rgba(222, 246, 250, 0.9), rgba(231, 247, 250, 0.9)),
+              url('@/assets/homeback.jpg') center/cover no-repeat;
+  position: relative;
+}
+
+
+
 .group-container {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(3px);
   display: flex;
   max-width: 1200px;
   margin: 0 auto 20px;
@@ -74,7 +90,8 @@ request.get(`/group/selectId/${route.params.id}`).then(res => {
 }
 
 .group-header {
-  background: #fff;
+  background:rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(2px);
   padding: 20px 20px;
   display: flex;
   align-items: center;
@@ -110,7 +127,10 @@ request.get(`/group/selectId/${route.params.id}`).then(res => {
 
 .main-content {
   flex: 1;
-  width: 70%;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .side-bar {

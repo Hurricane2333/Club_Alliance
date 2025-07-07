@@ -2,6 +2,7 @@ package com.example.club.service;
 
 import com.example.club.entity.GroupInfo;
 import com.example.club.enums.ClubCategory;
+import com.example.club.enums.ClubStatus;
 import com.example.club.mapper.GroupInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,4 +50,8 @@ public class GroupInfoServiceImpl implements GroupInfoService {
         return groupInfoMapper.updateGroupInfoById(groupInfo);
     }
 
+    @Override
+    public List<GroupInfo> queryGroupInfoByStatus(ClubStatus status) {
+        return groupInfoMapper.queryGroupInfoByStatus(status);
+    }
 }

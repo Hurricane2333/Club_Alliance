@@ -1,9 +1,9 @@
 <template>
 
-  <div>
+  <div class="home-container">
     <NavBar />
-  </div>
 
+  <div class="main-content">
   <div class="group-home">
 
     <div class="group-container">
@@ -16,6 +16,8 @@
       </div>
     </div>
 
+  </div>
+  </div>
   </div>
 </template>
 
@@ -41,10 +43,26 @@ request.get(`/group/post/selectClubId/${route.params.id}`).then(res => {
 
 <style>
 
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(rgba(222, 246, 250, 0.9), rgba(231, 247, 250, 0.9)),
+              url('@/assets/homeback.jpg') center/cover no-repeat;
+}
+
+.main-content {
+  width: 100%;
+  padding: 20px 0;
+  position: relative;
+  z-index: 2;
+}
+
+
 .group-home {
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f5;
+  background-color: transparent;
 }
 
 .group-container {

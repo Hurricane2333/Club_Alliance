@@ -1,6 +1,12 @@
 <template>
   <div>
     <div style="display: flex; flex-direction: row">
+      <el-button
+          type="primary"
+          @click="router.go(-1)"
+          class="mb-4"
+          :icon="ArrowLeft"
+        >返回</el-button>
       <div
         style="width: 200px; height: 200px; margin: 0 15px 0 max(50px,10%); align-content: center; justify-content: center">
         <el-avatar :size="150" :src="club.icon"/>

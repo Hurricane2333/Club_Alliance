@@ -1,49 +1,50 @@
 <template>
   <div class="common-layout">
+    <NavBar/>
     <el-container>
-      <el-header>
-        <el-menu
-          default-active="5"
-          class="el-menu-main"
-          mode="horizontal"
-          :ellipsis="false"
-          @select="handleTop"
-        >
-          <el-menu-item index="0">
-            <el-icon><UserFilled /></el-icon>
-            <el-text class="title-tag" type="primary" size="large">社团联盟后台管理</el-text>
-          </el-menu-item>
-          <el-menu-item index="1">首页</el-menu-item>
-          <el-sub-menu index="2">
-            <template #title>我的社团</template>
-            <el-menu-item index="2-1">item one</el-menu-item>
-            <el-menu-item index="2-2">item two</el-menu-item>
-            <el-menu-item index="2-3">item three</el-menu-item>
-          </el-sub-menu>
-          <el-menu-item index="3">我的活动</el-menu-item>
-          <el-menu-item index="4">个人中心</el-menu-item>
-          <el-menu-item index="5">后台管理</el-menu-item>
-          <el-space wrap :size="'large'">
-            <el-image style="width: 40px; height: 40px; border-radius:40px; box-shadow:3px 3px 10px 0px dimgray" src="/avatar.jpg"></el-image>
-            <div class="border">
-              <div class="border-title">管理员</div>
-            </div>
-          </el-space>
-          <el-dropdown>
-            <span class="el-dropdown-link">
-              <el-text class="user-name" size="large">荷塘月色</el-text>
-              <el-icon class="el-icon--right">
-                <arrow-down-bold />
-              </el-icon>
-            </span>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item>退出登录</el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
-        </el-menu>
-      </el-header>
+<!--      <el-header>-->
+<!--        <el-menu-->
+<!--          default-active="5"-->
+<!--          class="el-menu-main"-->
+<!--          mode="horizontal"-->
+<!--          :ellipsis="false"-->
+<!--          @select="handleTop"-->
+<!--        >-->
+<!--          <el-menu-item index="0">-->
+<!--            <el-icon><UserFilled /></el-icon>-->
+<!--            <el-text class="title-tag" type="primary" size="large">社团联盟后台管理</el-text>-->
+<!--          </el-menu-item>-->
+<!--          <el-menu-item index="1">首页</el-menu-item>-->
+<!--          <el-sub-menu index="2">-->
+<!--            <template #title>我的社团</template>-->
+<!--            <el-menu-item index="2-1">item one</el-menu-item>-->
+<!--            <el-menu-item index="2-2">item two</el-menu-item>-->
+<!--            <el-menu-item index="2-3">item three</el-menu-item>-->
+<!--          </el-sub-menu>-->
+<!--          <el-menu-item index="3">我的活动</el-menu-item>-->
+<!--          <el-menu-item index="4">个人中心</el-menu-item>-->
+<!--          <el-menu-item index="5">后台管理</el-menu-item>-->
+<!--          <el-space wrap :size="'large'">-->
+<!--            <el-image style="width: 40px; height: 40px; border-radius:40px; box-shadow:3px 3px 10px 0px dimgray" src="/avatar.jpg"></el-image>-->
+<!--            <div class="border">-->
+<!--              <div class="border-title">管理员</div>-->
+<!--            </div>-->
+<!--          </el-space>-->
+<!--          <el-dropdown>-->
+<!--            <span class="el-dropdown-link">-->
+<!--              <el-text class="user-name" size="large">荷塘月色</el-text>-->
+<!--              <el-icon class="el-icon&#45;&#45;right">-->
+<!--                <arrow-down-bold />-->
+<!--              </el-icon>-->
+<!--            </span>-->
+<!--            <template #dropdown>-->
+<!--              <el-dropdown-menu>-->
+<!--                <el-dropdown-item>退出登录</el-dropdown-item>-->
+<!--              </el-dropdown-menu>-->
+<!--            </template>-->
+<!--          </el-dropdown>-->
+<!--        </el-menu>-->
+<!--      </el-header>-->
       <el-container>
         <el-aside width="200px">
           <el-row class="tac">
@@ -69,8 +70,8 @@
                     <el-menu-item index="/manageClub/member">社团成员管理</el-menu-item>
                   </el-menu-item-group>
                   <el-menu-item-group title="审核">
-                    <el-menu-item index="1-4">社团创建审核</el-menu-item>
-                    <el-menu-item index="1-5">活动申请审核</el-menu-item>
+                    <el-menu-item index="/review/club">社团创建审核</el-menu-item>
+                    <el-menu-item index="/review/activity">活动申请审核</el-menu-item>
                   </el-menu-item-group>
                 </el-sub-menu>
                 <el-sub-menu index="2">
@@ -78,17 +79,9 @@
                     <el-icon><Menu /></el-icon>
                     <span>用户管理</span>
                   </template>
-                  <el-menu-item index="2-1">管理员信息</el-menu-item>
-                  <el-menu-item index="2-2">学生信息</el-menu-item>
+                  <el-menu-item index="/manageUser/admin">管理员信息</el-menu-item>
+                  <el-menu-item index="/manageUser/student">学生信息</el-menu-item>
                 </el-sub-menu>
-                <el-menu-item index="3">
-                  <el-icon><Menu /></el-icon>
-                  <span>公告管理</span>
-                </el-menu-item>
-                <el-menu-item index="4">
-                  <el-icon><Menu /></el-icon>
-                  <span>系统设置</span>
-                </el-menu-item>
               </el-menu>
             </el-col>
           </el-row>
@@ -145,13 +138,13 @@
             <el-table-column property="stuName" label="用户名" width="200" header-align="center" align="center" sortable/>
             <el-table-column property="isPresident" label="是否为社长" width="200" header-align="center" align="center" sortable/>
             <el-table-column property="reviewTime" label="加入时间" width="200" header-align="center" align="center" show-overflow-tooltip sortable/>
-            <el-table-column v-slot="scope" width="130">
+            <el-table-column v-slot="scope" width="140">
               <el-button type="warning" plain @click="promote(scope.row)">
                 <el-icon size="18"><User /></el-icon>
                 <el-text type="warning">任命社长</el-text>
               </el-button>
             </el-table-column>
-            <el-table-column v-slot="scope" width="130">
+            <el-table-column v-slot="scope" width="140">
               <el-button type="danger" plain @click="removeSingle(scope.row)">
                 <el-icon size="18"><Back /></el-icon>
                 <el-text type="danger">移出社团</el-text>
@@ -184,6 +177,7 @@ import {
   Setting, UserFilled, Menu, Delete, Search, Refresh, ArrowLeftBold,
 } from '@element-plus/icons-vue'
 import {ElMessage, ElMessageBox, paginationProps} from 'element-plus'
+import NavBar from "@/views/Home/component/NavBar.vue";
 
 export default{
   computed: {
@@ -191,7 +185,7 @@ export default{
       return Search
     }
   },
-  components: {ArrowLeftBold, Refresh, Delete, Menu, Location, UserFilled},
+  components: {NavBar, ArrowLeftBold, Refresh, Delete, Menu, Location, UserFilled},
   data(){
     return{
       userData:[],

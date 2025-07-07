@@ -2,6 +2,7 @@ package com.example.club.mapper;
 
 import com.example.club.entity.GroupInfo;
 import com.example.club.enums.ClubCategory;
+import com.example.club.enums.ClubStatus;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -29,5 +30,8 @@ public interface GroupInfoMapper {
 
     @Update("update club set club_name = #{clubName}, description = #{description}, category = #{category}, icon = #{icon}, president_id = #{presidentId}, requirements = #{requirements}, status = #{status} where club_id = #{clubId}")
     int updateGroupInfoById(GroupInfo groupInfo);
+
+    @Select("select * from club where status = #{status}")
+    List<GroupInfo> queryGroupInfoByStatus(ClubStatus status);
 
 }

@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="home-container">
     <NavBar />
-  </div>
+  <div class="main-content">
   <div class="info-management-container">
     <el-form :model="clubData" :rules="rules" label-width="100px" ref="formRef">
       <el-form-item label="社团名称" prop="clubName">
@@ -57,6 +57,8 @@
         <el-button type="primary" @click="submitForm">申请创建</el-button>
       </el-form-item>
     </el-form>
+  </div>
+  </div>
   </div>
 </template>
 
@@ -142,6 +144,33 @@ const categoryOptions = [
 </script>
 
 <style scoped>
+
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(rgba(222, 246, 250, 0.9), rgba(231, 247, 250, 0.9)),
+              url('@/assets/homeback.jpg') center/cover no-repeat;
+  position: relative;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(231, 235, 236, 0.6);
+  z-index: 1;
+}
+
+
+.main-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
 .category-group {
   width: 100%;
 }
@@ -177,6 +206,7 @@ const categoryOptions = [
   box-shadow: 0 2px 12px rgba(0,0,0,0.1);
   max-width: 1200px;
   margin: 50px auto;
+
 }
 
 .avatar-uploader {

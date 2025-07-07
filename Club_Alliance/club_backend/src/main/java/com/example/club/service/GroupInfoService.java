@@ -2,6 +2,7 @@ package com.example.club.service;
 
 import com.example.club.entity.GroupInfo;
 import com.example.club.enums.ClubCategory;
+import com.example.club.enums.ClubStatus;
 
 import java.util.List;
 
@@ -14,5 +15,6 @@ public interface GroupInfoService {
     int insertGroupInfo(GroupInfo groupInfo);
     int deleteGroupInfoById(Integer clubId);
     int updateGroupInfoById(GroupInfo groupInfo);
+    List<GroupInfo> queryGroupInfoByStatus(ClubStatus status);
 
 }

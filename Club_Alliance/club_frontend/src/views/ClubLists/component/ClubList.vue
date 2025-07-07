@@ -133,7 +133,7 @@ const getFallbackClubs = () => [
   gap: 20px;
   padding: 10px 0;
   justify-content: center; /* 卡片组居中 */
-  width: 100%;
+  width: auto;
   max-width: 1200px; /* 可选，限制最大宽度 */
 }
 

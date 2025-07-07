@@ -1,8 +1,8 @@
 <template>
   <div
-    class="club-card bg-white rounded-xl shadow-card overflow-hidden hover:shadow-hover transition-custom group">
+    class="club-card bg-white rounded-xl shadow-card overflow-hidden hover:shadow-hover transition-custom group border-4 border-gray-400 p-4 padding:20px">
     <!-- 图片区域 -->
-    <div class="relative h-48 overflow-hidden">
+     <div class="relative h-44 overflow-hidden mt-[-16px] mx-[-16px]">
       <el-image
         :src="club.icon || 'https://picsum.photos/id/1011/800/600'"
         fit="cover"
@@ -19,7 +19,7 @@
     </div>
 
     <!-- 内容区域 -->
-    <div class="p-6">
+    <div class="p-4">
       <!-- 标题和分类 -->
       <div class="flex items-center justify-between mb-3">
         <h3 class="text-xl font-bold text-dark">{{ club.clubName }}</h3>
@@ -54,7 +54,7 @@
       </div>
 
       <!-- 操作按钮 -->
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between mt-6"> <!-- 从mt-4改为mt-6 -->
         <div class="flex items-center">
           <el-button text circle class="text-gray-400 hover:text-primary transition-custom">
             <el-icon>
@@ -137,3 +137,20 @@ const mapCategory = (category) => {
   return map[category] || '其他'
 }
 </script>
+
+
+<style scoped>
+.club-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-width: 4px;
+  border-color: #9ca3af;
+  margin: 2px;
+  padding: 20px;
+}
+
+
+.club-card {
+  @apply rounded-xl shadow-md border border-gray-200;
+}
+</style>

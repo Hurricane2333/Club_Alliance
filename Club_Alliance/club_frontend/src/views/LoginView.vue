@@ -81,9 +81,26 @@ const login = async () => {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f4f4f4;
+  background: linear-gradient(rgba(250, 249, 249, 0.8), rgba(237, 236, 236, 0.8)),
+              url('@/assets/loginback.jpg') center/cover no-repeat;
+  position: relative;
+}
+
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 1;
 }
 .login-form {
+  /* 新增z-index确保表单在背景之上 */
+  position: relative;
+  z-index: 2;
+  /* 原有样式保持不变 */
   padding: 2rem;
   background: white;
   border-radius: 8px;
