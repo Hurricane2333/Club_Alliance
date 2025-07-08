@@ -61,7 +61,7 @@ public class AdminController {
     @PostMapping(value="/createClub",consumes = MediaType.APPLICATION_JSON_VALUE)
     public boolean createClub(@RequestBody AdminClub adminClub){
         adminClub.setFavoriteCount(0);
-        adminClub.setCurrentMembers(0);
+        adminClub.setCurrentMembers(1);
         adminClub.setStatus("APPROVED");
         Date date = new Date();
         date.setTime(date.getTime() + 28800000);

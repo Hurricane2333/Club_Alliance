@@ -150,6 +150,24 @@ router.beforeEach(async (to, from, next) => {
     }
   }
 
+  // 权限验证
+  if (to.path.startsWith('/dashboard')) {
+    if (!userStore.token) {
+      ElMessage.warning('请先登录')
+      return next('/login')
+    }
+    try {
+      if ( !userStore.user?.isAdmin ) {
+        ElMessage.warning('仅管理员可访问该页面')
+        return next('/')
+      }
+    } catch (error) {
+      console.error('状态验证失败:', error)
+      ElMessage.error('权限验证失败，请稍后重试')
+      return next('/')
+    }
+  }
+
   // 社长权限验证
   if (to.meta.requiresPresident) {
     try {
